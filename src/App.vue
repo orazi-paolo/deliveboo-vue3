@@ -13,6 +13,7 @@ export default {
     Deliveboo
   </div>
   <main>
+    <router-link to="/plate/1"> singolo piatto</router-link>
     <RouterView />
   </main>
 </template>

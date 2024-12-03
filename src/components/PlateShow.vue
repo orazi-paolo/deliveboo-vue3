@@ -88,9 +88,10 @@ export default {
 <style lang="scss">
 
 .modal-dialog {
-  max-width: 500px;
+  max-width: 600px;
   margin: 50px auto;
   position: relative;
+  
 }
 
 .modal-content {
@@ -98,11 +99,15 @@ export default {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   padding: 20px;
+  height: 800px; 
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between;
 }
 
 .scrollable-content {
-  max-height: 400px; 
-  overflow-y: auto;
+  flex-grow: 1; 
+  overflow-y: auto; 
   padding: 20px;
 }
 
@@ -206,5 +211,6 @@ export default {
   background-color: #00c7b6;
   color: #fff;
 }
+
 
 </style>

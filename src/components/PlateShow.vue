@@ -23,7 +23,8 @@ export default {
       <button type="button" class="btn-close" aria-label="Close" @click="close"></button>
 
       <!-- immagine -->
-      <img src="https://via.placeholder.com/300" alt="Plate Image" class="plate-image" />
+      <img src="/images/baconking.png" alt="Plate Image" class="img-fluid rounded mb-4" />
+
 
       <!-- nome del piatto -->
 
@@ -66,16 +67,17 @@ export default {
 
 <style lang="scss">
 
-modal-dialog {
+.modal-dialog {
   max-width: 500px;
   margin: 50px auto;
 }
 
 .modal-content {
-  position: relative;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   padding: 20px;
+  position: relative;
 }
 
 .btn-close {
@@ -84,50 +86,64 @@ modal-dialog {
   right: 10px;
   background: none;
   border: none;
-  font-size: 20px;
+  font-size: 18px;
   cursor: pointer;
+  color: #999;
 }
 
 .img-fluid {
-  max-height: 300px;
-  object-fit: cover;
-  border-radius: 8px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
 h2 {
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 10px;
+  color: #333;
 }
 
 .text-muted {
-  color: #6c757d;
-  font-size: 16px;
-  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666;
+}
+
+.form-check {
+  margin-bottom: 10px;
 }
 
 .form-check-label {
-  display: flex;
-  justify-content: space-between;
+  font-size: 14px;
+  margin-left: 8px;
 }
 
 .btn-outline-secondary {
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  font-size: 20px;
+  font-size: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0;
 }
 
-.btn-success {
+.btn-primary {
+  background-color: #00c7b6;
+  color: #fff;
   font-size: 16px;
   font-weight: bold;
+  border: none;
   padding: 15px;
+  border-radius: 8px;
   text-align: center;
-  border-radius: 5px;
   display: block;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #00b3a3;
 }
 
 

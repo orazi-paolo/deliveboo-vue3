@@ -1,9 +1,11 @@
 <script>
+import PlatesListCard from './PlatesListCard.vue';
+
 export default {
   name:"Plateslist",  
   data() {
     return {
-     platesList: [
+     listPlates: [
         {
           name: "Margherita Pizza",
           image: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Pizza-Margarita.jpg",
@@ -169,7 +171,7 @@ export default {
     };
   },
   components: {
-    
+    PlatesListCard
   },
   methods: {
     
@@ -178,7 +180,11 @@ export default {
 </script>
 
 <template>
-  
+  <section>
+    <ul class="list-unstyled">
+      <PlatesListCard v-for="(plate, index) in listPlates" :key="index" :plateObj="plate"/>
+    </ul>
+  </section>
 </template>
 
 <style lang="scss">

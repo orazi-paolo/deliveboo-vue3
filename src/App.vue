@@ -1,17 +1,20 @@
 <script>
+import AppHeader from './components/AppHeader.vue';
+
 export default {
   data() {
     return {
 
     }
+  },
+  components:{
+    AppHeader
   }
 }
 </script>
 
 <template>
-  <div class="text-danger">
-    Deliveboo
-  </div>
+  <AppHeader/>
   <main>
     <RouterView />
   </main>

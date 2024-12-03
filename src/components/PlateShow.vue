@@ -2,39 +2,52 @@
 export default {
   data() {
     return {
-    }
-  }
+    };
+  },
+  methods: {
+    close() {
+      // torna alla homepage
+      this.$router.push('/');
+    },
+  },
 }
 </script>
 
 <template>
 
-    <div class="plate-show">
+<div class="modal-dialog">
+    <div class="modal-content p-3">
 
-        <h2>piatto</h2>
-        <!-- immagine -->
-        <img src="https://via.placeholder.com/300" alt="Plate Image" class="plate-image" />
+      <!-- pulsante di chiusura -->
+      <button type="button" class="btn-close" aria-label="Close" @click="close"></button>
 
-        <!-- descrizione  -->
-        <h3>nome del piatto</h3>
-        <p>descrizzione piatto</p>
+      <!-- immagine -->
+      <img src="https://via.placeholder.com/300" alt="Plate Image" class="plate-image" />
 
-        <!-- ingredienti -->
-        <ul>
-            <li>ingredienti 1</li>
-            <li>ingredienti 2</li>
-            <li>ingredienti 3</li>
-        </ul>
+      <!-- nome del piatto -->
+
+      <h2 class="h4 mb-3">Bacon King 3.0</h2>
+
+      <!-- descrizione -->
+      <p class="text-muted mb-3">Un piatto delizioso con bacon, formaggio e pane soffice.</p>
+
+
+      <!-- ingredienti -->
+      <ul class="list-unstyled mb-3">
+          <li>✔ Bacon</li>
+          <li>✔ Formaggio</li>
+          <li>✔ Pane</li>
+      </ul>
         
-        <!-- prezzo -->
-        <p><strong>prezzo:</strong> $12.99</p>
+      <!-- prezzo -->
+      <p class="fw-bold mb-3">Prezzo: €12.99</p>
 
-        <!-- bottone -->
-        <button @click="close">chiudi</button>
+      <!-- bottone -->
+      <button type="button" class="btn btn-success w-100">aggiungi al carrello</button>
 
 
-    
     </div>
+</div>
   
 </template>
 

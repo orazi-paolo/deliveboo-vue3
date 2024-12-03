@@ -1,9 +1,10 @@
 import { createWebHistory, createRouter } from 'vue-router'
 
-import App from '../App.vue'
+import AppSingleRestaurant from '../pages/AppSingleRestaurant.vue'
 
 const routes = [
-  { path: '/', component: App },
+  // { path: "/restaurants/:id", component: AppSingleRestaurant, name: "restaurants.show" }
+  { path: "/restaurants", component: AppSingleRestaurant, name: "restaurants.show" }
 ]
 
 const router = createRouter({

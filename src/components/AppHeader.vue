@@ -17,7 +17,7 @@ export default {
 
 <template>
     <header>
-        <nav class="navbar navbar-expand bg-success">
+        <nav class="navbar navbar-expand">
             <div class="container-fluid">
                 <a class="navbar-brand fw-bolder" href="#">Deliveboo</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,5 +36,12 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+    nav{
+        background-color: #00CBBD;
+        
+        *{
+            color: #fff;
+        }
+    }
   
 </style>

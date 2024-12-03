@@ -18,12 +18,17 @@ export default {
   methods: {
     
   },
+  computed: {
+    isVisible() {
+      return this.plateObj.visible === true;
+    }
+  }
 }
 </script>
 
 <template>
   <!-- card of single plate -->
-  <li id="plate-card">
+  <li v-if="isVisible" id="plate-card">
     <div class="info-plate-card">
       <h4>{{ plateObj.name }}</h4>
       <p>{{ plateObj.description }}</p>

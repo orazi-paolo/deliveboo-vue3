@@ -3,8 +3,9 @@ export default {
   name:"AppCart",  
   data() {
     return {
+    //   aggiungere quantites
       orders: [
-      {
+       {
           name: "Sushi Platter",
           image: "https://images.unsplash.com/photo-1546069901-eacef0df6022",
           description: "Assorted sushi rolls with fresh fish and vegetables.",
@@ -39,7 +40,7 @@ export default {
   },
   computed:{
     hasOrders() {
-        return this.orders.length > 0;
+        return this.orders.length < 0;
     }
   }
 };
@@ -47,18 +48,35 @@ export default {
 
 <template>
     <div id="cart">
-        <!-- cart if with orders -->
         <div v-if="hasOrders" class="plates-in-cart">
-            <font-awesome-icon :icon="['fas', 'cart-shopping']" />  
-            <span>Il carrsssssssssssssssssello è vuoto</span>      
+            <!-- cart with orders -->
+            <h4>Il tuo ordine</h4>
+            <h4>Carrello</h4>
+            <ul class="orders-list" v-for="order in orders">
+                <li class="single-order">
+                    <div class="quantities">x2</div>
+                    <div class="order-info">
+                        <h5>{{ order.name }}</h5>
+                    </div>
+                    <div class="order-price">
+                        {{ order.price.toFixed(2) }} <span>&euro;</span>
+                    </div>
+                </li>
+            </ul>   
         </div>
-        <!-- cart if is empty -->
+
         <div v-else class="no-plates-in-cart">
+            <!-- cart if is empty -->
             <font-awesome-icon :icon="['fas', 'cart-shopping']" />  
             <span>Il carrello è vuoto</span>      
         </div>
         <!-- button for payment -->
-        <button :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'">Vai al Pagamento</button>
+        <div class="cart-footer">
+            <div v-if="hasOrders">
+
+            </div>
+            <button :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'">Vai al Pagamento</button>
+        </div>
     </div>
 </template>
 
@@ -70,9 +88,52 @@ export default {
         border:1px solid rgb(230, 217, 217);
         position: relative;
         display: flex;
-        flex-direction: column;        
+        flex-direction: column;   
+        position: relative;
+
         .no-plates-in-cart, .plates-in-cart{
             flex-grow: 1;
+            overflow-y: auto; 
+
+        }
+
+        .plates-in-cart{
+            h4{
+                margin-bottom: 25px;
+                font-size: 20px;
+                font-weight: 700;
+            }
+            .orders-list{
+                padding: 0;
+                margin: 0;
+                max-height: 300px;
+                overflow-y: auto;
+
+                .single-order{
+                    display: flex;
+                    padding: 10px;
+                    border: 1px solid rgb(230, 217, 217);
+                    &:hover {
+                        background-color: #eee;
+                    }
+
+                    .quantities{
+                        flex-basis: 10%;
+                    }
+
+                    .order-info{
+                        flex-grow: 1;
+                        h5{
+                            font-size: 17px;
+                            font-weight: 400;
+                        }
+                    }
+
+                    .order-price{
+                        flex-basis: 30%;
+                    }
+                }
+            }
         }
 
         .no-plates-in-cart{
@@ -81,23 +142,32 @@ export default {
             align-items: center;
         }
 
-        .button-cart-order, .button-cart-empty{
-            width: 100%;
-            font-weight: 700;
-            border-color: transparent;
-            border-radius: 5px;
-            padding: 5px 0px;
-        }
-        .button-cart-order{
-            background-color: #45CCBC;
-            color: #fff;
-            cursor: pointer;
-        }
-        
-        .button-cart-empty{
-            background-color: #E2E5E5;
-            color: #ABADAD;
-            cursor: not-allowed;
+        .cart-footer {
+            position: sticky;
+            bottom: 0;
+            background-color: white;
+            border-top: 1px solid rgb(230, 217, 217);
+            padding: 10px 0;
+
+            .button-cart-order, .button-cart-empty {
+                width: 100%;
+                font-weight: 700;
+                border-color: transparent;
+                border-radius: 5px;
+                padding: 5px 0px;
+            }
+
+            .button-cart-order {
+                background-color: #45CCBC;
+                color: #fff;
+                cursor: pointer;
+            }
+
+            .button-cart-empty {
+                background-color: #E2E5E5;
+                color: #ABADAD;
+                cursor: not-allowed;
+            }
         }
     }
 

@@ -40,8 +40,8 @@ export default {
     <div class="scrollable-content">
 
       <!-- pulsante di chiusura -->
-      <button type="button" class="btn-close" aria-label="Close" @click="close"></button>
-
+      <button type="button" class="btn-close-custom" aria-label="Close" @click="close">x</button>
+      
       <!-- immagine -->
       <img src="/images/baconking.png" alt="Plate Image" class="img-fluid rounded mb-4" />
 
@@ -184,5 +184,27 @@ export default {
   background-color: #00b3a3;
 }
 
+.btn-close-custom {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 36px;
+  height: 36px;
+  background-color: #fff;
+  border: 2px solid #00c7b6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #00c7b6;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-close-custom:hover {
+  background-color: #00c7b6;
+  color: #fff;
+}
 
 </style>

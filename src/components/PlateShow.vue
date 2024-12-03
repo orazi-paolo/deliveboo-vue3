@@ -2,30 +2,53 @@
 export default {
   data() {
     return {
-      ingredienti: ["Bacon", "Formaggio", "Pane"],
+
+      ingredienti: [
+        "Bacon",
+        "Formaggio",
+        "Pane",
+        "Lattuga",
+        "Pomodoro",
+        "Cetriolo",
+        "Salsa BBQ",
+        "Cipolla",
+        "Maionese",
+        "Senape",],
+
       selectedIngredients: [],
       quantity: 1,
-      price: 12.99,
+      price: 7.99,
+
     };
   },
+
   computed: {
+
+    // prezzo totale basato sulla quantità
     totalPrice() {
       return (this.quantity * this.price).toFixed(2);
     },
   },
+
   methods: {
     close() {
+
       // torna alla homepage
       this.$router.push('/');
     },
+    
+    // incremento la quantità del piatto
     increaseQuantity() {
       this.quantity++;
     },
+    
+    // decremento
     decreaseQuantity() {
       if (this.quantity > 1) {
         this.quantity--;
       }
     },
+    
   },
 };
 </script>
@@ -52,31 +75,44 @@ export default {
 
       <!-- descrizione -->
       <p class="text-muted mb-4">Un piatto delizioso con bacon, formaggio e pane soffice.</p>
+      <hr>
 
-
-      <!-- ingredienti -->
+      <!-- selezione degli ingredienti -->
 
       <div class="ingredient-section">
-        <h5 class="h6 fw-bold mb-3">Ingredienti</h5>
-        <div class="form-check ingredient-option" v-for="ingrediente in ingredienti" :key="ingrediente" :class="{ 'selected': selectedIngredients.includes(ingrediente) }">
-          <input type="checkbox" :id="ingrediente" class="form-check-input" v-model="selectedIngredients" :value="ingrediente"/>
-          <label class="form-check-label" :for="ingrediente">
-            {{ ingrediente }}
-          </label>
-        </div>
+          <h5 class="h6 fw-bold mb-3">Ingredienti</h5>
+      <hr>
+
+      <!-- lista degli ingredienti - checkbox -->
+
+          <div class="ingredient-option" v-for="ingrediente in ingredienti" :key="ingrediente" :class="{ 'selected': selectedIngredients.includes(ingrediente) }">
+            <input type="checkbox" :id="ingrediente" class="form-check-input" v-model="selectedIngredients" :value="ingrediente" />
+            <label class="form-check-label" :for="ingrediente"> {{ ingrediente }} </label>
+          </div>
       </div>
         
      <!-- selezione quantità e bottone -->
 
      <div class="fixed-footer">
         <div class="d-flex justify-content-between align-items-center mb-3">
+
+    <!-- diminuire la quantità -->
+
           <button class="btn btn-outline-secondary btn-quantity" @click="decreaseQuantity">-</button>
+
           <span class="fw-bold mx-3">{{ quantity }}</span>
+
+    <!-- aumentare la quantità -->
+
           <button class="btn btn-outline-secondary btn-quantity" @click="increaseQuantity">+</button>
         </div>
+
+    <!-- aggiungere al carrello -->
+
         <button type="button" class="btn btn-primary w-100">
           Aggiungi per €{{ totalPrice }}
         </button>
+
       </div>
 
       </div>
@@ -90,26 +126,22 @@ export default {
 .modal-dialog {
   max-width: 600px;
   margin: 50px auto;
-  position: relative;
-  
 }
 
 .modal-content {
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  padding: 20px;
-  height: 800px; 
   display: flex;
-  flex-direction: column; 
-  justify-content: space-between;
+  flex-direction: column;
+  height: 800px;
 }
 
 .scrollable-content {
-  flex-grow: 1; 
-  overflow-y: auto; 
+  flex-grow: 1;
+  overflow-y: auto;
   padding: 20px;
 }
+
 
 .scrollable-content::-webkit-scrollbar {
   width: 6px;
@@ -123,6 +155,8 @@ export default {
 .scrollable-content::-webkit-scrollbar-thumb:hover {
   background: #bbb;
 }
+
+// ingredienti
 
 .ingredient-section {
   margin-bottom: 30px;
@@ -138,56 +172,26 @@ export default {
   transition: all 0.3s ease;
 }
 
-.ingredient-option:hover {
-  border-color: #00c7b6;
-}
-
 .ingredient-option.selected {
+  border-color: #00c7b6; 
   background-color: #f1fdfc;
+}
+
+.form-check-input {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+}
+.form-check-input:checked {
+  background-color: #00c7b6; 
   border-color: #00c7b6;
+  box-shadow: 0 0 0 2px #f1fdfc;
 }
-
-
-.form-check-input:checked + .form-check-label {
-  font-weight: bold;
-  color: #00c7b6;
-}
-
-.btn-outline-secondary {
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 18px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-}
-
-.fixed-footer {
-  position: sticky;
-  bottom: 0;
-  background-color: #fff;
-  padding: 15px 20px;
-  border-top: 1px solid #ddd;
-}
-
-.btn-primary {
-  background-color: #00c7b6;
-  color: #fff;
+.form-check-label {
   font-size: 16px;
-  font-weight: bold;
-  border: none;
-  padding: 15px;
-  border-radius: 8px;
-  text-align: center;
-  display: block;
-  transition: background-color 0.3s ease;
 }
 
-.btn-primary:hover {
-  background-color: #00b3a3;
-}
+// btn-chiuura
 
 .btn-close-custom {
   position: absolute;
@@ -199,18 +203,38 @@ export default {
   border: 2px solid #00c7b6;
   border-radius: 50%;
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 18px;
+  align-items: center;
   color: #00c7b6;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 .btn-close-custom:hover {
   background-color: #00c7b6;
   color: #fff;
 }
+
+.fixed-footer {
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  padding: 15px 20px;
+  position: sticky;
+  bottom: 0;
+}
+
+.btn-primary {
+  background-color: #00c7b6;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.btn-primary:hover {
+  background-color: #00b3a3;
+}
+
 
 
 </style>

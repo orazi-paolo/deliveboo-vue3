@@ -191,28 +191,31 @@ export default {
   font-size: 16px;
 }
 
-// btn-chiuura
+// btn-chiusura
 
 .btn-close-custom {
   position: absolute;
   top: 15px;
   right: 15px;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   background-color: #fff;
-  border: 2px solid #00c7b6;
+  border: none;
   border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
   color: #00c7b6;
+  font-size: 20px;
   cursor: pointer;
 }
 
 .btn-close-custom:hover {
-  background-color: #00c7b6;
-  color: #fff;
+  background-color: #fff;
+  color: #00c7b6;
 }
+
 
 .fixed-footer {
   background-color: #fff;
@@ -227,7 +230,7 @@ export default {
   color: white;
   font-size: 16px;
   font-weight: bold;
-  border-radius: 8px;
+  border-radius: 50px;
   padding: 15px;
 }
 

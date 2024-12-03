@@ -38,7 +38,7 @@ export default {
       <img :src="plateObj.image" :alt="`Image of ${plateObj.name}`">    
     </div>
     <!-- button add to cart -->
-    <button class="add-item"><span>+</span></button>
+    <button class="btn-add-item"><span>+</span></button>
   </li>
 </template>
 
@@ -50,6 +50,7 @@ export default {
     border: 1px solid rgb(230, 217, 217);
     padding: 15px 12px;
     min-width: 375px;
+    border-radius: 5px;
 
     &:hover {
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -82,17 +83,25 @@ export default {
       }
     }
 
-    .box-img, .add-item{
+    .box-img, .btn-add-item{
       max-height: 90px;
       border: 1px solid rgb(230, 217, 217);
     }
 
-    .add-item{
+    .btn-add-item{
       flex-basis: 40px;
       background-color: #fff;
       span{
         color: #70C8BF;
         font-size: 20px;
+      }
+      &:hover {
+      border: 1px solid #ccc;
+
+      span{
+        color: #68a19c;
+        font-size: 25px;
+      }
       }
     }
   }

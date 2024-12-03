@@ -94,24 +94,22 @@ export default {
      <!-- selezione quantità e bottone -->
 
      <div class="fixed-footer">
-        <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class="quantity-control">
 
-    <!-- diminuire la quantità -->
+      <!-- Bottone per diminuire -->
+      <button class="btn-quantity":class="{ active: quantity > 1, disabled: quantity === 1 }"@click="decreaseQuantity" :disabled="quantity === 1" > - </button>
 
-          <button class="btn btn-outline-secondary btn-quantity" @click="decreaseQuantity">-</button>
+      <!-- Quantità -->
+      <span class="quantity-value">{{ quantity }}</span>
 
-          <span class="fw-bold mx-3">{{ quantity }}</span>
+      <!-- Bottone per aumentare -->
+      <button class="btn-quantity active" @click="increaseQuantity"> + </button>
+    </div>
 
-    <!-- aumentare la quantità -->
-
-          <button class="btn btn-outline-secondary btn-quantity" @click="increaseQuantity">+</button>
-        </div>
-
-    <!-- aggiungere al carrello -->
-
-        <button type="button" class="btn btn-primary w-100">
-          Aggiungi per €{{ totalPrice }}
-        </button>
+    <!-- Bottone aggiungi al carrello -->
+    <button type="button" class="btn btn-primary w-100">
+      Aggiungi per {{ totalPrice }} €
+    </button>
 
       </div>
 
@@ -174,7 +172,7 @@ export default {
 
 .ingredient-option.selected {
   border-color: #00c7b6; 
-  background-color: #f1fdfc;
+  border-width: 3px;
 }
 
 .form-check-input {
@@ -230,14 +228,87 @@ export default {
   color: white;
   font-size: 16px;
   font-weight: bold;
-  border-radius: 50px;
-  padding: 15px;
+  border-radius: 8px;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  border: none;
+  transition: all 0.3s ease; 
 }
 
 .btn-primary:hover {
   background-color: #00b3a3;
 }
 
+// btn-quantità
 
+.fixed-footer {
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  padding: 15px 20px;
+  position: sticky;
+  bottom: 0;
 
+  .quantity-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+
+    .btn-quantity {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      font-size: 18px;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid #ddd;
+      background-color: #fff;
+      color: #999;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 0 15px;
+    }
+
+    .btn-quantity.active {
+      color: #00c7b6;
+      border-color: #00c7b6;
+    }
+
+    .btn-quantity.disabled {
+      color: #ddd;
+      border-color: #ddd;
+      cursor: not-allowed;
+    }
+
+    .btn-quantity:not(.disabled):hover {
+      background-color: #f1fdfc;
+    }
+
+    .quantity-value {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+
+  .btn-primary {
+    background-color: #00c7b6;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 15px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: #00b3a3;
+  }
+}
 </style>

@@ -1,11 +1,14 @@
 <script>
+import Footer from './partials/Footer.vue';
 export default {
   data() {
     return {
-
     }
-  }
-}
+  },
+  components: {
+    Footer,
+  },
+};
 </script>
 
 <template>
@@ -15,6 +18,7 @@ export default {
   <main>
     <RouterView />
   </main>
+  <Footer />
 </template>
 
 <style lang="scss">

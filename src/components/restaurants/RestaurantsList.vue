@@ -4,7 +4,8 @@ export default {
   name:"RestaurantsList",  
   data() {
     return {
-        restaurants: [
+        apiUrl: "",
+        listRestaurants: [
             {
                 name: "La Pergola",
                 image: "https://images.unsplash.com/photo-1603570415533-0cbcb6b7ed92",
@@ -83,15 +84,30 @@ export default {
     RestaurantsListCard
   },
   methods: {
-    
+    getRestaurants(){
+      axios.get(this.apiUrl)
+        .then(response => {
+            this.listRestaurants = response.data.results
+          })
+        .catch(function(error) {
+        console.log(error);
+      });
+    },
+
+    show(restaurantId){
+      this.$router.push({name: "restaurants.show", params: {id: restaurantId}})
+    }
   },
+//   created() {
+//     this.getRestaurants();
+//   }
 };
 </script>
 
 <template>
     <section>
         <ul id="restaurants-list">
-            <RestaurantsListCard v-for="(restaurant, index) in restaurants" :key="index" :restaurantObj="restaurant"/>
+            <RestaurantsListCard v-for="(restaurant, index) in listRestaurants" :key="index" :restaurantObj="restaurant"/>
         </ul>
     </section>
 </template>

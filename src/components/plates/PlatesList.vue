@@ -1,10 +1,12 @@
 <script>
+import axios from 'axios';
 import PlatesListCard from './PlatesListCard.vue';
 
 export default {
   name:"Plateslist",  
   data() {
     return {
+      apiUrl: "",
       listPlates: [
         {
           name: "Spaghetti Carbonara",
@@ -94,8 +96,23 @@ export default {
     PlatesListCard
   },
   methods: {
-    
-  },
+    getPlates(){
+      axios.get(this.apiUrl)
+        .then(response => {
+            this.listPlates = response.data.results
+          })
+        .catch(function(error) {
+        console.log(error);
+      });
+    },
+
+    show(plateId){
+      this.$router.push({name: "plates.show", params: {id: plateId}})
+    }
+  }, 
+  // created() {
+  //   this.getPlates();
+  // }
 };
 </script>
 

@@ -38,6 +38,7 @@ export default {
     <section>
       <router-link :to="{ name: 'restaurants' }" class="btn btn-secondary">Go Back</router-link>
     </section>
+    <h2>{{ singleRestaurant.name }}</h2>
     <ul id="plates-list">
       <PlatesListCard v-for="plate in singleRestaurant.plates" :key="plate.id" :plateObj="plate" />
     </ul>

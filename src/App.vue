@@ -1,12 +1,14 @@
 <script>
-import Footer from './partials/Footer.vue';
+import AppFooter from './components/AppFooter.vue';
 export default {
   data() {
     return {
+
     }
   },
   components: {
-    Footer,
+    AppFooter,
+
   },
 };
 </script>
@@ -18,7 +20,7 @@ export default {
   <main>
     <RouterView />
   </main>
-  <Footer />
+  <AppFooter />
 </template>
 
 <style lang="scss">

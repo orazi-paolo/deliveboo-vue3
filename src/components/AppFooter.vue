@@ -87,9 +87,17 @@ footer {
     background-color: #333333;
 
     h5 {
+      font-weight: 700; 
+      font-size: 1.5rem;
       color: #ffffff;
       margin-bottom: 1rem;
       text-transform: uppercase;
+      letter-spacing: 1px; 
+      color: #ffffff; 
+    }
+
+    ul li  a{
+    margin-bottom: 1rem; 
     }
 
     .store-logo {

@@ -1,14 +1,15 @@
 <script>
+import { RouterView } from 'vue-router';
 import AppHeader from './components/AppHeader.vue';
-
+import Footer from './partials/Footer.vue';
 export default {
   data() {
     return {
-
     }
   },
   components:{
-    AppHeader
+    AppHeader,
+    Footer
   }
 }
 </script>
@@ -19,6 +20,7 @@ export default {
     <router-link to="/plate/1"> singolo piatto</router-link>
     <RouterView />
   </main>
+  <Footer/>
 </template>
 
 <style lang="scss">

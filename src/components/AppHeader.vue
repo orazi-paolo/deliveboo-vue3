@@ -26,7 +26,10 @@ export default {
                 <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <router-link class="nav-link active" aria-current="page" :to="{ 'name' : 'restaurants.show'}">Restaurant</router-link>
+                        <router-link class="nav-link active" aria-current="page" :to="{ 'name' : 'restaurants'}">Restaurants</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link active" aria-current="page" :to="{ 'name' : 'restaurants.show'}">Restaurant show test</router-link>
                     </li>
                 </ul>
                 </div>

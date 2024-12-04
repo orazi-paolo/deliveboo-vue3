@@ -1,7 +1,7 @@
 <script>
 import { RouterView } from 'vue-router';
 import AppHeader from './components/AppHeader.vue';
-import Footer from './partials/Footer.vue';
+import AppFooter from './components/AppFooter.vue';
 export default {
   data() {
     return {
@@ -9,7 +9,7 @@ export default {
   },
   components:{
     AppHeader,
-    Footer
+    AppFooter
   }
 }
 </script>
@@ -20,7 +20,7 @@ export default {
     <router-link to="/plate/1"> singolo piatto</router-link>
     <RouterView />
   </main>
-  <Footer/>
+  <AppFooter/>
 </template>
 
 <style lang="scss">

@@ -30,7 +30,7 @@ export default {
 
         <!-- column 2 -->
         <div class="col-12 col-md-3 mb-4">
-          <h5 class="text-uppercase">Note legali</h5>
+          <h5 class="text-uppercase">Legal notes</h5>
           <ul class="list-unstyled">
             <li><a href="#" class="text-light text-decoration-none">Terms & Conditions</a></li>
             <li><a href="#" class="text-light text-decoration-none">Privacy Policy</a></li>
@@ -68,7 +68,35 @@ export default {
 <style lang="scss">
 
 footer {
-    background-color: #333; 
-    color: white;
+  background-color: #333;
+  color: white;
+  .container {
+    .row {
+      .col-md-3 {
+        h5 {
+          font-size: 1.25rem;
+          margin-bottom: 1rem;
+        }
+        ul {
+          padding: 0;
+          list-style: none;
+          li {
+            margin-bottom: 0.5rem;
+            a {
+              color: #ddd;
+              text-decoration: none;
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+    }
+    .border-top {
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+  }
 }
+
 </style>

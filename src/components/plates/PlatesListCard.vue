@@ -1,9 +1,10 @@
 <script>
+import PlateShow from '../PlateShow.vue';
 export default {
   name: "PlatesListCard",
   data() {
     return {
-
+      modal: false,
     };
   },
   props: {
@@ -13,14 +14,20 @@ export default {
     },
   },
   components: {
-
+    PlateShow
   },
   methods: {
+    toggleModal() {
+      return this.modal = !this.modal
+    }
 
   },
   computed: {
     isVisible() {
       return this.plateObj.visible === true;
+    },
+    showModal() {
+      return this.modal
     }
   }
 }
@@ -28,7 +35,7 @@ export default {
 
 <template>
   <li id="plate-card">
-    <div class="info-plate-card">
+    <div class="info-plate-card" @click="toggleModal()">
       <h4>{{ plateObj.name }}</h4>
       <p>{{ plateObj.description }}</p>
       <div class="price">{{ plateObj.price }}<span>&euro;</span></div>
@@ -37,6 +44,7 @@ export default {
       <img :src="plateObj.image" :alt="`Image of ${plateObj.name}`">
     </div>
     <button class="btn-add-item"><span>+</span></button>
+    <PlateShow v-if="showModal" :plate="plateObj" @closeModal="toggleModal()" />
   </li>
 </template>
 
@@ -56,6 +64,7 @@ export default {
 
   .info-plate-card {
     flex-grow: 1;
+    cursor: pointer;
 
     h4 {
       font-size: 17px;

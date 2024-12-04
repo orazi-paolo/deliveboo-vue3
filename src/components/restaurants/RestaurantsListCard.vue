@@ -10,7 +10,9 @@ export default {
     
   },
   methods: {
-    
+    selectRestaurant(id){
+        this.$emit("select-restaurant", id)
+    }
   },
   props: {
     restaurantObj: {
@@ -23,7 +25,7 @@ export default {
 
 <template>
   <!-- card of single plate -->
-  <li id="restaurant-card">
+  <li id="restaurant-card" @click="selectRestaurant(restaurantObj.id)">
     <div class="box-img">
     <img :src="restaurantObj.image" :alt="`Image of ${restaurantObj.name}`">    
     </div>

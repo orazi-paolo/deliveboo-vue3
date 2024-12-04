@@ -103,7 +103,7 @@ export default {
 
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 .modal-dialog {
   max-width: 800px;

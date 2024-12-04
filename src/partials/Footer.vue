@@ -53,6 +53,8 @@ export default {
         <!-- column 4 -->
         <div class="col-12 col-md-3 mb-4">
           <h5 class="text-uppercase">Take DeliveBoo with you</h5>
+          <img src="/public/app-store-logo.png" alt="Store" class="mb-2 w-75">
+          <img src="/public/Playstore.png" alt="Google Play" class="mb-2 w-75">
         </div>
       </div>
 
@@ -68,8 +70,5 @@ export default {
 footer {
     background-color: #333; 
     color: white;
-    padding: 20px 0;
-    position: fixed; 
-    width: 100%;
 }
 </style>

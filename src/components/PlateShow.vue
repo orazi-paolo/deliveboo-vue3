@@ -3,21 +3,28 @@ export default {
   data() {
     return {
       
-      ingredienti: [
-        "Bacon",
-        "Formaggio",
-        "Pane",
-        "Lattuga",
-        "Pomodoro",
-        "Cetriolo",
-        "Salsa BBQ",
-        "Cipolla",
-        "Maionese",
-        "Senape",],
+      plate: {
+        id: 1,
+        name: "Bacon King 3.0",
+        description: "Un piatto delizioso con bacon, formaggio e pane soffice.",
+        image: "/images/baconking.png",
+        price: 7.99,
+        ingredients: [
+          "Bacon",
+          "Formaggio",
+          "Pane",
+          "Lattuga",
+          "Pomodoro",
+          "Cetriolo",
+          "Salsa BBQ",
+          "Cipolla",
+          "Maionese",
+          "Senape",
+        ],
+      },
 
       selectedIngredients: [],
       quantity: 1,
-      price: 7.99,
 
     };
   },
@@ -26,7 +33,7 @@ export default {
 
     // prezzo totale basato sulla quantità
     totalPrice() {
-      return (this.quantity * this.price).toFixed(2);
+      return (this.quantity * this.plate.price).toFixed(2);
     },
   },
 
@@ -50,6 +57,8 @@ export default {
     },
     
   },
+  mounted() {
+  }
 };
 </script>
 
@@ -66,9 +75,9 @@ export default {
         <!-- immagine -->
         <img src="/images/baconking.png" alt="Plate Image" class="img-fluid rounded mb-4" />
         <!-- nome del piatto -->
-        <h2 class="h4 fw-bold mb-3">Bacon King 3.0</h2>
+        <h2 class="h4 fw-bold mb-3">{{ plate.name }}</h2>
         <!-- descrizione -->
-        <p class="text-muted mb-4">Un piatto delizioso con bacon, formaggio e pane soffice.</p>
+        <p class="text-muted mb-4">{{ plate.description }}</p>
         <hr>
 
         <!-- selezione degli ingredienti -->
@@ -76,7 +85,7 @@ export default {
           <h5 class="h6 fw-bold mb-3">Ingredienti</h5>
           <hr>
           <!-- lista degli ingredienti - checkbox -->
-            <div class="ingredient-option" v-for="ingrediente in ingredienti" :key="ingrediente" :class="{ 'selected': selectedIngredients.includes(ingrediente) }">
+            <div class="ingredient-option" v-for="ingrediente in plate.ingredients" :key="ingrediente" :class="{ 'selected': selectedIngredients.includes(ingrediente) }">
               <input type="checkbox" :id="ingrediente" class="form-check-input" v-model="selectedIngredients" :value="ingrediente" />
               <label class="form-check-label" :for="ingrediente"> {{ ingrediente }} </label>
             </div>

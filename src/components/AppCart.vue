@@ -50,8 +50,8 @@ export default {
     <div id="cart">
         <div v-if="hasOrders" class="plates-in-cart">
             <!-- cart with orders -->
-            <h4>Il tuo ordine</h4>
-            <h4>Carrello</h4>
+            <h4>Your Order</h4>
+            <h4>Cart</h4>
             <ul class="orders-list" v-for="order in orders">
                 <li class="single-order">
                     <div class="quantities">x2</div>
@@ -67,15 +67,15 @@ export default {
 
         <div v-else class="no-plates-in-cart">
             <!-- cart if is empty -->
-            <font-awesome-icon :icon="['fas', 'cart-shopping']" />  
-            <span>Il carrello è vuoto</span>      
+            <font-awesome-icon :icon="['fas', 'cart-shopping']" class="fas-cart"/>  
+            <span>Your cart is empty</span>      
         </div>
         <!-- button for payment -->
         <div class="cart-footer">
             <div v-if="hasOrders">
 
             </div>
-            <button :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'">Vai al Pagamento</button>
+            <button :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'">Go to payment</button>
         </div>
     </div>
 </template>
@@ -113,6 +113,7 @@ export default {
                     display: flex;
                     padding: 10px;
                     border: 1px solid rgb(230, 217, 217);
+
                     &:hover {
                         background-color: #eee;
                     }
@@ -138,8 +139,18 @@ export default {
 
         .no-plates-in-cart{
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            gap: 10px;
+
+            *{
+                color: #ABADAD;
+            }
+
+            .fas-cart{
+                font-size: 30px;
+            }
         }
 
         .cart-footer {

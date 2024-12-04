@@ -32,7 +32,7 @@ export default {
     <div class="info-plate-card">
       <h4>{{ plateObj.name }}</h4>
       <p>{{ plateObj.description }}</p>
-      <div class="price">{{ plateObj.price }} <span>&euro;</span> </div>
+      <div class="price">{{ plateObj.price.toFixed(2)  }}<span>&euro;</span></div>
     </div>
     <div class="box-img">
       <img :src="plateObj.image" :alt="`Image of ${plateObj.name}`">    

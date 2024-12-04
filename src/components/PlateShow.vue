@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 export default {
   data() {
     return {
@@ -62,46 +62,46 @@ export default {
       <div class="scrollable-content">
         
         <!-- pulsante di chiusura -->
-        <button type="button" class="btn-close-custom" aria-label="Close" @click="close">x</button>
-        <!-- immagine -->
-        <img src="/images/baconking.png" alt="Plate Image" class="img-fluid rounded mb-4" />
-        <!-- nome del piatto -->
-        <h2 class="h4 fw-bold mb-3">Bacon King 3.0</h2>
-        <!-- descrizione -->
-        <p class="text-muted mb-4">Un piatto delizioso con bacon, formaggio e pane soffice.</p>
-        <hr>
+<!-- <button type="button" class="btn-close-custom" aria-label="Close" @click="close">x</button> -->
+<!-- immagine -->
+<!-- <img src="/images/baconking.png" alt="Plate Image" class="img-fluid rounded mb-4" /> -->
+<!-- nome del piatto -->
+<!-- <h2 class="h4 fw-bold mb-3">Bacon King 3.0</h2> -->
+<!-- descrizione -->
+<!-- <p class="text-muted mb-4">Un piatto delizioso con bacon, formaggio e pane soffice.</p> -->
+<!-- <hr> -->
 
-        <!-- selezione degli ingredienti -->
-        <div class="ingredient-section">
+<!-- selezione degli ingredienti -->
+<!-- <div class="ingredient-section">
           <h5 class="h6 fw-bold mb-3">Ingredienti</h5>
-          <hr>
-          <!-- lista degli ingredienti - checkbox -->
-            <div class="ingredient-option" v-for="ingrediente in ingredienti" :key="ingrediente" :class="{ 'selected': selectedIngredients.includes(ingrediente) }">
+          <hr> -->
+<!-- lista degli ingredienti - checkbox -->
+<!--  <div class="ingredient-option" v-for="ingrediente in ingredienti" :key="ingrediente" :class="{ 'selected': selectedIngredients.includes(ingrediente) }">
               <input type="checkbox" :id="ingrediente" class="form-check-input" v-model="selectedIngredients" :value="ingrediente" />
               <label class="form-check-label" :for="ingrediente"> {{ ingrediente }} </label>
             </div>
         </div>
-      </div>
-        
-      <!-- selezione quantità e bottone -->
-      <div class="fixed-footer">
-        <div class="quantity-control">
-          <!-- Bottone per diminuire -->
-          <button class="btn-quantity":class="{ active: quantity > 1, disabled: quantity === 1 }"@click="decreaseQuantity" :disabled="quantity === 1" > - </button>
-          <!-- Quantità -->
-          <span class="quantity-value">{{ quantity }}</span>
-          <!-- Bottone per aumentare -->
-          <button class="btn-quantity active" @click="increaseQuantity"> + </button>
-        </div>
-          <!-- Bottone aggiungi al carrello -->
-          <button type="button" class="btn btn-primary w-100"> Aggiungi per {{ totalPrice }} € </button>
-      </div>
+      </div> -->
 
-    </div>
+<!-- selezione quantità e bottone -->
+<!-- <div class="fixed-footer">
+        <div class="quantity-control"> -->
+<!-- Bottone per diminuire -->
+<!-- <button class="btn-quantity":class="{ active: quantity > 1, disabled: quantity === 1 }"@click="decreaseQuantity" :disabled="quantity === 1" > - </button> -->
+<!-- Quantità -->
+<!-- <span class="quantity-value">{{ quantity }}</span> -->
+<!-- Bottone per aumentare -->
+<!-- <button class="btn-quantity active" @click="increaseQuantity"> + </button> -->
+<!-- </div> -->
+<!-- Bottone aggiungi al carrello -->
+<!-- <button type="button" class="btn btn-primary w-100"> Aggiungi per {{ totalPrice }} € </button> -->
+<!-- </div> -->
 
-</div>
+<!-- </div> -->
 
-</template>
+<!-- </div> -->
+
+<!-- </template> --><!-- 
 
 <style lang="scss" scoped>
 
@@ -275,4 +275,4 @@ h2, p {
   }
 }
 
-</style>
+</style> --> -->

@@ -1,17 +1,17 @@
 <script>
 export default {
-  name: "AppHeader",
-  data() {
-    return {
-      
-    };
-  },
-  components: {
-    
-  },
-  methods: {
-    
-  },
+    name: "AppHeader",
+    data() {
+        return {
+
+        };
+    },
+    components: {
+
+    },
+    methods: {
+
+    },
 };
 </script>
 
@@ -19,18 +19,17 @@ export default {
     <header>
         <nav class="navbar navbar-expand">
             <div class="container-fluid">
-                <div class="nav-left d-flex">    
+                <div class="nav-left d-flex">
                     <a class="navbar-brand fw-bolder" href="#">Deliveboo</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <router-link class="nav-link active" aria-current="page" :to="{ 'name' : 'restaurants'}">Restaurants</router-link>
-                            </li>
-                            <li class="nav-item">
-                                <router-link class="nav-link active" aria-current="page" :to="{ 'name' : 'restaurants.show'}">Restaurant show test</router-link>
+                                <router-link class="nav-link active" aria-current="page"
+                                    :to="{ 'name': 'restaurants' }">Restaurants</router-link>
                             </li>
                         </ul>
                     </div>
@@ -56,58 +55,57 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-    nav{
-        background-color: #00CBBD;
-        padding: 10px 30px;
+nav {
+    background-color: #00CBBD;
+    padding: 10px 30px;
 
-        *{
-            color: #fff;
+    * {
+        color: #fff;
+    }
+
+    #auth {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+
+        .dropdown {
+            position: relative;
+            margin-right: 20px;
         }
 
-        #auth{
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            
-            .dropdown {
-            position: relative; 
-            margin-right: 20px;
-            }
-    
-            .menu-btn {
+        .menu-btn {
             background: none;
             border: none;
             cursor: pointer;
-            }
-    
-            .dropdown-menu {
+        }
+
+        .dropdown-menu {
             position: absolute;
             top: 100%;
             left: 0;
             background-color: white;
             border: 1px solid #ddd;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            display: none; 
+            display: none;
             flex-direction: column;
             width: 50px;
-            }
-    
-            .dropdown-menu .menu-item {
+        }
+
+        .dropdown-menu .menu-item {
             padding: 10px 15px;
             text-decoration: none;
             color: #333;
             transition: background-color 0.2s ease;
-            }
-    
-            .dropdown-menu .menu-item:hover {
+        }
+
+        .dropdown-menu .menu-item:hover {
             background-color: #f1f1f1;
-            }
-    
-            .dropdown:hover .dropdown-menu {
+        }
+
+        .dropdown:hover .dropdown-menu {
             display: flex;
-            }
         }
     }
-  
+}
 </style>

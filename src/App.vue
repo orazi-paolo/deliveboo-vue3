@@ -7,7 +7,7 @@ export default {
     return {
     }
   },
-  components:{
+  components: {
     AppHeader,
     AppFooter
   }
@@ -15,12 +15,12 @@ export default {
 </script>
 
 <template>
-  <AppHeader/>
+  <AppHeader />
   <main>
-    <router-link to="/plate/1"> singolo piatto</router-link>
+    <!-- <router-link to="/plate/1"> singolo piatto</router-link> -->
     <RouterView />
   </main>
-  <AppFooter/>
+  <AppFooter />
 </template>
 
 <style lang="scss">

@@ -74,9 +74,17 @@ footer {
   color: #f1f1f1;
   padding: 3rem 0;
 
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
   .take-deliveboo {
     text-align: center;
     margin-bottom: 2rem;
+    border-radius: 0.5rem;
+    background-color: #333333;
 
     h5 {
       color: #ffffff;
@@ -105,7 +113,10 @@ footer {
       background-color: #333333;
       padding: 1.5rem;
       border-radius: 0.5rem;
+      text-align: left;
       width: 100%;
+      flex: 1;
+      min-width: 200px;
 
       h5 {
         color: #ffffff;
@@ -131,6 +142,18 @@ footer {
           }
         }
       }
+    }
+  }
+
+  img {
+    display: inline-block;
+    margin: 0.5rem;
+    width: 120px; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05); 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
   }
 

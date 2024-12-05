@@ -2,24 +2,24 @@
 import PlatesList from '../components/plates/PlatesList.vue';
 import AppCart from '../components/AppCart.vue';
 export default {
-  name:"AppSingleRestaurant",  
-  data() {
-    return {
-      
-    };
-  },
-  components: {
-    PlatesList,
-    AppCart,
-  },
-  methods: {
-    
-  },
+    name: "AppSingleRestaurant",
+    data() {
+        return {
+
+        };
+    },
+    components: {
+        PlatesList,
+        AppCart,
+    },
+    methods: {
+
+    },
 };
 </script>
 
 <template>
-    <div class="mx-5 mt-4">  <!-- simulazione container-lg -->
+    <div class="mx-5 mt-4">
         <section id="AppSingleRestaurant">
             <div>
                 <PlatesList />
@@ -32,8 +32,7 @@ export default {
 </template>
 
 <style lang="scss">
-    #AppSingleRestaurant{
-        display: flex;
-    }
-  
+#AppSingleRestaurant {
+    display: flex;
+}
 </style>

@@ -12,8 +12,8 @@ library.add(fas);
 
 const app = createApp(App);
 
-app.use(router);
-// Registra il componente FontAwesome globalmente
-app.component('font-awesome-icon', FontAwesomeIcon);
+app.use(router)
+    // Registra il componente FontAwesome globalmente
+    .component('font-awesome-icon', FontAwesomeIcon)
 
-app.mount('#app');
+    .mount('#app');

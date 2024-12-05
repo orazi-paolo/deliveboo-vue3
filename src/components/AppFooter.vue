@@ -12,7 +12,6 @@ export default {
     <div class="container">
       <div class="row">
 
-        <!-- column 1 -->
         <div class="col-12 col-md-3 mb-4">
           <h5 class="text-uppercase">Check out DeliveBoo</h5>
           <ul class="list-unstyled">
@@ -28,7 +27,6 @@ export default {
           </ul>
         </div>
 
-        <!-- column 2 -->
         <div class="col-12 col-md-3 mb-4">
           <h5 class="text-uppercase">Note legali</h5>
           <ul class="list-unstyled">
@@ -40,7 +38,6 @@ export default {
           </ul>
         </div>
 
-        <!-- column 3 -->
         <div class="col-12 col-md-3 mb-4">
           <h5 class="text-uppercase">Aiuto</h5>
           <ul class="list-unstyled">
@@ -50,7 +47,6 @@ export default {
           </ul>
         </div>
 
-        <!-- column 4 -->
         <div class="col-12 col-md-3 mb-4">
           <h5 class="text-uppercase">Take DeliveBoo with you</h5>
           <img src="/public/app-store-logo.png" alt="Store" class="mb-2 w-75">
@@ -66,9 +62,8 @@ export default {
 </template>
 
 <style lang="scss">
-
 footer {
-    background-color: #333; 
-    color: white;
+  background-color: #333;
+  color: white;
 }
 </style>

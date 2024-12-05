@@ -2,7 +2,7 @@
 export default {
   data() {
     return {
-      
+
       plate: {
         id: 1,
         name: "Bacon King 3.0",
@@ -40,80 +40,94 @@ export default {
   methods: {
     close() {
 
-    // torna alla homepage
+      // torna alla homepage
       this.$router.push('/');
     },
-    
+
     // incremento la quantità del piatto
     increaseQuantity() {
       this.quantity++;
     },
-    
+
     // decremento
     decreaseQuantity() {
       if (this.quantity > 1) {
         this.quantity--;
       }
     },
-    
+    emitCloseModal() {
+      this.$emit('closeModal')
+    }
+
   },
-  mounted() {
+  props: {
+    plate: {
+      type: Object,
+      required: true
+    }
   }
 };
 </script>
 
 <template>
 
-<div class="modal-dialog">
+  <div class="modal d-block" :id="`#exampeModal-${plate.id}`" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
 
-    <div class="modal-content p-4">
+    <div class="modal-dialog">
 
-      <div class="scrollable-content">
-        
+      <div class="modal-content p-4">
         <!-- pulsante di chiusura -->
-        <button type="button" class="btn-close-custom" aria-label="Close" @click="close">x</button>
-        <!-- immagine -->
-        <img src="/images/baconking.png" alt="Plate Image" class="img-fluid rounded mb-4" />
-        <!-- nome del piatto -->
-        <h2 class="h4 fw-bold mb-3">{{ plate.name }}</h2>
-        <!-- descrizione -->
-        <p class="text-muted mb-4">{{ plate.description }}</p>
-        <hr>
-
-        <!-- selezione degli ingredienti -->
-        <div class="ingredient-section">
-          <h5 class="h6 fw-bold mb-3">Ingredienti</h5>
-          <hr>
-          <!-- lista degli ingredienti - checkbox -->
-            <div class="ingredient-option" v-for="ingrediente in plate.ingredients" :key="ingrediente" :class="{ 'selected': selectedIngredients.includes(ingrediente) }">
-              <input type="checkbox" :id="ingrediente" class="form-check-input" v-model="selectedIngredients" :value="ingrediente" />
-              <label class="form-check-label" :for="ingrediente"> {{ ingrediente }} </label>
+        <div class="scrollable-content">
+          <div class="modal-header">
+            <button type="button" class="btn-close-custom" aria-label="Close" @click="emitCloseModal()">x</button>
+          </div>
+          <div class="modal-body">
+            <!-- immagine -->
+            <img src="/images/baconking.png" alt="Plate Image" class="img-fluid rounded mb-4" />
+            <!-- nome del piatto -->
+            <h2 class="h4 fw-bold mb-3">{{ plate.name }}</h2>
+            <!-- descrizione -->
+            <p class="text-muted mb-4">{{ plate.description }}</p>
+            <hr>
+            <!-- selezione degli ingredienti -->
+            <div class="ingredient-section">
+              <h5 class="h6 fw-bold mb-3">Ingredienti</h5>
+              <hr>
+              <!-- lista degli ingredienti - checkbox -->
+              <div class="ingredient-option" v-for="ingrediente in plate.ingredients" :key="ingrediente"
+                :class="{ 'selected': selectedIngredients.includes(ingrediente) }">
+                <input type="checkbox" :id="ingrediente" class="form-check-input" v-model="selectedIngredients"
+                  :value="ingrediente" />
+                <label class="form-check-label" :for="ingrediente"> {{ ingrediente }} </label>
+              </div>
             </div>
+            <!-- selezione quantità e bottone -->
+            <div class="quantity-control">
+              <!-- Bottone per diminuire -->
+              <button class="btn-quantity" :class="{ active: quantity > 1, disabled: quantity === 1 }"
+                @click="decreaseQuantity" :disabled="quantity === 1"> - </button>
+              <!-- Quantità -->
+              <span class="quantity-value">{{ quantity }}</span>
+              <!-- Bottone per aumentare -->
+              <button class="btn-quantity active" @click="increaseQuantity"> + </button>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" @click="emitCloseModal()">Back <i
+                class="fas fa-arrow-left"></i></button>
+            <!-- Bottone aggiungi al carrello -->
+            <button type="button" class="btn btn-primary w-100"> Aggiungi per {{ totalPrice }} € </button>
+          </div>
         </div>
       </div>
-        
-      <!-- selezione quantità e bottone -->
-      <div class="fixed-footer">
-        <div class="quantity-control">
-          <!-- Bottone per diminuire -->
-          <button class="btn-quantity":class="{ active: quantity > 1, disabled: quantity === 1 }"@click="decreaseQuantity" :disabled="quantity === 1" > - </button>
-          <!-- Quantità -->
-          <span class="quantity-value">{{ quantity }}</span>
-          <!-- Bottone per aumentare -->
-          <button class="btn-quantity active" @click="increaseQuantity"> + </button>
-        </div>
-          <!-- Bottone aggiungi al carrello -->
-          <button type="button" class="btn btn-primary w-100"> Aggiungi per {{ totalPrice }} € </button>
-      </div>
-
     </div>
 
-</div>
+  </div>
 
 </template>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
 .modal-dialog {
   max-width: 800px;
   margin: 50px auto;
@@ -147,7 +161,8 @@ export default {
   }
 }
 
-h2, p {
+h2,
+p {
   text-align: center;
   margin-bottom: 20px;
 }
@@ -283,5 +298,4 @@ h2, p {
     }
   }
 }
-
 </style>

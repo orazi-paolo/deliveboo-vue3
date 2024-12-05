@@ -38,18 +38,21 @@ export default {
     <section>
       <router-link :to="{ name: 'restaurants' }" class="btn btn-secondary">Go Back</router-link>
     </section>
-    <h2>{{ singleRestaurant.name }}</h2>
-    <ul id="plates-list">
+    <h3>{{ singleRestaurant.name }}</h3>
+    <ul class="row" id="plates-list">
       <PlatesListCard v-for="plate in singleRestaurant.plates" :key="plate.id" :plateObj="plate" />
     </ul>
   </section>
 </template>
 
 <style lang="scss">
+h3{
+ margin: 20px 0;
+}
+
 #plates-list {
-  display: flex;
-  flex-wrap: wrap;
   list-style-type: none;
-  gap: 15px;
+  padding: 0;
+  flex-wrap: wrap;
 }
 </style>

@@ -33,7 +33,7 @@ export default {
 
 <template>
     <section>
-        <ul id="restaurants-list">
+        <ul class="row" id="restaurants-list">
             <RestaurantsListCard v-for="restaurant in listRestaurants" :key="restaurant.id" :restaurant="restaurant" />
         </ul>
     </section>
@@ -41,9 +41,9 @@ export default {
 
 <style lang="scss">
 #restaurants-list {
-    display: flex;
     flex-wrap: wrap;
+    padding: 0;
     list-style-type: none;
-    gap: 10px;
+    display: flex;
 }
 </style>

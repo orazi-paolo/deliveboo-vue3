@@ -34,29 +34,26 @@ export default {
 </script>
 
 <template>
-  <li id="plate-card">
+  <li class="col-12 col-lg-6 col-xl-4" id="plate-card">
     <div class="info-plate-card" @click="toggleModal()">
-      <h4>{{ plateObj.name }}</h4>
-      <p>{{ plateObj.description }}</p>
-      <div class="price">{{ plateObj.price }}<span>&euro;</span></div>
-    </div>
-    <div class="box-img">
-      <img :src="plateObj.image" :alt="`Image of ${plateObj.name}`">
-    </div>
-    <button class="btn-add-item"><span>+</span></button>
-    <PlateShow v-if="showModal" :plate="plateObj" @closeModal="toggleModal()" />
+        <h4>{{ plateObj.name }}</h4>
+        <!-- <p>{{ plateObj.description }}</p> -->
+        <div class="price">{{ plateObj.price }}<span>&euro;</span></div>
+      </div>
+      <div class="box-img">
+        <img :src="plateObj.image" :alt="`Image of ${plateObj.name}`">
+      </div>
+      <button class="btn-add-item" @click="toggleModal"><span>+</span></button>
+      <PlateShow v-if="showModal" :plate="plateObj" @closeModal="toggleModal()" />
   </li>
 </template>
 
 <style lang="scss" scoped>
 #plate-card {
-  flex-basis: calc(50% - 15px);
-  display: flex;
-  gap: 10px;
   border: 1px solid rgb(230, 217, 217);
   padding: 15px 12px;
-  min-width: 375px;
   border-radius: 5px;
+  display: flex;
 
   &:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -82,25 +79,26 @@ export default {
   }
 
   .box-img {
-    // flex-basis: 500px;
-
+    flex-basis: 30%;
     img {
       display: block;
-      max-width: 100%;
-      max-height: auto;
-      // object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
 
+
   .box-img,
   .btn-add-item {
-    max-height: 90px;
+    height: 90px;
     border: 1px solid rgb(230, 217, 217);
   }
 
   .btn-add-item {
     flex-basis: 40px;
     background-color: #fff;
+    margin:0px 0px 0px 10px;
 
     span {
       color: #70C8BF;

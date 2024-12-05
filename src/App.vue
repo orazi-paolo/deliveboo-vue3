@@ -1,21 +1,26 @@
 <script>
+import { RouterView } from 'vue-router';
+import AppHeader from './components/AppHeader.vue';
+import AppFooter from './components/AppFooter.vue';
 export default {
   data() {
     return {
-
     }
+  },
+  components:{
+    AppHeader,
+    AppFooter
   }
 }
 </script>
 
 <template>
-  <div class="text-danger">
-    Deliveboo
-  </div>
+  <AppHeader/>
   <main>
     <router-link to="/plate/1"> singolo piatto</router-link>
     <RouterView />
   </main>
+  <AppFooter/>
 </template>
 
 <style lang="scss">

@@ -10,7 +10,7 @@ export default {
 <template>
   <footer class="bg-dark text-light py-5">
 
-    <div class="container">
+    <div class="container-custom">
       <!-- take DeliveBoo section-->
       <div class="take-deliveboo mb-5 text-center">
         <h5 class="text-uppercase">Take DeliveBoo with you</h5>

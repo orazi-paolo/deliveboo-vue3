@@ -19,12 +19,12 @@ export default {
 </script>
 
 <template>
-    <div class="mx-5 mt-4">
-        <section id="AppSingleRestaurant">
-            <div>
+    <div class="container-custom my-4"> <!-- to costumize container-custom go to style/general.scss -->
+        <section class="row" id="AppSingleRestaurant">
+            <div class="col-7 col-8-md col-9-xl">
                 <PlatesList />
             </div>
-            <div>
+            <div class="col-5 col-4-md col-3-xl">
                 <AppCart />
             </div>
         </section>
@@ -32,7 +32,5 @@ export default {
 </template>
 
 <style lang="scss">
-#AppSingleRestaurant {
-    display: flex;
-}
+
 </style>

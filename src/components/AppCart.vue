@@ -14,7 +14,7 @@ export default {
     methods: {
         deleteCart(){
             store.platesInCart.splice(0, store.platesInCart.length)
-        }
+        },
     },
     computed: {
         hasOrders() {
@@ -36,12 +36,14 @@ export default {
             <h4>Cart</h4>
             <ul class="orders-list" v-for="(order, index) in store.platesInCart" :key="order.id">
                 <li class="single-order">
-                    <div class="quantities">x2</div>
+                    <div class="quantities">
+                        x{{ order.quantity }}
+                    </div>
                     <div class="order-info">
                         <h5>{{ order.name }}</h5>
                     </div>
                     <div class="order-price">
-                        {{ order.price }} <span>&euro;</span>
+                        {{ order.totalPrice.toFixed(2) }} <span>&euro;</span>
                     </div>
                 </li>
             </ul>

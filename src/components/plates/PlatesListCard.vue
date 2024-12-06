@@ -24,10 +24,30 @@ export default {
       return this.modal = !this.modal
     },
     addToCart(plateObj){
-      console.log("item to push in store.platesInCart", plateObj)
-      store.platesInCart.push(plateObj)
-      console.log("store.platesInCart", store.platesInCart)
-    }
+      console.log("item to push in store.platesInCart", plateObj.id, plateObj.name)
+      // check if plateObj is already contained in store.platesInCart
+      const plateInArray = store.platesInCart.find(
+          (item) => item.id === plateObj.id
+      );
+      if (plateInArray) {
+          // icrease quantity
+          plateInArray.quantity += 1;
+          // icrease price plate in totalPrice with the value of quantity
+          plateInArray.totalPrice = parseFloat(plateInArray.price) * plateInArray.quantity;
+      } else {
+          // if the plate is not cpntained in store.platesInCart push the plate as a new plate
+          store.platesInCart.push({
+            // push the plate as a object with:
+              // spred oprator of plateObj(parameter)
+              // with quantity and totalPrice
+
+            ...plateObj,
+            quantity: 1,
+            totalPrice: parseFloat(plateObj.price),
+          });
+      }
+      console.log("updated store.platesInCart", store.platesInCart)
+    },
   },
   computed: {
     isVisible() {

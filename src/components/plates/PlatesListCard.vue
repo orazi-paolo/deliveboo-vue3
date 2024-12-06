@@ -1,10 +1,13 @@
 <script>
 import PlateShow from '../PlateShow.vue';
+import { store } from '../../js/store.js';
+
 export default {
   name: "PlatesListCard",
   data() {
     return {
       modal: false,
+      store,
     };
   },
   props: {
@@ -19,8 +22,12 @@ export default {
   methods: {
     toggleModal() {
       return this.modal = !this.modal
+    },
+    addToCart(plateObj){
+      console.log("item to push in store.platesInCart", plateObj)
+      store.platesInCart.push(plateObj)
+      console.log("store.platesInCart", store.platesInCart)
     }
-
   },
   computed: {
     isVisible() {
@@ -43,7 +50,7 @@ export default {
       <div class="box-img">
         <img :src="plateObj.image" :alt="`Image of ${plateObj.name}`">
       </div>
-      <button class="btn-add-item" @click="toggleModal"><span>+</span></button>
+      <button class="btn-add-item" @click="addToCart(plateObj)"><span>+</span></button>
       <PlateShow v-if="showModal" :plate="plateObj" @closeModal="toggleModal()" />
   </li>
 </template>

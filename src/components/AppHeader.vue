@@ -19,10 +19,11 @@ export default {
     <header>
         <nav class="navbar navbar-expand">
             <div class="container-fluid">
-                <div class="nav-left d-flex">
+                <div class="nav-left">
                     <ul class="pages-links">
-                        <li>
-                            <a class="fw-bolder" href="#">Deliveboo</a>
+                        <li class="li-logo">
+                            <img class="img-logo" src="./../assets/deliveroo-logo.webp" alt="deliveroo-logo.web">
+                            <a class="fw-bolder" href="#">deliveboo</a>
                         </li>
                         <li class="nav-item">
                             <router-link class="nav-link active" aria-current="page"
@@ -53,10 +54,23 @@ nav {
     padding: 15px 30px;
     border-bottom: 1px solid rgb(230, 217, 217);
 
-
     * {
         color: #00CBBD;
         font-size: 16px;
+    }
+
+    .nav-left{
+        display: flex;
+        
+        .li-logo{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            
+            .img-logo{
+               width: 25px;
+            }
+        }
     }
 
     .pages-links, .auth {

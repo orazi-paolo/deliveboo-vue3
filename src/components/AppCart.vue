@@ -1,34 +1,11 @@
 <script>
+import { store } from '../js/store.js';
+
 export default {
     name: "AppCart",
     data() {
         return {
-            orders: [
-                {
-                    name: "Sushi Platter",
-                    image: "https://images.unsplash.com/photo-1546069901-eacef0df6022",
-                    description: "Assorted sushi rolls with fresh fish and vegetables.",
-                    ingredients: ["Rice", "Nori", "Salmon", "Tuna", "Avocado", "Cucumber"],
-                    price: 18.0,
-                    visible: true
-                },
-                {
-                    name: "Cheeseburger",
-                    image: "https://images.unsplash.com/photo-1550547660-d9450f859349",
-                    description: "Juicy burger with cheese, lettuce, tomato, and pickles.",
-                    ingredients: ["Beef patty", "Cheese", "Lettuce", "Tomato", "Pickles", "Bun"],
-                    price: 10.0,
-                    visible: true
-                },
-                {
-                    name: "Pad Thai",
-                    image: "https://images.unsplash.com/photo-1604908553925-c5b76749a193",
-                    description: "Stir-fried Thai noodles with shrimp, peanuts, and tamarind sauce.",
-                    ingredients: ["Rice noodles", "Shrimp", "Eggs", "Peanuts", "Tamarind sauce"],
-                    price: 9.5,
-                    visible: true
-                },
-            ]
+            store,
         };
     },
     components: {
@@ -39,7 +16,7 @@ export default {
     },
     computed: {
         hasOrders() {
-            return this.orders.length < 0;
+            return store.platesInCart.length > 0;
         }
     }
 };
@@ -50,14 +27,14 @@ export default {
         <div v-if="hasOrders" class="plates-in-cart">
             <h4>Your Order</h4>
             <h4>Cart</h4>
-            <ul class="orders-list" v-for="order in orders">
+            <ul class="orders-list" v-for="(order, index) in store.platesInCart" :key="order.id">
                 <li class="single-order">
                     <div class="quantities">x2</div>
                     <div class="order-info">
                         <h5>{{ order.name }}</h5>
                     </div>
                     <div class="order-price">
-                        {{ order.price.toFixed(2) }} <span>&euro;</span>
+                        {{ order.price }} <span>&euro;</span>
                     </div>
                 </li>
             </ul>
@@ -78,7 +55,7 @@ export default {
 
 <style lang="scss" scoped>
 #cart {
-    width: 450px;
+    width: 100%;
     height: 500px;
     padding: 10px;
     border: 1px solid rgb(230, 217, 217);

@@ -12,7 +12,9 @@ export default {
 
     },
     methods: {
-
+        deleteCart(){
+            store.platesInCart.splice(0, store.platesInCart.length)
+        }
     },
     computed: {
         hasOrders() {
@@ -25,7 +27,12 @@ export default {
 <template>
     <div id="cart">
         <div v-if="hasOrders" class="plates-in-cart">
-            <h4>Your Order</h4>
+            <div class="cart-top-card">
+                <h4>Your Order</h4>
+                <font-awesome-icon :icon="['fas', 'trash-can']" 
+                    class="fas-trash" @click="deleteCart"
+                />
+            </div>
             <h4>Cart</h4>
             <ul class="orders-list" v-for="(order, index) in store.platesInCart" :key="order.id">
                 <li class="single-order">
@@ -72,10 +79,20 @@ export default {
     }
 
     .plates-in-cart {
-        h4 {
+        .cart-top-card{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 25px;
-            font-size: 20px;
-            font-weight: 700;
+
+            .fas-trash{
+                color: #45CCBC;
+            }
+            h4 {
+                font-size: 20px;
+                font-weight: 700;
+                margin: 0;
+            }
         }
 
         .orders-list {

@@ -15,6 +15,15 @@ export default {
         deleteCart(){
             store.platesInCart.splice(0, store.platesInCart.length)
         },
+        getOrderTotalPrice(){
+            // calculate the amount of the total order inside of the client's cart
+            let finalPrice = 0;
+            for(let i = 0; i < store.platesInCart.length; i++){
+                const plate = store.platesInCart[i];
+                finalPrice += plate.totalPrice;
+            }
+            return finalPrice.toFixed(2)
+        }
     },
     computed: {
         hasOrders() {
@@ -54,8 +63,12 @@ export default {
             <span>Your cart is empty</span>
         </div>
         <div class="cart-footer">
-            <div v-if="hasOrders">
-
+            <div v-if="hasOrders" class="order-total">
+                <p>Total of the order</p>
+                <div class="order-total-price">
+                    {{ getOrderTotalPrice() }} 
+                    <span>&euro;</span>
+                </div>
             </div>
             <button :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'">Go to payment</button>
         </div>
@@ -154,6 +167,21 @@ export default {
         background-color: white;
         border-top: 1px solid rgb(230, 217, 217);
         padding: 10px 0;
+
+        .order-total{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+
+            p{
+                margin: 0;
+            }
+
+            .order-total-price{
+                font-weight: 700;
+            }
+        }
 
         .button-cart-order,
         .button-cart-empty {

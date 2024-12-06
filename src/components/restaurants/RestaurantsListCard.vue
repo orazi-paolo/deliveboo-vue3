@@ -23,7 +23,7 @@ export default {
 
 <template>
   <!-- card of single plate -->
-  <li class="col-4 col-lg-3" id="restaurant-card">
+  <li class="col-12 col-sm-6 col-md-4 col-lg-3" id="restaurant-card">
         <router-link :to="{ name: 'restaurants.show', params: { 'id': restaurant.id } }">
       <div class=" box-img">
         <img :src="restaurant.image" :alt="`Image of ${restaurant.name}`">

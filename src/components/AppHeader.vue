@@ -32,7 +32,7 @@ export default {
                     </ul>
                 </div>
                 <div class="nav-right">
-                    <ul class="auth">
+                    <ul class="auth flex-column flex-sm-row">
                         <li class="register-button">
                             <font-awesome-icon :icon="['fas', 'house-chimney']" class="icon-auth"/>
                             <a href="#" class="menu-item">Register</a>
@@ -66,7 +66,7 @@ nav {
             display: flex;
             align-items: center;
             gap: 5px;
-            
+
             .img-logo{
                width: 25px;
             }

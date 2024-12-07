@@ -42,7 +42,10 @@ export default {
     <li class="col-2 p-1 p-lg-3">
         <div id="tipology-card" :class="{ active: active }" @click="toggleTipology(), store.getRestaurantsFiltered()">
             <div class="box-img">
-                <img class="rounded-2" :src="tipologyObj.image_placeholder" :alt="`Image of ${tipologyObj.name}`">
+                <img v-if="tipologyObj.image" class="rounded-2" :src="tipologyObj.image"
+                    :alt="`Image of ${tipologyObj.name}`">
+                <img v-else class="rounded-2" :src="tipologyObj.image_placeholder"
+                    :alt="`Image of ${tipologyObj.name}`">
             </div>
             <h4>{{ tipologyObj.name }}</h4>
         </div>

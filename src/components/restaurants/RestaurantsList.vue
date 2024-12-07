@@ -1,32 +1,28 @@
 <script>
 import RestaurantsListCard from './RestaurantsListCard.vue';
 import axios from 'axios';
+import { store } from '../../js/store';
 export default {
     name: "RestaurantsList",
     data() {
         return {
-            apiUrl: "http://127.0.0.1:8000/api/restaurant",
+            store,
             listRestaurants: [],
+
         };
     },
     components: {
         RestaurantsListCard
     },
     methods: {
-        getRestaurants() {
-            axios.get(this.apiUrl)
-                .then(response => {
-                    console.log(response.data.results)
-                    this.listRestaurants = response.data.results
-                    console.log(this.listRestaurants)
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        },
+
+    },
+    computed: {
+
     },
     created() {
-        this.getRestaurants();
+        store.getRestaurantsFiltered();
+        console.log("store.restaurantsFiltered", store.restaurantsFiltered)
     }
 };
 </script>
@@ -34,7 +30,8 @@ export default {
 <template>
     <section>
         <ul class="row" id="restaurants-list">
-            <RestaurantsListCard v-for="restaurant in listRestaurants" :key="restaurant.id" :restaurant="restaurant" />
+            <RestaurantsListCard v-for="restaurant in store.restaurantsFiltered" :key="restaurant.id"
+                :restaurant="restaurant" />
         </ul>
     </section>
 </template>

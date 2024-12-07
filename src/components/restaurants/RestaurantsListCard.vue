@@ -30,6 +30,8 @@ export default {
           <img :src="restaurant.image" :alt="`Image of ${restaurant.name}`">
         </div>
         <div class="info-restaurant-card">
+          <span class="badge bg-primary me-2" v-for="tipology in restaurant.tipologies" :key="tipology.id">{{
+            tipology.name }}</span>
           <h4>{{ restaurant.name }}</h4>
           <p>{{ restaurant.address }}, {{ restaurant.city }}</p>
         </div>
@@ -74,6 +76,11 @@ export default {
     h4 {
       font-size: 14px;
       font-weight: 700;
+    }
+
+    span {
+      font-size: 12px;
+      font-weight: 600;
     }
 
     p,

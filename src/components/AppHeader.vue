@@ -27,23 +27,19 @@ export default {
                         </li>
                         <li class="nav-item">
                             <router-link class="nav-link active" aria-current="page"
-                                :to="{ 'name': 'home' }">Home</router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link class="nav-link active" aria-current="page"
-                                :to="{ 'name': 'restaurants' }">Restaurants</router-link>
+                                :to="{ 'name': 'restaurants' }">Home</router-link>
                         </li>
                     </ul>
                 </div>
                 <div class="nav-right">
                     <ul class="auth flex-column flex-sm-row">
                         <li class="register-button">
-                            <font-awesome-icon :icon="['fas', 'house-chimney']" class="icon-auth"/>
-                            <a href="#" class="menu-item">Register</a>
+                            <font-awesome-icon :icon="['fas', 'house-chimney']" class="icon-auth" />
+                            <a href="http://127.0.0.1:8000/register" class="menu-item">Register</a>
                         </li>
                         <li class="sign-in-button">
-                            <font-awesome-icon :icon="['fas', 'user']" class="icon-auth"/>                            
-                            <a href="#" class="menu-item">Sign in</a>
+                            <font-awesome-icon :icon="['fas', 'user']" class="icon-auth" />
+                            <a href="http://127.0.0.1:8000/login" class="menu-item">Sign in</a>
                         </li>
                     </ul>
                 </div>
@@ -63,21 +59,22 @@ nav {
         font-size: 16px;
     }
 
-    .nav-left{
+    .nav-left {
         display: flex;
-        
-        .li-logo{
+
+        .li-logo {
             display: flex;
             align-items: center;
             gap: 5px;
 
-            .img-logo{
-               width: 25px;
+            .img-logo {
+                width: 25px;
             }
         }
     }
 
-    .pages-links, .auth {
+    .pages-links,
+    .auth {
         list-style-type: none;
         padding: 0;
         margin: 0;
@@ -85,8 +82,8 @@ nav {
         gap: 10px;
     }
 
-    .auth{
-        li{
+    .auth {
+        li {
             display: flex;
             align-items: center;
             gap: 5px;
@@ -94,10 +91,11 @@ nav {
             border-radius: 5px;
             padding: 5px 25px;
 
-            a{
+            a {
                 color: #555;
             }
-            .icon-auth{
+
+            .icon-auth {
                 font-size: 12px;
             }
         }

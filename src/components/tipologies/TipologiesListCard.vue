@@ -82,7 +82,7 @@ export default {
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 16px;
-        font-weight: 600;
+        font-weight: 700;
         color: #fff;
     }
 

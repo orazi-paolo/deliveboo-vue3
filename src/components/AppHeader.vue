@@ -23,7 +23,7 @@ export default {
                     <ul class="pages-links">
                         <li class="li-logo">
                             <img class="img-logo" src="./../assets/deliveroo-logo.webp" alt="deliveroo-logo.web">
-                            <router-link class="nav-link active" aria-current="page"
+                            <router-link class="nav-link active fw-bold" aria-current="page"
                                 :to="{ 'name': 'home' }">deliveboo</router-link>
                         </li>
                         <li class="nav-item">

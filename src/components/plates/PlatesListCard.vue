@@ -88,6 +88,10 @@ export default {
   max-height: 125px;
   overflow: hidden;
 
+  &>* {
+    flex-basis: calc(100% / 3);
+  }
+
   &:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   }
@@ -112,7 +116,7 @@ export default {
   }
 
   .box-img {
-    flex-basis: 30%;
+    // flex-basis: 30%;
 
     img {
       display: block;

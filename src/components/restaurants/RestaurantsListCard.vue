@@ -31,10 +31,11 @@ export default {
           <img v-else :src="restaurant.image_placeholder" :alt="`Image of ${restaurant.name}`">
         </div>
         <div class="info-restaurant-card">
-          <span class="badge bg-primary me-2" v-for="tipology in restaurant.tipologies" :key="tipology.id">{{
-            tipology.name }}</span>
+          <span class="badge me-2 my-1" :style="{ backgroundColor: tipology.color }"
+            v-for="tipology in restaurant.tipologies" :key="tipology.id">{{
+              tipology.name }}</span>
           <h4>{{ restaurant.name }}</h4>
-          <p>{{ restaurant.address }}, {{ restaurant.city }}</p>
+          <p class="text-muted">{{ restaurant.address }}, {{ restaurant.city }}</p>
         </div>
       </router-link>
     </div>
@@ -55,6 +56,7 @@ export default {
 
   &:hover {
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    scale: 1.05;
   }
 
   .box-img {
@@ -75,7 +77,7 @@ export default {
     padding: 4px 15px;
 
     h4 {
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 700;
     }
 

@@ -48,7 +48,12 @@ export default {
         alt="Image of {{ singleRestaurant.name }}">
       <img v-else class="img-fluid rounded-2 w-25 me-3" :src="singleRestaurant.image_placeholder"
         alt="Image of {{ singleRestaurant.name }}">
-      <h3 class="fw-semibold">{{ singleRestaurant.name }}</h3>
+      <div>
+        <span class="badge me-2 my-1" :style="{ backgroundColor: tipology.color }"
+          v-for="tipology in singleRestaurant.tipologies" :key="tipology.id">{{
+            tipology.name }}</span>
+        <h3 class="fw-semibold">{{ singleRestaurant.name }}</h3>
+      </div>
     </div>
     <ul class="row" id="plates-list">
       <PlatesListCard v-for="plate in singleRestaurant.plates" :key="plate.id" :plateObj="plate" />

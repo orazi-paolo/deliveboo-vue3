@@ -37,7 +37,7 @@ export default {
   <section>
     <section>
       <div class="back-button">
-        <router-link :to="{ name: 'restaurants' }">
+        <router-link :to="{ name: 'home' }">
           <font-awesome-icon :icon="['fas', 'arrow-left']" />
           <span class="back-button-text">Back to restaurants</span>
         </router-link>
@@ -51,18 +51,18 @@ export default {
 </template>
 
 <style lang="scss">
-.back-button{
-  *{
+.back-button {
+  * {
     color: #00CBBD;
   }
 
-  .back-button-text{
+  .back-button-text {
     margin: 0 0 0 10px;
   }
 }
 
-h3{
- margin: 20px 0;
+h3 {
+  margin: 20px 0;
 }
 
 #plates-list {

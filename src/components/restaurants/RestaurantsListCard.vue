@@ -27,7 +27,8 @@ export default {
     <div id="restaurant-card">
       <router-link :to="{ name: 'restaurants.show', params: { 'id': restaurant.id } }">
         <div class=" box-img">
-          <img :src="restaurant.image" :alt="`Image of ${restaurant.name}`">
+          <img v-if="restaurant.image" :src="restaurant.image" :alt="`Image of ${restaurant.name}`">
+          <img v-else :src="restaurant.image_placeholder" :alt="`Image of ${restaurant.name}`">
         </div>
         <div class="info-restaurant-card">
           <span class="badge bg-primary me-2" v-for="tipology in restaurant.tipologies" :key="tipology.id">{{

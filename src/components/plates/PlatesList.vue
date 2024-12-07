@@ -43,7 +43,13 @@ export default {
         </router-link>
       </div>
     </section>
-    <h3>{{ singleRestaurant.name }}</h3>
+    <div class="restaurant-info d-flex align-items-center my-3">
+      <img v-if="singleRestaurant.image" class="img-fluid rounded-2 w-25 me-3" :src="singleRestaurant.image"
+        alt="Image of {{ singleRestaurant.name }}">
+      <img v-else class="img-fluid rounded-2 w-25 me-3" :src="singleRestaurant.image_placeholder"
+        alt="Image of {{ singleRestaurant.name }}">
+      <h3 class="fw-semibold">{{ singleRestaurant.name }}</h3>
+    </div>
     <ul class="row" id="plates-list">
       <PlatesListCard v-for="plate in singleRestaurant.plates" :key="plate.id" :plateObj="plate" />
     </ul>

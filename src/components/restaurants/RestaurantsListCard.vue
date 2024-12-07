@@ -22,7 +22,7 @@ export default {
 </script>
 
 <template>
-  <!-- card of single plate -->
+  <!-- card of single restaurant -->
   <li class="col-12 col-sm-6 col-md-4 col-lg-3 p-1 p-lg-2">
     <div id="restaurant-card">
       <router-link :to="{ name: 'restaurants.show', params: { 'id': restaurant.id } }">

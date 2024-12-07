@@ -21,7 +21,8 @@ export default {
 
     },
     created() {
-        store.getRestaurantsFiltered();
+        store.getRestaurantsFiltered()
+        store.tipologiesIds = []
         console.log("store.restaurantsFiltered", store.restaurantsFiltered)
     }
 };

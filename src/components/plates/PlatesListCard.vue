@@ -23,28 +23,28 @@ export default {
     toggleModal() {
       return this.modal = !this.modal
     },
-    addToCart(plateObj){
+    addToCart(plateObj) {
       console.log("item to push in store.platesInCart", plateObj.id, plateObj.name)
       // check if plateObj is already contained in store.platesInCart
       const plateInArray = store.platesInCart.find(
-          (item) => item.id === plateObj.id
+        (item) => item.id === plateObj.id
       );
       if (plateInArray) {
-          // icrease quantity
-          plateInArray.quantity += 1;
-          // icrease price plate in totalPrice with the value of quantity
-          plateInArray.totalPrice = parseFloat(plateInArray.price) * plateInArray.quantity;
+        // icrease quantity
+        plateInArray.quantity += 1;
+        // icrease price plate in totalPrice with the value of quantity
+        plateInArray.totalPrice = parseFloat(plateInArray.price) * plateInArray.quantity;
       } else {
-          // if the plate is not cpntained in store.platesInCart push the plate as a new plate
-          store.platesInCart.push({
-            // push the plate as a object with:
-              // spred oprator of plateObj(parameter)
-              // with quantity and totalPrice
+        // if the plate is not cpntained in store.platesInCart push the plate as a new plate
+        store.platesInCart.push({
+          // push the plate as a object with:
+          // spred oprator of plateObj(parameter)
+          // with quantity and totalPrice
 
-            ...plateObj,
-            quantity: 1,
-            totalPrice: parseFloat(plateObj.price),
-          });
+          ...plateObj,
+          quantity: 1,
+          totalPrice: parseFloat(plateObj.price),
+        });
       }
       console.log("updated store.platesInCart", store.platesInCart)
     },
@@ -64,15 +64,16 @@ export default {
   <li class="col-12 col-lg-6 col-xl-4 p-1 p-lg-2">
     <div id="plate-card">
       <div class="info-plate-card" @click="toggleModal()">
-          <h4>{{ plateObj.name }}</h4>
-          <!-- <p>{{ plateObj.description }}</p> -->
-          <div class="price">{{ plateObj.price }}<span>&euro;</span></div>
-        </div>
-        <div class="box-img">
-          <img :src="plateObj.image" :alt="`Image of ${plateObj.name}`">
-        </div>
-        <button class="btn-add-item" @click="addToCart(plateObj)"><span>+</span></button>
-        <PlateShow v-if="showModal" :plate="plateObj" @closeModal="toggleModal()" />
+        <h4>{{ plateObj.name }}</h4>
+        <!-- <p>{{ plateObj.description }}</p> -->
+        <div class="price">{{ plateObj.price }}<span>&euro;</span></div>
+      </div>
+      <div class="box-img">
+        <img v-if="plateObj.image" :src="plateObj.image" :alt="`Image of ${plateObj.name}`">
+        <img v-else :src="plateObj.image_placeholder" :alt="`Image of ${plateObj.name}`">
+      </div>
+      <button class="btn-add-item" @click="addToCart(plateObj)"><span>+</span></button>
+      <PlateShow v-if="showModal" :plate="plateObj" @closeModal="toggleModal()" />
     </div>
   </li>
 </template>
@@ -112,6 +113,7 @@ export default {
 
   .box-img {
     flex-basis: 30%;
+
     img {
       display: block;
       width: 100%;
@@ -130,7 +132,7 @@ export default {
   .btn-add-item {
     flex-basis: 40px;
     background-color: #fff;
-    margin:0px 0px 0px 10px;
+    margin: 0px 0px 0px 10px;
 
     span {
       color: #70C8BF;

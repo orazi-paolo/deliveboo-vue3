@@ -23,11 +23,12 @@ export default {
                     <ul class="pages-links">
                         <li class="li-logo">
                             <img class="img-logo" src="./../assets/deliveroo-logo.webp" alt="deliveroo-logo.web">
-                            <a class="fw-bolder" href="#">deliveboo</a>
+                            <router-link class="nav-link active" aria-current="page"
+                                :to="{ 'name': 'home' }">deliveboo</router-link>
                         </li>
                         <li class="nav-item">
                             <router-link class="nav-link active" aria-current="page"
-                                :to="{ 'name': 'restaurants' }">Home</router-link>
+                                :to="{ 'name': 'home' }">Home</router-link>
                         </li>
                     </ul>
                 </div>

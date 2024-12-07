@@ -2,7 +2,7 @@
 import RestaurantsList from '../components/restaurants/RestaurantsList.vue';
 import TipologiesList from '../components/tipologies/TipologiesList.vue';
 export default {
-  name: "AppListRestaurants",
+  name: "AppHome",
   data() {
     return {
 

@@ -49,8 +49,8 @@ export default {
   border: 1px solid rgb(239, 231, 231);
   border-radius: 7px;
   padding: 0;
-  height: 210px;
-  max-height: 210px;
+  height: 300px;
+  max-height: 300px;
   overflow: hidden;
 
   &:hover {

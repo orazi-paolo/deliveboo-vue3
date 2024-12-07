@@ -27,6 +27,10 @@ export default {
                         </li>
                         <li class="nav-item">
                             <router-link class="nav-link active" aria-current="page"
+                                :to="{ 'name': 'home' }">Home</router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link class="nav-link active" aria-current="page"
                                 :to="{ 'name': 'restaurants' }">Restaurants</router-link>
                         </li>
                     </ul>

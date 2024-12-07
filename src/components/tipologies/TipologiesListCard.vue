@@ -72,7 +72,7 @@ export default {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.9);
+            filter: brightness(0.5);
         }
     }
 

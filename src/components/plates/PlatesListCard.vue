@@ -61,17 +61,19 @@ export default {
 </script>
 
 <template>
-  <li class="col-12 col-lg-6 col-xl-4" id="plate-card">
-    <div class="info-plate-card" @click="toggleModal()">
-        <h4>{{ plateObj.name }}</h4>
-        <!-- <p>{{ plateObj.description }}</p> -->
-        <div class="price">{{ plateObj.price }}<span>&euro;</span></div>
-      </div>
-      <div class="box-img">
-        <img :src="plateObj.image" :alt="`Image of ${plateObj.name}`">
-      </div>
-      <button class="btn-add-item" @click="addToCart(plateObj)"><span>+</span></button>
-      <PlateShow v-if="showModal" :plate="plateObj" @closeModal="toggleModal()" />
+  <li class="col-12 col-lg-6 col-xl-4 p-1 p-lg-2">
+    <div id="plate-card">
+      <div class="info-plate-card" @click="toggleModal()">
+          <h4>{{ plateObj.name }}</h4>
+          <!-- <p>{{ plateObj.description }}</p> -->
+          <div class="price">{{ plateObj.price }}<span>&euro;</span></div>
+        </div>
+        <div class="box-img">
+          <img :src="plateObj.image" :alt="`Image of ${plateObj.name}`">
+        </div>
+        <button class="btn-add-item" @click="addToCart(plateObj)"><span>+</span></button>
+        <PlateShow v-if="showModal" :plate="plateObj" @closeModal="toggleModal()" />
+    </div>
   </li>
 </template>
 
@@ -79,8 +81,11 @@ export default {
 #plate-card {
   border: 1px solid rgb(230, 217, 217);
   padding: 15px 12px;
-  border-radius: 5px;
+  border-radius: 7px;
   display: flex;
+  height: 125px;
+  max-height: 125px;
+  overflow: hidden;
 
   &:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -118,7 +123,7 @@ export default {
 
   .box-img,
   .btn-add-item {
-    height: 90px;
+    height: 100%;
     border: 1px solid rgb(230, 217, 217);
   }
 

@@ -23,16 +23,18 @@ export default {
 
 <template>
   <!-- card of single plate -->
-  <li class="col-12 col-sm-6 col-md-4 col-lg-3" id="restaurant-card">
-        <router-link :to="{ name: 'restaurants.show', params: { 'id': restaurant.id } }">
-      <div class=" box-img">
-        <img :src="restaurant.image" :alt="`Image of ${restaurant.name}`">
-      </div>
-      <div class="info-restaurant-card">
-        <h4>{{ restaurant.name }}</h4>
-        <p>{{ restaurant.address }}, {{ restaurant.city }}</p>
-      </div>
-    </router-link>
+  <li class="col-12 col-sm-6 col-md-4 col-lg-3 p-1 p-lg-2">
+    <div id="restaurant-card">
+      <router-link :to="{ name: 'restaurants.show', params: { 'id': restaurant.id } }">
+        <div class=" box-img">
+          <img :src="restaurant.image" :alt="`Image of ${restaurant.name}`">
+        </div>
+        <div class="info-restaurant-card">
+          <h4>{{ restaurant.name }}</h4>
+          <p>{{ restaurant.address }}, {{ restaurant.city }}</p>
+        </div>
+      </router-link>
+    </div>
   </li>
 </template>
 
@@ -42,8 +44,11 @@ export default {
   flex-direction: column;
   gap: 10px;
   border: 1px solid rgb(239, 231, 231);
-  border-radius: 5px;
+  border-radius: 7px;
   padding: 0;
+  height: 210px;
+  max-height: 210px;
+  overflow: hidden;
 
   &:hover {
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);

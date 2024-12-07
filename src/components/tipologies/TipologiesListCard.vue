@@ -39,10 +39,10 @@ export default {
 
 <template>
     <!-- card of single tipology -->
-    <li class="col-3 p-1 p-lg-2">
+    <li class="col-2 p-1 p-lg-3">
         <div id="tipology-card" :class="{ active: active }" @click="toggleTipology(), store.getRestaurantsFiltered()">
             <div class="box-img">
-                <img :src="tipologyObj.image_placeholder" :alt="`Image of ${tipologyObj.name}`">
+                <img class="rounded-2" :src="tipologyObj.image_placeholder" :alt="`Image of ${tipologyObj.name}`">
             </div>
             <h4>{{ tipologyObj.name }}</h4>
         </div>
@@ -51,28 +51,46 @@ export default {
 
 <style lang="scss" scoped>
 #tipology-card {
-    border: 1px solid rgb(230, 217, 217);
-    padding: 15px 12px;
+    position: relative;
+    // border: 1px solid rgb(230, 217, 217);
+    /* padding: 15px 12px; */
     border-radius: 7px;
-    height: 125px;
-    max-height: 125px;
+    height: 80px;
+    max-height: 80px;
     cursor: pointer;
 
     .box-img {
-        height: 100px;
+        height: 80px;
         width: 100%;
-        border: 1px solid rgb(239, 231, 231);
+        // border: 1px solid rgb(239, 231, 231);
 
         img {
             display: block;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            filter: brightness(0.9);
         }
     }
 
-    &.active {
-        background-color: rgb(255, 0, 0);
+    h4 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+    }
+
+    &.active,
+    &:hover {
+        box-shadow: 0 0 10px 0 rgba(0, 234, 255, 0.5);
+        scale: 1.1;
+    }
+
+    &:active {
+        scale: 1;
     }
 
 }

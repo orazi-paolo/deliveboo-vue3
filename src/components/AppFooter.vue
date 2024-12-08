@@ -124,12 +124,6 @@ footer {
     }
   }
 
-  p {
-    margin: 0;
-    color: #bbbbbb;
-    font-size: 0.9rem;
-  }
-
   .d-flex {
     justify-content: space-between;
     align-items: center;
@@ -163,7 +157,7 @@ footer {
       background-color: #333333;
       padding: 1.5rem;
       border-radius: 0.5rem;
-      text-align: left;
+      text-align: left; 
 
       h5 {
         font-size: 1rem;
@@ -180,15 +174,15 @@ footer {
         li {
           margin-bottom: 0.5rem;
 
-            a {
+          a {
             color: #ddd;
             text-decoration: none;
             transition: color 0.3s ease;
 
-              &:hover {
-              color: #00c7b6;
-              }
+            &:hover {
+              color: #00c7b6 !important;
             }
+          }
         }
       }
     }
@@ -212,5 +206,6 @@ footer {
     margin: 0;
   }
 }
+
 
 </style>

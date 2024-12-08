@@ -19,12 +19,12 @@ export default {
 </script>
 
 <template>
-  <div class="container-custom my-4"> <!-- to costumize container-custom go to style/general.scss -->
-    <section id="AppListRestaurants">
-      <TipologiesList />
+  <section id="AppListRestaurants">
+    <TipologiesList />
+    <div class="container-custom my-4"> <!-- to costumize container-custom go to style/general.scss -->
       <RestaurantsList />
-    </section>
-  </div>
+    </div>
+  </section>
 </template>
 
 <style lang="scss" scoped></style>

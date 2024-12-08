@@ -16,7 +16,7 @@ export default {
 </script>
 
 <template>
-    <header>
+    <header class="sticky-top shadow">
         <nav class="navbar navbar-expand">
             <div class="container-fluid">
                 <div class="nav-left">

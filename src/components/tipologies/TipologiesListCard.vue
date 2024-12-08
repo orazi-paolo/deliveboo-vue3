@@ -40,7 +40,8 @@ export default {
 <template>
     <!-- card of single tipology -->
     <li class="col-4 col-sm-3 col-lg-2 py-2 px-md-3 p-lg-3">
-        <div id="tipology-card" :class="{ active: active }" @click="toggleTipology(), store.getRestaurantsFiltered()">
+        <div class="tipology-card" :class="{ active: active }"
+            @click="toggleTipology(), store.getRestaurantsFiltered()">
             <div class="box-img">
                 <img v-if="tipologyObj.image" class="rounded-2" :src="tipologyObj.image"
                     :alt="`Image of ${tipologyObj.name}`">
@@ -53,7 +54,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-#tipology-card {
+.tipology-card {
     position: relative;
     // border: 1px solid rgb(230, 217, 217);
     /* padding: 15px 12px; */
@@ -72,7 +73,7 @@ export default {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.5);
+            filter: brightness(0.6);
         }
     }
 
@@ -88,7 +89,7 @@ export default {
 
     &.active,
     &:hover {
-        box-shadow: 0 0 10px 0 rgba(0, 234, 255, 0.5);
+        box-shadow: 0 0 10px 0 rgb(0, 234, 255);
         scale: 1.1;
     }
 
@@ -99,7 +100,7 @@ export default {
 }
 
 @media screen and (max-width: 450px) {
-    #tipology-card {
+    .tipology-card {
         height: 60px;
         max-height: 60px;
 

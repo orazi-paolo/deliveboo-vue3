@@ -12,7 +12,7 @@ export default {
 
     <div class="container-custom">
       <!-- take DeliveBoo section-->
-      <div class="take-deliveboo mb-5 text-center">
+      <div class="take-deliveboo mb-5 text-center p-3">
         <h5 class="text-uppercase">Take DeliveBoo with you</h5>
         <img src="/public/app-store-logo.png" alt="App Store" class="store-logo">
         <img src="/public/Playstore.png" alt="Google Play" class="store-logo">

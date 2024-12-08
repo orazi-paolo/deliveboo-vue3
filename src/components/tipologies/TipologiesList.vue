@@ -36,13 +36,15 @@ export default {
 </script>
 
 <template>
-    <section>
-        <div class="title-section p-2 pb-0">
-            <h5>Restaurants</h5>
+    <section class="py-2">
+        <div class="container-custom my-4">
+            <div class="title-section p-2 pb-0">
+                <h5 class="text-white">Restaurants</h5>
+            </div>
+            <ul id="tipologies-list" class="row">
+                <TipologiesListCard v-for="tipology in listTipologies" :key="tipology.id" :tipologyObj="tipology" />
+            </ul>
         </div>
-        <ul id="tipologies-list" class="row">
-            <TipologiesListCard v-for="tipology in listTipologies" :key="tipology.id" :tipologyObj="tipology" />
-        </ul>
     </section>
 </template>
 
@@ -52,5 +54,11 @@ export default {
     padding: 0;
     list-style-type: none;
     display: flex;
+}
+
+section {
+    background: linear-gradient(to right, black 30%, transparent), url('../../assets/hamburgers.jpg');
+    background-size: cover;
+    background-position: bottom right;
 }
 </style>

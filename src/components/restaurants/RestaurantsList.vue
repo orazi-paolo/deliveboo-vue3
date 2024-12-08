@@ -30,6 +30,9 @@ export default {
 
 <template>
     <section>
+        <div class="p-2">
+            <h5>Search Results: "{{ store.restaurantsFiltered.length }}"</h5>
+        </div>
         <ul class="row" id="restaurants-list">
             <RestaurantsListCard v-for="restaurant in store.restaurantsFiltered" :key="restaurant.id"
                 :restaurant="restaurant" />

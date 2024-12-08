@@ -39,7 +39,7 @@ export default {
 
 <template>
     <!-- card of single tipology -->
-    <li class="col-4 col-sm-3 col-lg-2 py-2 px-3 p-lg-3">
+    <li class="col-4 col-sm-3 col-lg-2 py-2 px-md-3 p-lg-3">
         <div id="tipology-card" :class="{ active: active }" @click="toggleTipology(), store.getRestaurantsFiltered()">
             <div class="box-img">
                 <img v-if="tipologyObj.image" class="rounded-2" :src="tipologyObj.image"

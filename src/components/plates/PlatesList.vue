@@ -73,7 +73,7 @@ export default {
 }
 
 h3 {
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 #plates-list {
@@ -82,7 +82,7 @@ h3 {
   flex-wrap: wrap;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 520px) {
   .restaurant-info {
     img {
       display: none;

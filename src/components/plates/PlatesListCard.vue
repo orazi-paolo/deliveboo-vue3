@@ -61,16 +61,18 @@ export default {
 </script>
 
 <template>
-  <li class="col-12 col-lg-6 col-xl-4 p-1 p-lg-2">
+  <li class="col-12 col-lg-6 p-1 p-lg-2">
     <div id="plate-card">
-      <div class="info-plate-card" @click="toggleModal()">
-        <h4>{{ plateObj.name }}</h4>
-        <!-- <p>{{ plateObj.description }}</p> -->
-        <div class="price">{{ plateObj.price }}<span>&euro;</span></div>
-      </div>
-      <div class="box-img">
-        <img v-if="plateObj.image" :src="plateObj.image" :alt="`Image of ${plateObj.name}`">
-        <img v-else :src="plateObj.image_placeholder" :alt="`Image of ${plateObj.name}`">
+      <div class="wrapper">
+        <div class="info-plate-card" @click="toggleModal()">
+          <h4>{{ plateObj.name }}</h4>
+          <!-- <p>{{ plateObj.description }}</p> -->
+          <div class="price">{{ plateObj.price }}<span>&euro;</span></div>
+        </div>
+        <div class="box-img">
+          <img v-if="plateObj.image" :src="plateObj.image" :alt="`Image of ${plateObj.name}`">
+          <img v-else :src="plateObj.image_placeholder" :alt="`Image of ${plateObj.name}`">
+        </div>
       </div>
       <button class="btn-add-item" @click="addToCart(plateObj)"><span>+</span></button>
       <PlateShow v-if="showModal" :plate="plateObj" @closeModal="toggleModal()" />
@@ -89,20 +91,28 @@ export default {
   overflow: hidden;
 
   &>* {
-    flex-basis: calc(100% / 3);
-
+    flex-basis: 50%;
   }
 
   &:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   }
 
-  .info-plate-card {
+  .wrapper {
+    display: flex;
     flex-grow: 1;
+
+    &>* {
+      flex-basis: 50%;
+    }
+  }
+
+  .info-plate-card {
     cursor: pointer;
 
     h4 {
-      font-size: 17px;
+      font-size: 15px;
+      font-weight: 700;
     }
 
     p,
@@ -119,6 +129,7 @@ export default {
 
   .box-img {
     // flex-basis: 30%;
+    width: 70px;
 
     img {
       display: block;
@@ -156,12 +167,12 @@ export default {
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 512px) {
   #plate-card {
-    .info-plate-card {
-      h4 {
-        font-size: 12px;
-      }
+
+    .box-img,
+    img {
+      display: none;
     }
   }
 }

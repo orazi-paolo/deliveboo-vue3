@@ -36,11 +36,11 @@ export default {
                     <ul class="auth flex-column flex-sm-row">
                         <li class="register-button">
                             <font-awesome-icon :icon="['fas', 'house-chimney']" class="icon-auth" />
-                            <a href="http://127.0.0.1:8000/register" class="menu-item">Register</a>
+                            <a href="http://127.0.0.1:8000/login" class="menu-item fw-bold turquoise">Login</a>
                         </li>
                         <li class="sign-in-button">
                             <font-awesome-icon :icon="['fas', 'user']" class="icon-auth" />
-                            <a href="http://127.0.0.1:8000/login" class="menu-item">Sign in</a>
+                            <a href="http://127.0.0.1:8000/register" class="menu-item fw-bold turquoise">Register</a>
                         </li>
                     </ul>
                 </div>
@@ -91,10 +91,6 @@ nav {
             border: 1px solid rgb(230, 217, 217);
             border-radius: 5px;
             padding: 5px 25px;
-
-            a {
-                color: #555;
-            }
 
             .icon-auth {
                 font-size: 12px;

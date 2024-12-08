@@ -36,9 +36,14 @@ export default {
 </script>
 
 <template>
-    <ul id="tipologies-list" class="row">
-        <TipologiesListCard v-for="tipology in listTipologies" :key="tipology.id" :tipologyObj="tipology" />
-    </ul>
+    <section>
+        <div class="title-section p-2 pb-0">
+            <h5>Restaurants</h5>
+        </div>
+        <ul id="tipologies-list" class="row">
+            <TipologiesListCard v-for="tipology in listTipologies" :key="tipology.id" :tipologyObj="tipology" />
+        </ul>
+    </section>
 </template>
 
 <style lang="scss" scoped>

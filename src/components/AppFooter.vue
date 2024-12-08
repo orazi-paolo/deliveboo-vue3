@@ -8,12 +8,14 @@ export default {
 </script>
 
 <template>
-  <footer class="bg-dark text-light py-5">
 
+  <footer class="bg-dark text-light py-5">
     <div class="container-custom">
-      <!-- main columns -->
+
+      <!-- Main columns with information -->
       <div class="row">
-        <!-- Column 1 -->
+
+        <!-- Column 1 - general information about DeliveBoo -->
         <div class="col-12 col-md-3 mb-4 column-bg">
           <h5 class="text-uppercase">Check out DeliveBoo</h5>
           <ul class="list-unstyled">
@@ -29,7 +31,7 @@ export default {
           </ul>
         </div>
 
-        <!-- Column 2 -->
+        <!-- Column 2 - legal information and policies -->
         <div class="col-12 col-md-3 mb-4 column-bg">
           <h5>Legal notes</h5>
           <ul class="list-unstyled">
@@ -41,7 +43,7 @@ export default {
           </ul>
         </div>
 
-        <!-- Column 3 -->
+        <!-- Column 3 : help and support -->
         <div class="col-12 col-md-3 mb-4 column-bg">
           <h5>help</h5>
           <ul class="list-unstyled">
@@ -52,28 +54,22 @@ export default {
         </div>
       </div>
 
-      <!-- take DeliveBoo section-->
+      <!-- Section for mobile app downloads -->
       <div class="take-deliveboo mb-5 text-center">
-        <h5 class="text-uppercase">Take DeliveBoo with you</h5>
+        <h3 class="text-uppercase">Take DeliveBoo with you</h3>
         <div class="d-flex justify-content-center gap-3">
           <img src="/public/images/appstore.jpeg" alt="App Store" class="store-logo">
           <img src="/public/images/googleplay.jpeg" alt="Google Play" class="store-logo">
         </div>
       </div>
 
-      <!-- Bottom part -->
+      <!-- Bottom section -->
       <div class="d-flex justify-content-between align-items-center mt-4 border-top pt-3">
 
         <div class="social-icons">
-          <a href="#" class="icon">
-            <i class="fab fa-facebook"></i>
-          </a>
-          <a href="#" class="icon">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="#" class="icon">
-            <i class="fab fa-instagram"></i>
-          </a>
+          <a href="#" class="icon"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="icon"><i class="fab fa-instagram"></i></a>
         </div>
 
         <p class="mb-0">&copy; 2024 DeliveBoo</p>
@@ -83,7 +79,12 @@ export default {
     </div>
 
   </footer>
+
 </template>
+
+
+
+
 
 <style lang="scss">
 
@@ -165,7 +166,7 @@ footer {
       text-align: left; 
 
       h5 {
-        font-size: 1rem;
+        font-size: 1.4rem;
         font-weight: bold;
         margin-bottom: 1rem;
         text-transform: uppercase;
@@ -183,6 +184,7 @@ footer {
             color: #ddd;
             text-decoration: none;
             transition: color 0.3s ease;
+            font-size: 1rem;
 
             &:hover {
               color: #00c7b6 !important;
@@ -211,6 +213,5 @@ footer {
     margin: 0;
   }
 }
-
 
 </style>

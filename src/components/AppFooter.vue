@@ -56,8 +56,8 @@ export default {
       <div class="take-deliveboo mb-5 text-center">
         <h5 class="text-uppercase">Take DeliveBoo with you</h5>
         <div class="d-flex justify-content-center gap-3">
-          <img src="/public/app-store-logo.png" alt="App Store" class="store-logo">
-          <img src="/public/Playstore.png" alt="Google Play" class="store-logo">
+          <img src="/public/images/appstore.jpeg" alt="App Store" class="store-logo">
+          <img src="/public/images/googleplay.jpeg" alt="Google Play" class="store-logo">
         </div>
       </div>
 
@@ -138,14 +138,19 @@ footer {
     }
 
     .store-logo {
-      width: 120px;
-      margin: 0.5rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: inline-block;
+      margin: 10px; 
+      border-radius: 10px; 
+      border: 2px solid #ddd; 
+      padding: 5px; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+      transition: all 0.3s ease;
 
-      &:hover {
-        transform: scale(1.1);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      }
+        &:hover {
+        transform: scale(1.05); 
+        border-color: #00c7b6; 
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+        }
     }
   }
 

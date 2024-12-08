@@ -90,6 +90,7 @@ export default {
 
   &>* {
     flex-basis: calc(100% / 3);
+
   }
 
   &:hover {
@@ -107,6 +108,7 @@ export default {
     p,
     h4 {
       margin-bottom: 8px;
+      margin-right: 7px;
     }
 
     p,
@@ -149,6 +151,16 @@ export default {
       span {
         color: #68a19c;
         font-size: 25px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #plate-card {
+    .info-plate-card {
+      h4 {
+        font-size: 12px;
       }
     }
   }

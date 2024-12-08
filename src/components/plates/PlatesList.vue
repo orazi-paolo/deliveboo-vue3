@@ -81,4 +81,12 @@ h3 {
   padding: 0;
   flex-wrap: wrap;
 }
+
+@media screen and (max-width: 450px) {
+  .restaurant-info {
+    img {
+      display: none;
+    }
+  }
+}
 </style>

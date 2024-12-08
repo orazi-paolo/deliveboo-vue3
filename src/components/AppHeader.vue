@@ -52,7 +52,7 @@ export default {
 <style lang="scss" scoped>
 nav {
     background-color: #fff;
-    padding: 15px 30px;
+    padding: 15px 25px;
     border-bottom: 1px solid rgb(230, 217, 217);
 
     * {

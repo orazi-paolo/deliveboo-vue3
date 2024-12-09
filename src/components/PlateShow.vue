@@ -108,10 +108,10 @@ p {
 }
 
 .btn-quantity {
-  width: 35x;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   display: flex;
   justify-content: center;
@@ -140,7 +140,7 @@ p {
 }
 
 .quantity-value {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   text-align: center;
   color: #000;
@@ -256,7 +256,7 @@ p {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 40px;
   margin-bottom: 10px;
 }
 

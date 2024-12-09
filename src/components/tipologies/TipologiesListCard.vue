@@ -39,10 +39,6 @@ export default {
             return store.tipologiesIds.includes(this.tipologyObj.id);
         }
     },
-    created() {
-        // Inizializza la classe active basandosi sullo stato attuale
-        this.active = this.isActive;
-    }
 };
 </script>
 

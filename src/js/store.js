@@ -33,6 +33,26 @@ export const store = reactive({
             })
             .finally(function () {
                 console.log("======= Chiamata API Restaurants Completata Filtered======= ")
-            })
+            });
     },
+
+    // Method for adding dishes to the cart
+    addPlateToCart(plate, quantity, selectedIngredients) {
+        // Check if the dish is already in your cart
+        const existingPlate = this.platesInCart.find(item => item.id === plate.id);
+
+        if (existingPlate) {
+            existingPlate.quantity += quantity;
+            existingPlate.totalPrice += plate.price * quantity;
+        } else {
+            this.platesInCart.push({
+                id: plate.id,
+                name: plate.name,
+                price: plate.price,
+                quantity,
+                ingredients: selectedIngredients,
+                totalPrice: plate.price * quantity,
+            });
+        }
+    }
 })

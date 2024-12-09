@@ -49,7 +49,7 @@ export default {
 
 <template>
 
-  <div class="modal d-block" :id="`#exampeModal-${plate.id}`" tabindex="-1" aria-labelledby="exampleModalLabel":aria-hidden="!isModalVisible">
+  <div class="modal d-block" :id="`#exampeModal-${plate.id}`" tabindex="-1" aria-labelledby="exampleModalLabel" :aria-hidden="!isModalVisible">
     <div class="modal-dialog">
 
       <!-- Modal close button -->
@@ -67,27 +67,24 @@ export default {
               <h5 class="h6 fw-bold mb-3">Ingredients</h5>
               <hr>
               <div class="ingredient-option" v-for="ingrediente in plate.ingredients" :key="ingrediente" :class="{ 'selected': selectedIngredients.includes(ingrediente) }">
-                <input type="checkbox" :id="ingrediente" class="form-check-input" v-model="selectedIngredients":value="ingrediente" />
+                <input type="checkbox" :id="ingrediente" class="form-check-input" v-model="selectedIngredients" :value="ingrediente" />
                 <label class="form-check-label" :for="ingrediente"> {{ ingrediente }} </label>
               </div>
             </div>
-            <!-- Quantity control -->
-            <div class="quantity-control">
-              <button class="btn-quantity" :class="{ active: quantity > 1, disabled: quantity === 1 }"@click="decreaseQuantity" :disabled="quantity === 1"> - </button>
-              <span class="quantity-value">{{ quantity }}</span>
-              <button class="btn-quantity active" @click="increaseQuantity"> + </button>
-            </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-warning" @click="emitCloseModal()">Back <i class="fas fa-arrow-left"></i></button>
-            <button type="button" class="btn btn-primary w-100"> Add for {{ totalPrice }} € </button>
+        </div>
+            <!-- Quantity control -->
+            <div class="quantity-payment-container">
+              <div class="quantity-control">
+                <button class="btn-quantity" :class="{ active: quantity > 1, disabled: quantity === 1 }" @click="decreaseQuantity" :disabled="quantity === 1"> - </button>
+                <span class="quantity-value">{{ quantity }}</span>
+                <button class="btn-quantity active" @click="increaseQuantity"> + </button>
+              </div>
+              <button type="button" class="btn btn-primary w-100 mt-3"> Add for {{ totalPrice }} € </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-  </div>
-
 </template>
 
 <style lang="scss">
@@ -219,7 +216,7 @@ p {
   .ingredient-option {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding:10px;
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -250,9 +247,18 @@ p {
   }
 }
 
+.quantity-payment-container {
+  position: sticky;
+  bottom: 0; 
+  background-color: white; 
+  padding: 20px; 
+  border-top: 1px solid #ddd; 
+  z-index: 10;
+}
+
 .quantity-control {
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 15px;

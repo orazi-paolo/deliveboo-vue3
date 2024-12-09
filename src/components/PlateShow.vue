@@ -168,6 +168,7 @@ p {
   padding: 30px;
 }
 
+
 .scrollable-content {
   flex-grow: 1;
   overflow-y: auto;
@@ -265,6 +266,11 @@ p {
 }
 
 
-
+.modal-body img {
+  display: block; 
+  margin: 0 auto; 
+  max-width: 100%; 
+  height: auto; 
+}
 
 </style>

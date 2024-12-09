@@ -205,8 +205,8 @@ p {
 
 .btn-close-custom {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 13px;
+  right: 8px;
   width: 40px;
   height: 40px;
   background-color: #fff;
@@ -217,7 +217,7 @@ p {
   justify-content: center;
   align-items: center;
   color: #00c7b6;
-  font-size: 20px;
+  font-size: 30px;
   cursor: pointer;
 
   &:hover {

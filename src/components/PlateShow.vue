@@ -90,7 +90,7 @@ export default {
 
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 .modal-dialog {
   max-width: 800px;
@@ -202,11 +202,41 @@ p {
 
   .quantity-control {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 
-    .btn-quantity {
+    
+
+    .quantity-value {
+      font-size: 25px;
+      font-weight: bold;
+      text-align: center;
+      color: #000;
+    }
+  }
+
+  .modal-footer .btn-primary{
+    background-color: #00c7b6;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #00b3a3;
+    }
+  }
+}
+
+.btn-quantity {
       width: 50px;
       height: 50px;
       border-radius: 50%;
@@ -237,31 +267,4 @@ p {
         transform: scale(1.1);
       }
     }
-
-    .quantity-value {
-      font-size: 25px;
-      font-weight: bold;
-      text-align: center;
-      color: #000;
-    }
-  }
-
-  .btn-primary {
-    background-color: #00c7b6;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 8px;
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    transition: all 0.3s ease;
-
-    &:hover {
-      background-color: #00b3a3;
-    }
-  }
-}
 </style>

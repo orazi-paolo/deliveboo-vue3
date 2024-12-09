@@ -106,8 +106,8 @@ export default {
 
 h2,
 p {
-  text-align: center;
-  margin-bottom: 20px;
+  text-align: left;
+  font-size: 20px;
 }
 
 .btn-primary {

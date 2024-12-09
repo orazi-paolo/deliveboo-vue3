@@ -37,12 +37,6 @@ export default {
     emitCloseModal() {
       this.$emit('closeModal')
     }
-  },
-  props: {
-    plate: {
-      type: Object,
-      required: true
-    }
   }
 };
 </script>
@@ -76,11 +70,11 @@ export default {
             <!-- Quantity control -->
             <div class="quantity-payment-container">
               <div class="quantity-control">
-                <button class="btn-quantity" :class="{ active: quantity > 1, disabled: quantity === 1 }" @click="decreaseQuantity" :disabled="quantity === 1"> - </button>
+                <button class="btn-quantity" :class="{ active: quantity >1, disabled: quantity === 1  } "@click="decreaseQuantity" :disabled="quantity === 1" > - </button>
                 <span class="quantity-value">{{ quantity }}</span>
-                <button class="btn-quantity active" @click="increaseQuantity"> + </button>
+                <button class="btn-quantity" :class="{ active: true }" @click="increaseQuantity"> + </button>
               </div>
-              <button type="button" class="btn btn-primary w-100 mt-3"> Add for {{ totalPrice }} € </button>
+              <button type="button" class="btn btn-primary w-100" @click="addToCart"> Add for {{ totalPrice }} € </button>
             </div>
           </div>
         </div>
@@ -114,10 +108,10 @@ p {
 }
 
 .btn-quantity {
-  width: 50px;
-  height: 50px;
+  width: 35x;
+  height: 35px;
   border-radius: 50%;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
   display: flex;
   justify-content: center;
@@ -146,7 +140,7 @@ p {
 }
 
 .quantity-value {
-  font-size: 25px;
+  font-size: 18px;
   font-weight: bold;
   text-align: center;
   color: #000;
@@ -252,7 +246,7 @@ p {
   position: sticky;
   bottom: 0; 
   background-color: white; 
-  padding: 20px; 
+  padding: 15px; 
   border-top: 1px solid #ddd; 
   z-index: 10;
 }
@@ -262,7 +256,8 @@ p {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 

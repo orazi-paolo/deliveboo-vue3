@@ -1,6 +1,5 @@
 <script>
 import RestaurantsListCard from './RestaurantsListCard.vue';
-import axios from 'axios';
 import { store } from '../../js/store';
 export default {
     name: "RestaurantsList",
@@ -21,8 +20,8 @@ export default {
 
     },
     created() {
-        store.getRestaurantsFiltered()
         store.tipologiesIds = []
+        store.getRestaurantsFiltered()
         console.log("store.restaurantsFiltered", store.restaurantsFiltered)
     }
 };

@@ -59,7 +59,7 @@ export default {
             <button type="button" class="btn-close-custom" aria-label="Close" @click="emitCloseModal()">x</button>
           </div>
           <div class="modal-body">
-            <img src="/images/baconking.png" alt="Plate Image" class="img-fluid rounded mb-4" />
+            <img :src="plate.image || plate.image_placeholder" alt="Plate Image" class="img-fluid rounded mb-4" />
             <h2 class="h4 fw-bold mb-3">{{ plate.name }}</h2>
             <p class="text-muted mb-4">{{ plate.description }}</p>
             <hr>

@@ -1,37 +1,22 @@
 <script>
 export default {
+  props: {
+    plate: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
 
-      plate: {
-        id: 1,
-        name: "Bacon King 3.0",
-        description: "Un piatto delizioso con bacon, formaggio e pane soffice.",
-        image: "/images/baconking.png",
-        price: 7.99,
-        ingredients: [
-          "Bacon",
-          "Formaggio",
-          "Pane",
-          "Lattuga",
-          "Pomodoro",
-          "Cetriolo",
-          "Salsa BBQ",
-          "Cipolla",
-          "Maionese",
-          "Senape",
-        ],
-      },
-
-      selectedIngredients: [],
+      isModalVisible: true, 
       quantity: 1,
+      selectedIngredients: [],
 
     };
   },
 
   computed: {
-
-    // prezzo totale basato sulla quantità
     totalPrice() {
       return (this.quantity * this.plate.price).toFixed(2);
     },
@@ -39,26 +24,21 @@ export default {
 
   methods: {
     close() {
-
-      // torna alla homepage
       this.$router.push('/');
     },
-
-    // incremento la quantità del piatto
     increaseQuantity() {
       this.quantity++;
+      console.log("Quantità aumentata:", this.quantity);
     },
-
-    // decremento
     decreaseQuantity() {
       if (this.quantity > 1) {
         this.quantity--;
+        console.log("Quantità diminuita:", this.quantity);
       }
     },
     emitCloseModal() {
       this.$emit('closeModal')
     }
-
   },
   props: {
     plate: {
@@ -71,53 +51,38 @@ export default {
 
 <template>
 
-  <div class="modal d-block" :id="`#exampeModal-${plate.id}`" tabindex="-1" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-
+  <div class="modal d-block" :id="`#exampeModal-${plate.id}`" tabindex="-1" aria-labelledby="exampleModalLabel":aria-hidden="!isModalVisible">
     <div class="modal-dialog">
 
+      <!-- Modal close button -->
       <div class="modal-content p-4">
-        <!-- pulsante di chiusura -->
         <div class="scrollable-content">
           <div class="modal-header">
             <button type="button" class="btn-close-custom" aria-label="Close" @click="emitCloseModal()">x</button>
           </div>
           <div class="modal-body">
-            <!-- immagine -->
             <img src="/images/baconking.png" alt="Plate Image" class="img-fluid rounded mb-4" />
-            <!-- nome del piatto -->
             <h2 class="h4 fw-bold mb-3">{{ plate.name }}</h2>
-            <!-- descrizione -->
             <p class="text-muted mb-4">{{ plate.description }}</p>
             <hr>
-            <!-- selezione degli ingredienti -->
             <div class="ingredient-section">
-              <h5 class="h6 fw-bold mb-3">Ingredienti</h5>
+              <h5 class="h6 fw-bold mb-3">Ingredients</h5>
               <hr>
-              <!-- lista degli ingredienti - checkbox -->
-              <div class="ingredient-option" v-for="ingrediente in plate.ingredients" :key="ingrediente"
-                :class="{ 'selected': selectedIngredients.includes(ingrediente) }">
-                <input type="checkbox" :id="ingrediente" class="form-check-input" v-model="selectedIngredients"
-                  :value="ingrediente" />
+              <div class="ingredient-option" v-for="ingrediente in plate.ingredients" :key="ingrediente" :class="{ 'selected': selectedIngredients.includes(ingrediente) }">
+                <input type="checkbox" :id="ingrediente" class="form-check-input" v-model="selectedIngredients":value="ingrediente" />
                 <label class="form-check-label" :for="ingrediente"> {{ ingrediente }} </label>
               </div>
             </div>
-            <!-- selezione quantità e bottone -->
+            <!-- Quantity control -->
             <div class="quantity-control">
-              <!-- Bottone per diminuire -->
-              <button class="btn-quantity" :class="{ active: quantity > 1, disabled: quantity === 1 }"
-                @click="decreaseQuantity" :disabled="quantity === 1"> - </button>
-              <!-- Quantità -->
+              <button class="btn-quantity" :class="{ active: quantity > 1, disabled: quantity === 1 }"@click="decreaseQuantity" :disabled="quantity === 1"> - </button>
               <span class="quantity-value">{{ quantity }}</span>
-              <!-- Bottone per aumentare -->
               <button class="btn-quantity active" @click="increaseQuantity"> + </button>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-warning" @click="emitCloseModal()">Back <i
-                class="fas fa-arrow-left"></i></button>
-            <!-- Bottone aggiungi al carrello -->
-            <button type="button" class="btn btn-primary w-100"> Aggiungi per {{ totalPrice }} € </button>
+            <button type="button" class="btn btn-warning" @click="emitCloseModal()">Back <i class="fas fa-arrow-left"></i></button>
+            <button type="button" class="btn btn-primary w-100"> Add for {{ totalPrice }} € </button>
           </div>
         </div>
       </div>
@@ -128,6 +93,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
 .modal-dialog {
   max-width: 800px;
   margin: 50px auto;
@@ -138,6 +104,8 @@ export default {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+  max-height: 90vh; 
+  overflow: hidden;
   height: 900px;
   padding: 30px;
 }
@@ -238,37 +206,37 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 15px;
+    gap: 20px;
 
     .btn-quantity {
-      width: 28px;
-      height: 28px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
-      font-size: 16px;
+      font-size: 20px;
       font-weight: bold;
       display: flex;
       justify-content: center;
       align-items: center;
       border: 2px solid #ddd;
       background-color: #fff;
-      color: #999;
-      cursor: pointer;
+      color: #bbb;
       transition: all 0.3s ease;
-      margin: 0 20px;
 
       &.active {
         color: #00c7b6;
         border-color: #00c7b6;
+        cursor: pointer;
       }
 
       &.disabled {
         color: #ddd;
-        border-color: #ddd;
         cursor: not-allowed;
       }
 
       &:not(.disabled):hover {
-        background-color: #f1fdfc;
+        background-color: #f9f9f9; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+        transform: scale(1.1);
       }
     }
 

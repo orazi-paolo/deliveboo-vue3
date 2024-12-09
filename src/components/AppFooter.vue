@@ -8,21 +8,14 @@ export default {
 </script>
 
 <template>
+
   <footer class="bg-dark text-light py-5">
-
     <div class="container-custom">
-      <!-- take DeliveBoo section-->
-      <div class="take-deliveboo mb-5 text-center p-3">
-        <h5 class="text-uppercase">Take DeliveBoo with you</h5>
-        <div class="d-flex justify-content-center gap-3">
-          <img src="/public/app-store-logo.png" alt="App Store" class="store-logo">
-          <img src="/public/Playstore.png" alt="Google Play" class="store-logo">
-        </div>
-      </div>
 
-      <!-- main columns -->
+      <!-- Main columns with information -->
       <div class="row">
-        <!-- Column 1 -->
+
+        <!-- Column 1 - general information about DeliveBoo -->
         <div class="col-12 col-md-3 mb-4 column-bg">
           <h5 class="text-uppercase">Check out DeliveBoo</h5>
           <ul class="list-unstyled">
@@ -38,7 +31,7 @@ export default {
           </ul>
         </div>
 
-        <!-- Column 2 -->
+        <!-- Column 2 - legal information and policies -->
         <div class="col-12 col-md-3 mb-4 column-bg">
           <h5>Legal notes</h5>
           <ul class="list-unstyled">
@@ -50,7 +43,7 @@ export default {
           </ul>
         </div>
 
-        <!-- Column 3 -->
+        <!-- Column 3 : help and support -->
         <div class="col-12 col-md-3 mb-4 column-bg">
           <h5>help</h5>
           <ul class="list-unstyled">
@@ -61,28 +54,22 @@ export default {
         </div>
       </div>
 
-      <!-- take DeliveBoo section-->
+      <!-- Section for mobile app downloads -->
       <div class="take-deliveboo mb-5 text-center">
-        <h5 class="text-uppercase">Take DeliveBoo with you</h5>
+        <h3 class="text-uppercase">Take DeliveBoo with you</h3>
         <div class="d-flex justify-content-center gap-3">
-          <img src="/public/app-store-logo.png" alt="App Store" class="store-logo">
-          <img src="/public/Playstore.png" alt="Google Play" class="store-logo">
+          <img src="/public/images/appstore.jpeg" alt="App Store" class="store-logo">
+          <img src="/public/images/googleplay.jpeg" alt="Google Play" class="store-logo">
         </div>
       </div>
 
-      <!-- Bottom part -->
+      <!-- Bottom section -->
       <div class="d-flex justify-content-between align-items-center mt-4 border-top pt-3">
 
         <div class="social-icons">
-          <a href="#" class="icon">
-            <i class="fab fa-facebook"></i>
-          </a>
-          <a href="#" class="icon">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="#" class="icon">
-            <i class="fab fa-instagram"></i>
-          </a>
+          <a href="#" class="icon"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="icon"><i class="fab fa-instagram"></i></a>
         </div>
 
         <p class="mb-0">&copy; 2024 DeliveBoo</p>
@@ -92,19 +79,19 @@ export default {
     </div>
 
   </footer>
+
 </template>
 
+
+
+
+
 <style lang="scss">
+
 footer {
   background-color: #2c2c2c;
   color: #f1f1f1;
   padding: 3rem 0;
-
-  // .container {
-  //   display: flex;
-  //   flex-direction: column;
-  //   gap: 2rem;
-  // }ù
 
   .border-top {
     border-top: 1px solid #444;
@@ -125,7 +112,6 @@ footer {
       }
     }
 
-
     .fa-facebook:hover {
       color: #1877f2;
     }
@@ -139,58 +125,37 @@ footer {
     }
   }
 
-  p {
-    margin: 0;
-    color: #bbbbbb;
-    font-size: 0.9rem;
-  }
-
   .d-flex {
     justify-content: space-between;
     align-items: center;
   }
 
   .take-deliveboo {
-    // text-align: center;
-    // margin-bottom: 2rem;
-    // border-radius: 0.5rem;
-    // background-color: #333333;
-
     h5 {
       font-weight: 700;
       font-size: 1.2rem;
       color: #ffffff;
       margin-bottom: 1rem;
-      // text-align: center;
-      // text-transform: uppercase;
-      // letter-spacing: 1px; 
-      // color: #ffffff; 
     }
-
-
-    // ul li  a{
-    // margin-bottom: 1rem; 
-    // }
 
     .store-logo {
-      width: 120px;
-      margin: 0.5rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: inline-block;
+      margin: 10px; 
+      border-radius: 10px; 
+      border: 2px solid #ddd; 
+      padding: 5px; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+      transition: all 0.3s ease;
 
-      &:hover {
-        transform: scale(1.1);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      }
+        &:hover {
+        transform: scale(1.05); 
+        border-color: #00c7b6; 
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+        }
     }
-
-
   }
 
-
-
-
   .row {
-    // display: flex;
     justify-content: center;
     gap: 1rem;
 
@@ -198,13 +163,10 @@ footer {
       background-color: #333333;
       padding: 1.5rem;
       border-radius: 0.5rem;
-      // text-align: left;
-      // width: 100%;
-      // flex: 1;
-      // min-width: 200px;
+      text-align: left; 
 
       h5 {
-        font-size: 1rem;
+        font-size: 1.4rem;
         font-weight: bold;
         margin-bottom: 1rem;
         text-transform: uppercase;
@@ -218,22 +180,20 @@ footer {
         li {
           margin-bottom: 0.5rem;
 
-          .footer-link {
+          a {
             color: #ddd;
             text-decoration: none;
             transition: color 0.3s ease;
-            font-size: 0.9rem;
+            font-size: 1rem;
 
             &:hover {
-              color: #00c7b6;
+              color: #00c7b6 !important;
             }
           }
         }
       }
     }
   }
-
-
 
   img {
     display: inline-block;
@@ -247,15 +207,11 @@ footer {
     }
   }
 
-  .border-top {
-    border-top: 1px solid #555555;
-    margin-top: 2rem;
-  }
-
   p {
     font-size: 0.9rem;
     color: #bbbbbb;
     margin: 0;
   }
 }
+
 </style>

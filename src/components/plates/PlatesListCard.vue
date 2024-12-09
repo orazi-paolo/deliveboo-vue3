@@ -63,8 +63,8 @@ export default {
 <template>
   <li class="col-12 col-lg-6 p-1 p-lg-2">
     <div id="plate-card">
-      <div class="wrapper">
-        <div class="info-plate-card" @click="toggleModal()">
+      <div class="wrapper" @click="toggleModal()">
+        <div class="info-plate-card">
           <h4>{{ plateObj.name }}</h4>
           <!-- <p>{{ plateObj.description }}</p> -->
           <div class="price">{{ plateObj.price }}<span>&euro;</span></div>
@@ -101,10 +101,13 @@ export default {
   .wrapper {
     display: flex;
     flex-grow: 1;
+    cursor: pointer;
 
     &>* {
       flex-basis: 50%;
     }
+
+
   }
 
   .info-plate-card {

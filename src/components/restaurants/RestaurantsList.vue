@@ -20,7 +20,7 @@ export default {
 
     },
     created() {
-        store.tipologiesIds = []
+        // store.tipologiesIds = []
         store.getRestaurantsFiltered()
         console.log("store.restaurantsFiltered", store.restaurantsFiltered)
     }

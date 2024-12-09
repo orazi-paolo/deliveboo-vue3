@@ -1,25 +1,36 @@
 <script>
 import RestaurantsList from '../components/restaurants/RestaurantsList.vue';
 import TipologiesList from '../components/tipologies/TipologiesList.vue';
+import AppLoader from '../components/AppLoader.vue'
+import { store } from '../js/store';
+
 export default {
   name: "AppHome",
   data() {
     return {
-
+      store,
     };
   },
   components: {
     RestaurantsList,
-    TipologiesList
+    TipologiesList,
+    AppLoader,
   },
   methods: {
 
+  },
+  created() {
+    this.store.getRestaurantsFiltered();
   },
 };
 </script>
 
 <template>
-  <section id="AppListRestaurants">
+  <section v-if="!store.loaded">
+    <AppLoader />
+  </section>
+
+  <section v-else id="AppListRestaurants">
     <TipologiesList />
     <div class="container-custom my-4"> <!-- to costumize container-custom go to style/general.scss -->
       <RestaurantsList />

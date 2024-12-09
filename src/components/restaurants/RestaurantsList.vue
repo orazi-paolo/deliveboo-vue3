@@ -21,8 +21,8 @@ export default {
     },
     created() {
         // store.tipologiesIds = []
-        store.getRestaurantsFiltered()
-        console.log("store.restaurantsFiltered", store.restaurantsFiltered)
+        // store.getRestaurantsFiltered() commentato questa chiamata è stata fatta su AppHome.vue
+        // console.log("store.restaurantsFiltered", store.restaurantsFiltered)
     }
 };
 </script>

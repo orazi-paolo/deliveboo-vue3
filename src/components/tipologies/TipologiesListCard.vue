@@ -21,10 +21,9 @@ export default {
         toggleTipology() {
             this.active = !this.active;
             // Controllo se il tipologyObj.id è già presente in store.tipologiesIds
-            // Controllando se il tipologyObj.id è presente in store.tipologiesIds
-            const tipologyIdInArray = store.tipologiesIds.find(
-                (tipologyId) => tipologyId === this.tipologyObj.id
-            );
+            // Controllando se il tipologyObj.id è presente in store.tipologiesIds            
+            const tipologyIdInArray = store.tipologiesIds.includes(
+                this.tipologyObj.id);
             if (tipologyIdInArray) { // Se è vero allora filtriamo con la condizione se tipologyObj.id è diverso da tipologyId
                 // Ci restituirà l'array filtrato dalla condizione, ovvero l'array senza il tipologyObj.id cliccato
                 store.tipologiesIds = store.tipologiesIds.filter(tipologyId => tipologyId !== this.tipologyObj.id);
@@ -33,14 +32,20 @@ export default {
             }
             console.log([...store.tipologiesIds]);
         }
-    }
+    },
+    computed: {
+        isActive() {
+            // Controlla se il tipologyObj.id è nell'array store.tipologiesIds
+            return store.tipologiesIds.includes(this.tipologyObj.id);
+        }
+    },
 };
 </script>
 
 <template>
     <!-- card of single tipology -->
     <li class="col-4 col-sm-3 col-lg-2 py-2 px-md-3 p-lg-3">
-        <div class="tipology-card" :class="{ active: active }"
+        <div class="tipology-card" :class="{ active: isActive }"
             @click="toggleTipology(), store.getRestaurantsFiltered()">
             <div class="box-img">
                 <img v-if="tipologyObj.image" class="rounded-2" :src="tipologyObj.image"

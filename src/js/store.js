@@ -8,6 +8,8 @@ export const store = reactive({
     restaurantsFiltered: [],
     // apiUrlRestaurants: "http://127.0.0.1:8000/api/restaurants",
     apiUrlRestaurantsFilter: "http://127.0.0.1:8000/api/restaurant/filter",
+    // loader
+    loaded: false,
 
     // Methods
     joinTipologiesIds() {
@@ -27,6 +29,7 @@ export const store = reactive({
                 console.log(response.data.results)
                 this.restaurantsFiltered = response.data.results
                 console.log(this.restaurantsFiltered)
+                this.loaded = true;
             })
             .catch(function (error) {
                 console.log(error);

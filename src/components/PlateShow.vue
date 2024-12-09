@@ -69,8 +69,11 @@ export default {
           <div class="modal-header">
             <button type="button" class="btn-close-custom" aria-label="Close" @click="emitCloseModal()">x</button>
           </div>
-          <div class="modal-body">
-            <img :src="plate.image || plate.image_placeholder" alt="Plate Image" class="img-fluid rounded mb-4" />
+          <div class="modal-body p-0">
+            <div class="modal-image-wrapper">
+              <img :src="plate.image || plate.image_placeholder" alt="Plate Image" class="modal-image" />
+            </div>
+            <div class="modal-content-wrapper p-4">
             <h2 class="h4 fw-bold mb-3">{{ plate.name }}</h2>
             <p class="text-muted mb-4">{{ plate.description }}</p>
             <hr>
@@ -82,6 +85,7 @@ export default {
                 <label class="form-check-label" :for="ingrediente"> {{ ingrediente }} </label>
               </div>
             </div>
+          </div>
           </div>
         </div>
             <!-- Quantity control -->
@@ -277,12 +281,26 @@ p {
   margin-bottom: 10px;
 }
 
-
-.modal-body img {
-  display: block; 
-  margin: 0 auto; 
-  max-width: 100%; 
-  height: auto; 
+.modal-body {
+  padding: 0; 
+  margin:0;
 }
 
+.modal-image-wrapper {
+  width: 100%; 
+  height: 100%;
+  overflow: hidden;
+}
+
+.modal-image {
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover;
+  display: block; 
+}
+
+.modal-content-wrapper {
+  padding: 20px; 
+
+}
 </style>

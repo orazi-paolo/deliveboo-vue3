@@ -28,12 +28,10 @@ export default {
     },
     increaseQuantity() {
       this.quantity++;
-      console.log("Quantità aumentata:", this.quantity);
     },
     decreaseQuantity() {
       if (this.quantity > 1) {
         this.quantity--;
-        console.log("Quantità diminuita:", this.quantity);
       }
     },
     emitCloseModal() {

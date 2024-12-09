@@ -92,6 +92,69 @@ export default {
 
 <style lang="scss">
 
+h2,
+p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  background-color: #00c7b6;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #00b3a3;
+  }
+}
+
+.btn-quantity {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ddd;
+  background-color: #fff;
+  color: #bbb;
+  transition: all 0.3s ease;
+
+  &.active {
+    color: #00c7b6;
+    border-color: #00c7b6;
+    cursor: pointer;
+  }
+
+  &.disabled {
+    color: #ddd;
+    cursor: not-allowed;
+  }
+
+  &:not(.disabled):hover {
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
+  }
+}
+
+.quantity-value {
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  color: #000;
+}
+
 .modal-dialog {
   max-width: 800px;
   margin: 50px auto;
@@ -102,7 +165,7 @@ export default {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  max-height: 90vh; 
+  max-height: 90vh;
   overflow: hidden;
   height: 900px;
   padding: 30px;
@@ -127,10 +190,27 @@ export default {
   }
 }
 
-h2,
-p {
-  text-align: center;
-  margin-bottom: 20px;
+.btn-close-custom {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00c7b6;
+  font-size: 20px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #fff;
+    color: #00c7b6;
+  }
 }
 
 .ingredient-section {
@@ -170,101 +250,15 @@ p {
   }
 }
 
-.btn-close-custom {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  width: 40px;
-  height: 40px;
-  background-color: #fff;
-  border: none;
-  border-radius: 50%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.quantity-control {
   display: flex;
+  flex-direction: row; 
   justify-content: center;
   align-items: center;
-  color: #00c7b6;
-  font-size: 20px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #fff;
-    color: #00c7b6;
-  }
+  gap: 15px;
 }
 
-.fixed-footer {
-  background-color: #fff;
-  border-top: 1px solid #ddd;
-  padding: 15px 20px;
-  position: sticky;
-  bottom: 0;
 
-  .quantity-control {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
 
-    
 
-    .quantity-value {
-      font-size: 25px;
-      font-weight: bold;
-      text-align: center;
-      color: #000;
-    }
-  }
-
-  .modal-footer .btn-primary{
-    background-color: #00c7b6;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 8px;
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    transition: all 0.3s ease;
-
-    &:hover {
-      background-color: #00b3a3;
-    }
-  }
-}
-
-.btn-quantity {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      font-size: 20px;
-      font-weight: bold;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 2px solid #ddd;
-      background-color: #fff;
-      color: #bbb;
-      transition: all 0.3s ease;
-
-      &.active {
-        color: #00c7b6;
-        border-color: #00c7b6;
-        cursor: pointer;
-      }
-
-      &.disabled {
-        color: #ddd;
-        cursor: not-allowed;
-      }
-
-      &:not(.disabled):hover {
-        background-color: #f9f9f9; 
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-        transform: scale(1.1);
-      }
-    }
 </style>

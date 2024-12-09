@@ -1,4 +1,6 @@
 <script>
+import { store } from '../js/store';
+
 export default {
   props: {
     plate: {
@@ -12,6 +14,7 @@ export default {
       isModalVisible: true, 
       quantity: 1,
       selectedIngredients: [],
+      notification:null,
 
     };
   },
@@ -36,8 +39,21 @@ export default {
     },
     emitCloseModal() {
       this.$emit('closeModal')
-    }
-  }
+    },
+    addToCart() {
+      
+      store.addPlateToCart(this.plate, this.quantity, this.selectedIngredients);
+      this.notification = "Piatto aggiunto al carrello!";
+
+      // Hides the notification after 3 sec
+      setTimeout(() => {
+        this.notification = null;
+      }, 3000);
+
+      this.emitCloseModal();
+    },
+
+  },
 };
 </script>
 
@@ -48,6 +64,7 @@ export default {
 
       <!-- Modal close button -->
       <div class="modal-content p-4">
+        <div v-if="notification" class="notification">{{ notification }}</div>
         <div class="scrollable-content">
           <div class="modal-header">
             <button type="button" class="btn-close-custom" aria-label="Close" @click="emitCloseModal()">x</button>

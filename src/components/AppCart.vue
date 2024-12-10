@@ -12,6 +12,7 @@ export default {
   methods: {
     deleteCart() {
       store.platesInCart.splice(0, store.platesInCart.length);
+      localStorage.removeItem("platesInCart");
     },
     getOrderTotalPrice() {
       // calculate the amount of the total order inside of the client's cart

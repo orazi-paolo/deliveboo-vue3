@@ -66,7 +66,7 @@ export default {
           </div>
         </div>
       </div>
-      <!-- Modal -->
+      <!-- End Modal -->
     </section>
   </div>
 </template>

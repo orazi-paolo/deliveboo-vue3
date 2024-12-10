@@ -8,6 +8,7 @@ export default {
     return {
       modal: false,
       store,
+      showClearCartModal: false,
     };
   },
   props: {
@@ -28,8 +29,11 @@ export default {
 
       if (store.platesInCart.length > 0) {
         const isDifferentRestaurant = this.controlRestaurantId(plateObj);
+        // if guest adds a plate of a different restaurant
         if (isDifferentRestaurant) {
-          console.log("Blocca aggiunta. Mostra modale o avvisa l'utente.");
+          console.log("show modal");
+          // open the modal
+          this.showClearCartModal = true;
           return;
         }
       }
@@ -67,11 +71,20 @@ export default {
       // check if the restaurant_id of the new plate is different
       const findDifferentRestaurantId = store.platesInCart.some(plate => plateId != plate.restaurant_id)
       if (findDifferentRestaurantId) {
-        console.log("trovato piatto di un altro rist")
+        // console.log("trovato piatto di un altro rist")
         return true;
       }
       return false;
-    }
+    },
+    clearCart() {
+      // for modal button
+      store.platesInCart = [];
+      this.showClearCartModal = false;
+    },
+    cancelClearCart() {
+      // for modal button
+      this.showClearCartModal = false;
+    },
   },
   computed: {
     isVisible() {
@@ -102,6 +115,17 @@ export default {
       <PlateShow v-if="showModal" :plate="plateObj" @closeModal="toggleModal()" />
     </div>
   </li>
+
+  <!-- Modal to clear cart -->
+  <div v-if="showClearCartModal" class="modal-clear-cart">
+    <div class="modal-content">
+      <p>The cart contains a plate of other restaurant. You want to clear?</p>
+      <div class="modal-buttons-row">
+        <button @click="clearCart" class="btn-confirm">Clear current cart</button>
+        <button @click="cancelClearCart" class="btn-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -200,6 +224,77 @@ export default {
     .box-img,
     img {
       display: none;
+    }
+  }
+}
+
+.modal-clear-cart {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+
+  .modal-content {
+    background: #ffffff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    max-width: 320px;
+    width: 50%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    * {
+      font-size: 15px;
+    }
+
+    p {
+      color: #555555;
+      margin-bottom: 20px;
+      padding: 0 25px;
+    }
+
+    .modal-buttons-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+
+      .btn-cancel,
+      .btn-confirm {
+        flex: 1;
+        color: #ffffff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .btn-confirm {
+        background: #e74c3c;
+
+        &:hover {
+          background: #c0392b;
+        }
+      }
+
+      .btn-cancel {
+        background: #45CCBC;
+
+        &:hover {
+          background: #39a89d;
+        }
+      }
     }
   }
 }

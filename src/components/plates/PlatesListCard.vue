@@ -34,19 +34,23 @@ export default {
         plateInArray.quantity += 1;
         // icrease price plate in totalPrice with the value of quantity
         plateInArray.totalPrice = parseFloat(plateInArray.price) * plateInArray.quantity;
+        console.log("==========plateInArray to push in cart", plateInArray)
       } else {
         // if the plate is not cpntained in store.platesInCart push the plate as a new plate
-        store.platesInCart.push({
-          // push the plate as a object with:
-          // spred oprator of plateObj(parameter)
-          // with quantity and totalPrice
-
+        const newPlateObjToPush = {
           ...plateObj,
           quantity: 1,
           totalPrice: parseFloat(plateObj.price),
-        });
+        }
+        store.platesInCart.push(
+          // newPlateObjToPush =
+          // spred oprator of plateObj(parameter)
+          // with quantity and totalPrice
+          newPlateObjToPush,
+        );
+        console.log("==========newPlateObjToPush to push in cart", newPlateObjToPush)
       }
-      console.log("updated store.platesInCart", store.platesInCart)
+      // console.log("updated store.platesInCart", store.platesInCart)
     },
   },
   computed: {

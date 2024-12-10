@@ -26,7 +26,6 @@ export default {
         },
         putPlatesInLocalStorage() {
             localStorage.setItem('platesInCart', JSON.stringify(store.platesInCart))
-
         }
     },
     computed: {
@@ -40,9 +39,6 @@ export default {
             return JSON.parse(localStoredPlates)
         }
     },
-    created() {
-        this.localStoredPlates
-    }
 };
 </script>
 

@@ -26,6 +26,7 @@ export const store = reactive({
             }
         })
             .then(response => {
+                console.log("Dati ricevuti:", response.data.results);
                 console.log("======= Inizio chiamata API Restaurants Filtered======= ")
                 console.log(response.data.results)
                 this.restaurantsFiltered = response.data.results

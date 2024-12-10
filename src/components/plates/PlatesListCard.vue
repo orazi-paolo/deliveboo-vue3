@@ -25,6 +25,15 @@ export default {
     },
     addToCart(plateObj) {
       console.log("item to push in store.platesInCart", plateObj.id, plateObj.name)
+
+      if (store.platesInCart.length > 0) {
+        const isDifferentRestaurant = this.controlRestaurantId(plateObj);
+        if (isDifferentRestaurant) {
+          console.log("Blocca aggiunta. Mostra modale o avvisa l'utente.");
+          return;
+        }
+      }
+
       // check if plateObj is already contained in store.platesInCart
       const plateInArray = store.platesInCart.find(
         (item) => item.id === plateObj.id
@@ -52,6 +61,17 @@ export default {
       }
       // console.log("updated store.platesInCart", store.platesInCart)
     },
+    controlRestaurantId(plateObj) {
+      // restaurant_id of the new plate added in cart
+      const plateId = plateObj.restaurant_id;
+      // check if the restaurant_id of the new plate is different
+      const findDifferentRestaurantId = store.platesInCart.some(plate => plateId != plate.restaurant_id)
+      if (findDifferentRestaurantId) {
+        console.log("trovato piatto di un altro rist")
+        return true;
+      }
+      return false;
+    }
   },
   computed: {
     isVisible() {

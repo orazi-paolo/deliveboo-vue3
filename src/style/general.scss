@@ -19,6 +19,16 @@ a {
     color: $color-primary;
 }
 
+.btn.btn-turquoise{
+    background-color: $color-primary;
+    color: white;
+}
+.btn.btn-turquoise:hover{
+    background-color: $color-primary;
+    color: white;
+    filter: brightness(90%);
+}
+
 .container-custom {
     margin: 0 auto;
     padding: 0 10px;

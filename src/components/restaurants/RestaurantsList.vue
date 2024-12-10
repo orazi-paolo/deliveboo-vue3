@@ -17,7 +17,14 @@ export default {
 
     },
     computed: {
-
+        restaurantsFiltered() {
+            if (store.tipologiesIds.length > 1) {
+                return store.restaurantsFiltered.filter(restaurant => {
+                    return store.tipologiesIds.every(tipologyId => restaurant.tipologies.some(tipology => tipology.id === tipologyId))
+                })
+            }
+            return store.restaurantsFiltered
+        }
     },
     created() {
         // store.tipologiesIds = []
@@ -30,10 +37,15 @@ export default {
 <template>
     <section>
         <div class="p-2">
-            <h5>Search Results: "{{ store.restaurantsFiltered.length }}"</h5>
+            <h5>
+                Search Results:
+                <span class="turquoise">
+                    "{{ restaurantsFiltered.length }}"
+                </span>
+            </h5>
         </div>
         <ul class="row" id="restaurants-list">
-            <RestaurantsListCard v-for="restaurant in store.restaurantsFiltered" :key="restaurant.id"
+            <RestaurantsListCard v-for="restaurant in restaurantsFiltered" :key="restaurant.id"
                 :restaurant="restaurant" />
         </ul>
     </section>

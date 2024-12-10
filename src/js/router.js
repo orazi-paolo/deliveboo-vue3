@@ -4,7 +4,7 @@ import AppSingleRestaurant from '../pages/AppSingleRestaurant.vue'
 
 const routes = [
   { path: "/", component: AppHome, name: "home" },
-  { path: "/restaurants/:id", component: AppSingleRestaurant, name: "restaurants.show" },
+  { path: "/restaurants/:slug", component: AppSingleRestaurant, name: "restaurants.show" },
 ]
 
 const router = createRouter({

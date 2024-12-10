@@ -48,7 +48,7 @@ export default {
             <div class="title-section p-2 pb-0">
                 <h5 class="text-white">Restaurants</h5>
             </div>
-            <div class="row" v-if="store.isLoadingTipologies">
+            <div class="mb-5" v-if="store.isLoadingTipologies">
                 <AppTipologiesLoader />
             </div>
             <ul id="tipologies-list" class="row" v-else>

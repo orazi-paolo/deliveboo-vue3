@@ -26,7 +26,7 @@ export default {
 </script>
 
 <template>
-  <section v-if="!store.loaded">
+  <section v-if="store.isLoadingRestaurants && store.isLoadingTipologies">
     <AppLoader />
   </section>
 

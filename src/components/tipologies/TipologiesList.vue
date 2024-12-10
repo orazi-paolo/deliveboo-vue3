@@ -1,16 +1,22 @@
 <script>
 import TipologiesListCard from './TipologiesListCard.vue';
 import axios from 'axios';
+import { store } from '../../js/store';
+import AppTipologiesLoader from '../AppTipologiesLoader.vue';
+import AppLoader from '../AppLoader.vue';
 export default {
     name: "TipologiesList",
     data() {
         return {
             apiUrl: "http://127.0.0.1:8000/api/tipologies",
             listTipologies: [],
+            store
         };
     },
     components: {
+        AppTipologiesLoader,
         TipologiesListCard,
+        AppLoader
     },
     methods: {
         getTipologies() {
@@ -20,6 +26,7 @@ export default {
                     console.log(response.data.results)
                     this.listTipologies = response.data.results
                     console.log(this.listTipologies)
+                    store.isLoadingTipologies = false;
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -41,7 +48,10 @@ export default {
             <div class="title-section p-2 pb-0">
                 <h5 class="text-white">Restaurants</h5>
             </div>
-            <ul id="tipologies-list" class="row">
+            <div class="row" v-if="store.isLoadingTipologies">
+                <AppTipologiesLoader />
+            </div>
+            <ul id="tipologies-list" class="row" v-else>
                 <TipologiesListCard v-for="tipology in listTipologies" :key="tipology.id" :tipologyObj="tipology" />
             </ul>
         </div>

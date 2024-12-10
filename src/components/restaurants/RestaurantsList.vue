@@ -21,7 +21,7 @@ export default {
     },
     created() {
         // store.tipologiesIds = []
-        // store.getRestaurantsFiltered() commentato questa chiamata è stata fatta su AppHome.vue
+        // this.store.getRestaurantsFiltered() // commentato questa chiamata è stata fatta su AppHome.vue
         // console.log("store.restaurantsFiltered", store.restaurantsFiltered)
     }
 };

@@ -1,18 +1,20 @@
 <script>
 import axios from 'axios';
 import PlatesListCard from './PlatesListCard.vue';
-
+import AppLoader from '../AppLoader.vue';
 export default {
   name: "Plateslist",
   data() {
     return {
       apiUrl: "http://127.0.0.1:8000/api/restaurant",
       singleRestaurant: [],
+      isLoading: true
     }
 
   },
   components: {
-    PlatesListCard
+    PlatesListCard,
+    AppLoader
   },
   methods: {
     getRestaurant() {
@@ -21,6 +23,7 @@ export default {
           console.log(response.data.results.plates)
           this.singleRestaurant = response.data.results
           console.log(this.singleRestaurant)
+          this.isLoading = false
         })
         .catch(function (error) {
           console.log(error);
@@ -43,21 +46,26 @@ export default {
         </router-link>
       </div>
     </section>
-    <div class="restaurant-info d-flex align-items-center my-3">
-      <img v-if="singleRestaurant.image" class="img-fluid rounded-2 w-25 me-3" :src="singleRestaurant.image"
-        alt="Image of {{ singleRestaurant.name }}">
-      <img v-else class="img-fluid rounded-2 w-25 me-3" :src="singleRestaurant.image_placeholder"
-        alt="Image of {{ singleRestaurant.name }}">
-      <div>
-        <span class="badge me-2 my-1" :style="{ backgroundColor: tipology.color }"
-          v-for="tipology in singleRestaurant.tipologies" :key="tipology.id">{{
-            tipology.name }}</span>
-        <h3 class="fw-semibold">{{ singleRestaurant.name }}</h3>
+    <section v-if="isLoading">
+      <AppLoader />
+    </section>
+    <section v-else>
+      <div class="restaurant-info d-flex align-items-center my-3">
+        <img v-if="singleRestaurant.image" class="img-fluid rounded-2 w-25 me-3" :src="singleRestaurant.image"
+          alt="Image of {{ singleRestaurant.name }}">
+        <img v-else class="img-fluid rounded-2 w-25 me-3" :src="singleRestaurant.image_placeholder"
+          alt="Image of {{ singleRestaurant.name }}">
+        <div>
+          <span class="badge me-2 my-1" :style="{ backgroundColor: tipology.color }"
+            v-for="tipology in singleRestaurant.tipologies" :key="tipology.id">{{
+              tipology.name }}</span>
+          <h3 class="fw-semibold">{{ singleRestaurant.name }}</h3>
+        </div>
       </div>
-    </div>
-    <ul class="row" id="plates-list">
-      <PlatesListCard v-for="plate in singleRestaurant.plates" :key="plate.id" :plateObj="plate" />
-    </ul>
+      <ul class="row" id="plates-list">
+        <PlatesListCard v-for="plate in singleRestaurant.plates" :key="plate.id" :plateObj="plate" />
+      </ul>
+    </section>
   </section>
 </template>
 

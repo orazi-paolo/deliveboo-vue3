@@ -30,6 +30,19 @@ export default {
         });
     },
   },
+  // mounted() {
+  //   const slug = this.$route.params.slug;
+  //   console.log("Slug ricevuto:", slug); 
+  //   axios.get(`http://127.0.0.1:8000/api/restaurant/${slug}`)
+  //     .then(response => {
+  //       this.singleRestaurant = response.data.results;
+  //       this.isLoading = false;
+  //     })
+  //     .catch(error => {
+  //       console.log("Errore nella chiamata API:", error);
+  //       this.isLoading = false;
+  //     });
+  // },
   created() {
     this.getRestaurant();
   }

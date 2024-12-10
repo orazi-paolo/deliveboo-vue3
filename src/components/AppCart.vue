@@ -12,23 +12,36 @@ export default {
 
     },
     methods: {
-        deleteCart(){
+        deleteCart() {
             store.platesInCart.splice(0, store.platesInCart.length)
         },
-        getOrderTotalPrice(){
+        getOrderTotalPrice() {
             // calculate the amount of the total order inside of the client's cart
             let finalPrice = 0;
-            for(let i = 0; i < store.platesInCart.length; i++){
+            for (let i = 0; i < store.platesInCart.length; i++) {
                 const plate = store.platesInCart[i];
                 finalPrice += plate.totalPrice;
             }
             return finalPrice.toFixed(2)
+        },
+        putPlatesInLocalStorage() {
+            localStorage.setItem('platesInCart', JSON.stringify(store.platesInCart))
+
         }
     },
     computed: {
         hasOrders() {
             return store.platesInCart.length > 0;
+        },
+        localStoredPlates() {
+            this.putPlatesInLocalStorage()
+            const localStoredPlates = localStorage.getItem('platesInCart')
+            console.log(JSON.parse(localStoredPlates))
+            return JSON.parse(localStoredPlates)
         }
+    },
+    created() {
+        this.localStoredPlates
     }
 };
 </script>
@@ -38,12 +51,10 @@ export default {
         <div v-if="hasOrders" class="plates-in-cart">
             <div class="cart-top-card">
                 <h4>Your Order</h4>
-                <font-awesome-icon :icon="['fas', 'trash-can']" 
-                    class="fas-trash" @click="deleteCart"
-                />
+                <font-awesome-icon :icon="['fas', 'trash-can']" class="fas-trash" @click="deleteCart" />
             </div>
             <h4>Cart</h4>
-            <ul class="orders-list" v-for="(order, index) in store.platesInCart" :key="order.id">
+            <ul class="orders-list" v-for="(order, index) in localStoredPlates" :key="order.id">
                 <li class="single-order">
                     <div class="quantities">
                         x{{ order.quantity }}
@@ -66,7 +77,7 @@ export default {
             <div v-if="hasOrders" class="order-total">
                 <p>Total of the order</p>
                 <div class="order-total-price">
-                    {{ getOrderTotalPrice() }} 
+                    {{ getOrderTotalPrice() }}
                     <span>&euro;</span>
                 </div>
             </div>
@@ -94,15 +105,16 @@ export default {
     }
 
     .plates-in-cart {
-        .cart-top-card{
+        .cart-top-card {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 25px;
 
-            .fas-trash{
+            .fas-trash {
                 color: #45CCBC;
             }
+
             h4 {
                 font-size: 20px;
                 font-weight: 700;
@@ -168,17 +180,17 @@ export default {
         border-top: 1px solid rgb(230, 217, 217);
         padding: 10px 0;
 
-        .order-total{
+        .order-total {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 10px;
 
-            p{
+            p {
                 margin: 0;
             }
 
-            .order-total-price{
+            .order-total-price {
                 font-weight: 700;
             }
         }

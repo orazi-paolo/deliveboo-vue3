@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const store = reactive({
     // Variables
-    platesInCart: [],
+    platesInCart: JSON.parse(localStorage.getItem('platesInCart')) || [],
     tipologiesIds: [],
     restaurantsFiltered: [],
     // apiUrlRestaurants: "http://127.0.0.1:8000/api/restaurants",

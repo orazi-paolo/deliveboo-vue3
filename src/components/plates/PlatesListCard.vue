@@ -94,6 +94,7 @@ export default {
     clearCart() {
       // for modal button
       store.platesInCart = [];
+      localStorage.removeItem("platesInCart");
       this.showClearCartModal = false;
     },
     cancelClearCart() {
@@ -122,14 +123,26 @@ export default {
           <div class="price">{{ plateObj.price }}<span>&euro;</span></div>
         </div>
         <div class="box-img">
-          <img v-if="plateObj.image" :src="plateObj.image" :alt="`Image of ${plateObj.name}`" />
-          <img v-else :src="plateObj.image_placeholder" :alt="`Image of ${plateObj.name}`" />
+          <img
+            v-if="plateObj.image"
+            :src="plateObj.image"
+            :alt="`Image of ${plateObj.name}`"
+          />
+          <img
+            v-else
+            :src="plateObj.image_placeholder"
+            :alt="`Image of ${plateObj.name}`"
+          />
         </div>
       </div>
       <button class="btn-add-item" @click="addToCart(plateObj)">
         <span>+</span>
       </button>
-      <PlateShow v-if="showModal" :plate="plateObj" @closeModal="toggleModal()" />
+      <PlateShow
+        v-if="showModal"
+        :plate="plateObj"
+        @closeModal="toggleModal()"
+      />
     </div>
   </li>
 
@@ -155,7 +168,7 @@ export default {
   display: flex;
   height: 125px;
 
-  &>* {
+  & > * {
     flex-basis: 50%;
   }
 
@@ -168,7 +181,7 @@ export default {
     flex-grow: 1;
     cursor: pointer;
 
-    &>* {
+    & > * {
       flex-basis: 50%;
     }
   }

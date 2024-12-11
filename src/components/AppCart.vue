@@ -14,6 +14,7 @@ export default {
       store.platesInCart.splice(0, store.platesInCart.length);
       localStorage.removeItem("platesInCart");
     },
+
     getOrderTotalPrice() {
       // calculate the amount of the total order inside of the client's cart
       let finalPrice = 0;
@@ -23,8 +24,24 @@ export default {
       }
       return finalPrice.toFixed(2);
     },
+
     putPlatesInLocalStorage() {
       localStorage.setItem("platesInCart", JSON.stringify(store.platesInCart));
+    },
+
+    decrementPlates(clickedPlateId) {
+      store.platesInCart.forEach((order) => {
+        if (order.id === clickedPlateId && order.quantity >= 1) {
+          order.quantity -= 1;
+          order.totalPrice -= order.price;
+        }
+      });
+      store.platesInCart = store.platesInCart.filter((order) => {
+        if (order.id === clickedPlateId) {
+          return order.quantity > 0;
+        }
+        return true;
+      });
     },
   },
   computed: {
@@ -58,8 +75,9 @@ export default {
           class="single-order"
           v-for="order in localStoredPlates"
           :key="order.id"
+          @click="decrementPlates(order.id)"
         >
-          <div class="quantities">x{{ order.quantity }}</div>
+          <div class="quantities">x {{ order.quantity }}</div>
           <div class="order-info">
             <h6 class="text-center m-0">{{ order.name }}</h6>
           </div>

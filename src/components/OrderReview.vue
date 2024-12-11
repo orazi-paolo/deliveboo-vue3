@@ -26,13 +26,14 @@ export default {
 </script>
 
 <template>
-    <section id="OrderReview">
+    <section id="OrderReview" class="container">
         <div class="back-button">
             <!-- <router-link :to="{ name: 'restaurant-show', params: { slug: restaurant.slug } }">
                 <font-awesome-icon :icon="['fas', 'arrow-left']" />
                 <span class="back-button-text">Back to the restaurant</span>
             </router-link> -->
         </div>
+        <h4>Order summary:</h4>
         <div class="review-card">
             <ul class="orders-list" v-for="singlePlate in store.platesInCart" :key="singlePlate.id">
                 <li class="single-order">
@@ -80,6 +81,7 @@ export default {
 
         .single-order {
             display: flex;
+            align-items: center;
             padding: 10px;
             border: 1px solid rgb(230, 217, 217);
 
@@ -89,7 +91,7 @@ export default {
 
             .quantities,
             .order-price {
-                flex-basis: 10%;
+                flex-basis: 15%;
                 text-align: center;
             }
 
@@ -99,6 +101,7 @@ export default {
                 h5 {
                     font-size: 17px;
                     font-weight: 400;
+                    margin: 0;
                 }
             }
         }
@@ -106,10 +109,12 @@ export default {
 
     .review-order-footer {
         bottom: 0;
-        background-color: #00CBBD;
+        background-color: #fff;
         padding: 10px 0;
         display: flex;
         justify-content: center;
+        border: 1px solid #00CBBD;
+
 
         .review-order-footer-content {
             display: flex;
@@ -117,7 +122,7 @@ export default {
             gap: 15px;
 
             * {
-                color: white;
+                color: #00CBBD;
             }
 
             p {
@@ -125,7 +130,7 @@ export default {
             }
 
             .order-total-price {
-                font-weight: 700;
+                font-weight: 900;
             }
         }
     }

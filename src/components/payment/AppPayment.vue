@@ -83,31 +83,66 @@ export default {
 </script>
 
 <template>
-    <div class="checkout-page container mt-3 mb-3">
-        <h1>Checkout</h1>
-        <form @submit.prevent="processPayment" method="POST">
-            <div class="d-flex flex-column">
+    <div class="checkout-page container mt-3 mb-3" id="AppPayment">
+        <h4>Proceed to Payment</h4>
+        <form @submit.prevent="processPayment" method="POST" class="form-payment">
+            <div class="form-payment-content">
                 <input type="hidden" v-model="restaurantId">
 
-                <label for="card-holder">Card Holder Name</label>
-                <input id="card-holder" type="text" name="card-holder" v-model="cardHolder" required />
+                <label for="card-holder">*Card Holder Name</label>
+                <input id="card-holder" type="text" name="card-holder" v-model="cardHolder"
+                    placeholder="e.g. Mario Rossi" required />
 
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" v-model="email" required />
+                <label for="email">*Email</label>
+                <input id="email" name="email" type="email" v-model="email" placeholder="e.g. mario.rossi@example.com"
+                    required />
 
-                <label for="phone">Phone Number</label>
-                <input id="phone" name="phone" type="text" v-model="phone" required />
+                <label for="phone">*Phone Number</label>
+                <input id="phone" name="phone" type="text" v-model="phone" placeholder="e.g. +123456789" required />
 
-                <label for="address">Address</label>
-                <input id="address" name="address" type="text" v-model="address" required />
+                <label for="address">*Address</label>
+                <input id="address" name="address" type="text" v-model="address"
+                    placeholder="e.g. via Montenapoleone 123" required />
 
-                <label for="city">City</label>
-                <input id="city" name="city" type="text" v-model="city" required />
+                <label for="city">*City</label>
+                <input id="city" name="city" type="text" v-model="city" placeholder="e.g. Milano" required />
             </div>
             <div id="dropin-container"></div>
-            <button type="submit">Pay {{ total }}</button>
+            <button class="button-cart-order" type="submit">Pay {{ total }} &euro;</button>
         </form>
     </div>
 </template>
 
-<style scoped></style>
+<style lang="scss">
+#AppPayment {
+    .form-payment {
+        .form-payment-content {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+
+            label {
+                margin-left: 5px;
+                margin-bottom: 5px;
+            }
+
+            input {
+                padding: 5px 10px;
+                margin-bottom: 15px;
+            }
+        }
+
+        .button-cart-order,
+        .button-cart-empty {
+            width: 100%;
+            font-weight: 700;
+            border-color: transparent;
+            border-radius: 5px;
+            padding: 5px 0px;
+            background-color: #45ccbc;
+            color: #fff;
+            cursor: pointer;
+        }
+    }
+}
+</style>

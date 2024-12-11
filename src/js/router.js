@@ -2,10 +2,12 @@ import { createWebHistory, createRouter } from 'vue-router'
 import AppHome from '../pages/AppHome.vue'
 import AppSingleRestaurant from '../pages/AppSingleRestaurant.vue'
 import AppCheckout from '../pages/AppCheckout.vue'
+import PlatesList from '../components/plates/PlatesList.vue'
+import PlatesListCard from '../components/plates/PlatesListCard.vue'
 
 const routes = [
   { path: "/", component: AppHome, name: "home" },
-  { path: "/restaurants/:id", component: AppSingleRestaurant, name: "restaurants.show" },
+  { path: "/restaurants/:slug", component: AppSingleRestaurant, name: "restaurants.show" },
   { path: "/checkout", component: AppCheckout, name: "checkout" }
 ]
 

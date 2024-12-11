@@ -25,7 +25,7 @@ export default {
   <!-- card of single restaurant -->
   <li class="col-12 col-sm-6 col-md-4 col-lg-3 p-1 p-lg-2">
     <div id="restaurant-card">
-      <router-link :to="{ name: 'restaurants.show', params: { 'id': restaurant.id } }">
+      <router-link :to="{ name: 'restaurants.show', params: { 'slug': restaurant.slug } }">
         <div class=" box-img">
           <img v-if="restaurant.image" :src="restaurant.image" :alt="`Image of ${restaurant.name}`">
           <img v-else :src="restaurant.image_placeholder" :alt="`Image of ${restaurant.name}`">

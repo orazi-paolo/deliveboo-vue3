@@ -9,12 +9,11 @@ export default {
             store,
         };
     },
-    components: {
-
-    },
+    components: {},
     methods: {
         deleteCart() {
-            store.platesInCart.splice(0, store.platesInCart.length)
+            store.platesInCart.splice(0, store.platesInCart.length);
+            localStorage.removeItem("platesInCart");
         },
         getOrderTotalPrice() {
             // calculate the amount of the total order inside of the client's cart
@@ -23,14 +22,23 @@ export default {
                 const plate = store.platesInCart[i];
                 finalPrice += plate.totalPrice;
             }
-            return finalPrice.toFixed(2)
-        }
+            return finalPrice.toFixed(2);
+        },
+        putPlatesInLocalStorage() {
+            localStorage.setItem("platesInCart", JSON.stringify(store.platesInCart));
+        },
     },
     computed: {
         hasOrders() {
             return store.platesInCart.length > 0;
-        }
-    }
+        },
+        localStoredPlates() {
+            this.putPlatesInLocalStorage();
+            const localStoredPlates = localStorage.getItem("platesInCart");
+            console.log(JSON.parse(localStoredPlates));
+            return JSON.parse(localStoredPlates);
+        },
+    },
 };
 </script>
 
@@ -42,11 +50,9 @@ export default {
                 <font-awesome-icon :icon="['fas', 'trash-can']" class="fas-trash" @click="deleteCart" />
             </div>
             <h4>Cart</h4>
-            <ul class="orders-list" v-for="(order, index) in store.platesInCart" :key="order.id">
+            <ul class="orders-list" v-for="order in localStoredPlates" :key="order.id">
                 <li class="single-order">
-                    <div class="quantities">
-                        x{{ order.quantity }}
-                    </div>
+                    <div class="quantities">x{{ order.quantity }}</div>
                     <div class="order-info">
                         <h5>{{ order.name }}</h5>
                     </div>
@@ -91,7 +97,6 @@ export default {
     .plates-in-cart {
         flex-grow: 1;
         overflow-y: auto;
-
     }
 
     .plates-in-cart {
@@ -102,7 +107,7 @@ export default {
             margin-bottom: 25px;
 
             .fas-trash {
-                color: #45CCBC;
+                color: #45ccbc;
             }
 
             h4 {
@@ -155,7 +160,7 @@ export default {
         gap: 10px;
 
         * {
-            color: #ABADAD;
+            color: #abadad;
         }
 
         .fas-cart {
@@ -195,14 +200,14 @@ export default {
         }
 
         .button-cart-order {
-            background-color: #45CCBC;
+            background-color: #45ccbc;
             color: #fff;
             cursor: pointer;
         }
 
         .button-cart-empty {
-            background-color: #E2E5E5;
-            color: #ABADAD;
+            background-color: #e2e5e5;
+            color: #abadad;
             cursor: not-allowed;
         }
     }

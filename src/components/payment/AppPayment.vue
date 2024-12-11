@@ -12,7 +12,7 @@ export default {
             // importo del pagamento esempio da passare poi come prop
             cardHolder: "",
             // nome del titolare della carta
-            total: 30.00,
+            total: store.totalPrice,
             // istanza del widget Drop-in
             instance: null,
             // email del cliente

@@ -14,15 +14,6 @@ export default {
       store.platesInCart.splice(0, store.platesInCart.length);
       localStorage.removeItem("platesInCart");
     },
-    getOrderTotalPrice() {
-      // calculate the amount of the total order inside of the client's cart
-      let finalPrice = 0;
-      for (let i = 0; i < store.platesInCart.length; i++) {
-        const plate = store.platesInCart[i];
-        finalPrice += plate.totalPrice;
-      }
-      return finalPrice.toFixed(2);
-    },
     putPlatesInLocalStorage() {
       localStorage.setItem("platesInCart", JSON.stringify(store.platesInCart));
     },
@@ -37,6 +28,12 @@ export default {
       console.log(JSON.parse(localStoredPlates));
       return JSON.parse(localStoredPlates);
     },
+    totalPrice() {
+      return store.totalPrice;
+    },
+  },
+  created() {
+    this.store.getOrderTotalPrice(); // Chiama il metodo del tuo store per il totale
   },
 };
 </script>
@@ -46,18 +43,10 @@ export default {
     <div v-if="hasOrders" class="plates-in-cart">
       <div class="cart-top-card">
         <h4>Your Order</h4>
-        <font-awesome-icon
-          :icon="['fas', 'trash-can']"
-          class="fas-trash"
-          @click="deleteCart"
-        />
+        <font-awesome-icon :icon="['fas', 'trash-can']" class="fas-trash" @click="deleteCart" />
       </div>
       <h4>Cart</h4>
-      <ul
-        class="orders-list"
-        v-for="order in localStoredPlates"
-        :key="order.id"
-      >
+      <ul class="orders-list" v-for="order in localStoredPlates" :key="order.id">
         <li class="single-order">
           <div class="quantities">x{{ order.quantity }}</div>
           <div class="order-info">
@@ -78,13 +67,15 @@ export default {
       <div v-if="hasOrders" class="order-total">
         <p>Total of the order</p>
         <div class="order-total-price">
-          {{ getOrderTotalPrice() }}
+          {{ totalPrice.toFixed(2) }}
           <span>&euro;</span>
         </div>
       </div>
-      <button :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'">
-        Go to payment
-      </button>
+      <router-link :to="{ name: 'checkout' }">
+        <button :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'">
+          Go to payment
+        </button>
+      </router-link>
     </div>
   </div>
 </template>

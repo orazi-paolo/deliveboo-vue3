@@ -2,6 +2,8 @@
 import dropin from "braintree-web-drop-in";
 import axios from "axios";
 import { store } from '../../js/store';
+import { faComputer } from "@fortawesome/free-solid-svg-icons";
+import { computed } from "vue";
 
 export default {
     data() {
@@ -22,7 +24,7 @@ export default {
             // città del cliente
             city: "",
             // id del ristorante
-            restaurantId: store.platesInCart[0].restaurant_id,
+            allPlates: store.platesInCart,
         };
     },
     methods: {
@@ -32,7 +34,7 @@ export default {
                 if (err) {
                     console.error("Errore nel recupero del nonce:", err);
                     return;
-                }
+                };
 
                 // invio del nonce totale e nome del titolare della carta al backend
                 axios.post("http://127.0.0.1:8000/api/checkout", {
@@ -43,7 +45,8 @@ export default {
                     phone_number: this.phone, // Numero di telefono del cliente
                     address: this.address, // Indirizzo del cliente
                     city: this.city, // Città del cliente
-                    restaurant_id: this.restaurantId, // Id del ristorante
+                    restaurant_id: this.allPlates[0].restaurant_id, // Id del ristorante
+                    plates: this.allPlates, // Piatti ordinati
                 })
                     .then((response) => {
                         alert(response.data.message); // Mostro messaggio di successo
@@ -74,7 +77,7 @@ export default {
             .catch((error) => {
                 console.error("Errore nel recupero del token:", error);
             });
-    }
+    },
 };
 </script>
 

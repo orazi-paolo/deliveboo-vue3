@@ -111,8 +111,8 @@ p {
 }
 
 .btn-primary {
-  background-color: #00c7b6;
-  color: white;
+  background-color: #00c7b6!important;
+  color: white!important;
   font-size: 16px;
   font-weight: bold;
   border-radius: 8px;

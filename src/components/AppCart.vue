@@ -53,17 +53,17 @@ export default {
         />
       </div>
       <h4>Cart</h4>
-      <ul
-        class="orders-list"
-        v-for="order in localStoredPlates"
-        :key="order.id"
-      >
-        <li class="single-order">
+      <ul class="orders-list">
+        <li
+          class="single-order"
+          v-for="order in localStoredPlates"
+          :key="order.id"
+        >
           <div class="quantities">x{{ order.quantity }}</div>
           <div class="order-info">
-            <h5>{{ order.name }}</h5>
+            <h6 class="text-center m-0">{{ order.name }}</h6>
           </div>
-          <div class="order-price">
+          <div class="order-price text-end">
             {{ order.totalPrice.toFixed(2) }} <span>&euro;</span>
           </div>
         </li>
@@ -131,9 +131,12 @@ export default {
       overflow-y: auto;
 
       .single-order {
+        padding: 5px 10px;
         display: flex;
-        padding: 10px;
         border: 1px solid rgb(230, 217, 217);
+        border-radius: 4px;
+        cursor: pointer;
+        margin-bottom: 5px;
 
         &:hover {
           background-color: #eee;
@@ -145,11 +148,6 @@ export default {
 
         .order-info {
           flex-grow: 1;
-
-          h5 {
-            font-size: 17px;
-            font-weight: 400;
-          }
         }
 
         .order-price {

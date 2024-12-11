@@ -11,6 +11,7 @@ export const store = reactive({
     // loader
     isLoadingRestaurants: true,
     isLoadingTipologies: true,
+    totalPrice: 0,
 
     // Methods
     joinTipologiesIds() {
@@ -57,7 +58,17 @@ export const store = reactive({
                 quantity,
                 ingredients: selectedIngredients,
                 totalPrice: plate.price * quantity,
+                restaurant_id: plate.restaurant_id
             });
         }
-    }
+    },
+    getOrderTotalPrice() {
+        // in totalPrice calculate the amount of the total order inside of the client's cart
+        let finalPrice = 0;
+        for (let i = 0; i < store.platesInCart.length; i++) {
+            const plate = store.platesInCart[i];
+            finalPrice += plate.totalPrice;
+        }
+        this.totalPrice = finalPrice;
+    },
 })

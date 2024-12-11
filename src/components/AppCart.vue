@@ -1,4 +1,5 @@
 <script>
+import { RouterLink } from "vue-router";
 import { store } from "../js/store.js";
 
 export default {
@@ -96,13 +97,15 @@ export default {
       <div v-if="hasOrders" class="order-total">
         <p>Total of the order</p>
         <div class="order-total-price">
-          {{ getOrderTotalPrice() }}
+          {{ totalPrice.toFixed(2) }}
           <span>&euro;</span>
         </div>
       </div>
-      <button :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'">
-        Go to payment
-      </button>
+      <router-link :to="{ name: 'checkout' }">
+        <button :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'">
+          Go to payment
+        </button>
+      </router-link>
     </div>
   </div>
 </template>

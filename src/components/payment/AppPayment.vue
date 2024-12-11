@@ -25,6 +25,7 @@ export default {
             city: "",
             // id del ristorante
             allPlates: store.platesInCart,
+            restaurantId: store.platesInCart[0].restaurant_id,
         };
     },
     methods: {
@@ -45,7 +46,7 @@ export default {
                     phone_number: this.phone, // Numero di telefono del cliente
                     address: this.address, // Indirizzo del cliente
                     city: this.city, // Città del cliente
-                    restaurant_id: this.allPlates[0].restaurant_id, // Id del ristorante
+                    restaurant_id: this.restaurantId, // Id del ristorante
                     plates: this.allPlates, // Piatti ordinati
                 })
                     .then((response) => {

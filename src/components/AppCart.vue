@@ -43,6 +43,8 @@ export default {
         }
         return true;
       });
+      if (store.platesInCart.length === 0)
+        localStorage.removeItem("platesInCart");
     },
   },
   computed: {

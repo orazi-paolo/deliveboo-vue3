@@ -57,6 +57,7 @@ export default {
       <!-- Section for mobile app downloads -->
       <div class="take-deliveboo mb-5 text-center">
         <h3 class="text-uppercase">Take DeliveBoo with you</h3>
+        <p class="mb-4">Download our app for the best food delivery experience!</p>
         <div class="d-flex justify-content-center gap-3">
           <img src="/public/images/appstore.jpeg" alt="App Store" class="store-logo">
           <img src="/public/images/googleplay.jpeg" alt="Google Play" class="store-logo">
@@ -89,18 +90,19 @@ export default {
 <style lang="scss">
 
 footer {
-  background-color: #2c2c2c;
+  background-color: linear-gradient(135deg, #2c2c2c, #1e1e1e);
   color: #f1f1f1;
   padding: 3rem 0;
 
   .border-top {
     border-top: 1px solid #444;
     margin-top: 2rem;
+    padding-top: 1.5rem;
   }
 
   .social-icons {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
 
     .icon {
       font-size: 1.5rem;
@@ -131,6 +133,12 @@ footer {
   }
 
   .take-deliveboo {
+    text-align: center;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+
     h5 {
       font-weight: 700;
       font-size: 1.2rem;
@@ -138,9 +146,14 @@ footer {
       margin-bottom: 1rem;
     }
 
+    p {
+    margin: 0 auto; 
+    max-width: 500px;
+    }
+
     .store-logo {
       display: inline-block;
-      margin: 10px; 
+      margin: 0 10px; 
       border-radius: 10px; 
       border: 2px solid #ddd; 
       padding: 5px; 
@@ -164,6 +177,11 @@ footer {
       padding: 1.5rem;
       border-radius: 0.5rem;
       text-align: left; 
+
+      &:hover {
+      background-color: #3a3a3a; // Cambia il colore al passaggio del mouse
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Aggiungi un'ombra per l'effetto hover
+  }
 
       h5 {
         font-size: 1.4rem;

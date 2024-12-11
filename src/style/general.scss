@@ -1,6 +1,8 @@
+// Import
 @import url(https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic);
 @import "./_variables.scss";
 
+// Generics
 html {
     scroll-behavior: smooth;
 }
@@ -15,6 +17,11 @@ a {
     display: block;
 }
 
+img{
+    max-width: 100%;
+}
+
+// Utils
 .turquoise {
     color: $color-primary;
 }
@@ -22,11 +29,11 @@ a {
 .btn.btn-turquoise{
     background-color: $color-primary;
     color: white;
-}
-.btn.btn-turquoise:hover{
-    background-color: $color-primary;
-    color: white;
-    filter: brightness(90%);
+    &:hover{
+        background-color: $color-primary;
+        color: white;
+        filter: brightness(90%);
+    }
 }
 
 .container-custom {

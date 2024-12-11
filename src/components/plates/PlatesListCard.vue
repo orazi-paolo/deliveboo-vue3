@@ -1,6 +1,6 @@
 <script>
-import PlateShow from '../PlateShow.vue';
-import { store } from '../../js/store.js';
+import PlateShow from "../PlateShow.vue";
+import { store } from "../../js/store.js";
 
 export default {
   name: "PlatesListCard",
@@ -18,14 +18,18 @@ export default {
     },
   },
   components: {
-    PlateShow
+    PlateShow,
   },
   methods: {
     toggleModal() {
-      return this.modal = !this.modal
+      return (this.modal = !this.modal);
     },
     addToCart(plateObj) {
-      console.log("item to push in store.platesInCart", plateObj.id, plateObj.name)
+      console.log(
+        "item to push in store.platesInCart",
+        plateObj.id,
+        plateObj.name
+      );
 
       if (store.platesInCart.length > 0) {
         const isDifferentRestaurant = this.controlRestaurantId(plateObj);
@@ -46,22 +50,26 @@ export default {
         // icrease quantity
         plateInArray.quantity += 1;
         // icrease price plate in totalPrice with the value of quantity
-        plateInArray.totalPrice = parseFloat(plateInArray.price) * plateInArray.quantity;
-        console.log("==========plateInArray to push in cart", plateInArray)
+        plateInArray.totalPrice =
+          parseFloat(plateInArray.price) * plateInArray.quantity;
+        console.log("==========plateInArray to push in cart", plateInArray);
       } else {
         // if the plate is not cpntained in store.platesInCart push the plate as a new plate
         const newPlateObjToPush = {
           ...plateObj,
           quantity: 1,
           totalPrice: parseFloat(plateObj.price),
-        }
+        };
         store.platesInCart.push(
           // newPlateObjToPush =
           // spred oprator of plateObj(parameter)
           // with quantity and totalPrice
-          newPlateObjToPush,
+          newPlateObjToPush
         );
-        console.log("==========newPlateObjToPush to push in cart", newPlateObjToPush)
+        console.log(
+          "==========newPlateObjToPush to push in cart",
+          newPlateObjToPush
+        );
       }
       // console.log("updated store.platesInCart", store.platesInCart)
     },
@@ -69,7 +77,9 @@ export default {
       // restaurant_id of the new plate added in cart
       const plateId = plateObj.restaurant_id;
       // check if the restaurant_id of the new plate is different
-      const findDifferentRestaurantId = store.platesInCart.some(plate => plateId != plate.restaurant_id)
+      const findDifferentRestaurantId = store.platesInCart.some(
+        (plate) => plateId != plate.restaurant_id
+      );
       if (findDifferentRestaurantId) {
         // console.log("trovato piatto di un altro rist")
         return true;
@@ -91,10 +101,10 @@ export default {
       return this.plateObj.visible === true;
     },
     showModal() {
-      return this.modal
-    }
-  }
-}
+      return this.modal;
+    },
+  },
+};
 </script>
 
 <template>
@@ -107,12 +117,26 @@ export default {
           <div class="price">{{ plateObj.price }}<span>&euro;</span></div>
         </div>
         <div class="box-img">
-          <img v-if="plateObj.image" :src="plateObj.image" :alt="`Image of ${plateObj.name}`">
-          <img v-else :src="plateObj.image_placeholder" :alt="`Image of ${plateObj.name}`">
+          <img
+            v-if="plateObj.image"
+            :src="plateObj.image"
+            :alt="`Image of ${plateObj.name}`"
+          />
+          <img
+            v-else
+            :src="plateObj.image_placeholder"
+            :alt="`Image of ${plateObj.name}`"
+          />
         </div>
       </div>
-      <button class="btn-add-item" @click="addToCart(plateObj)"><span>+</span></button>
-      <PlateShow v-if="showModal" :plate="plateObj" @closeModal="toggleModal()" />
+      <button class="btn-add-item" @click="addToCart(plateObj)">
+        <span>+</span>
+      </button>
+      <PlateShow
+        v-if="showModal"
+        :plate="plateObj"
+        @closeModal="toggleModal()"
+      />
     </div>
   </li>
 
@@ -121,7 +145,9 @@ export default {
     <div class="modal-content">
       <p>The cart contains a plate of other restaurant. You want to clear?</p>
       <div class="modal-buttons-row">
-        <button @click="clearCart" class="btn-confirm">Clear current cart</button>
+        <button @click="clearCart" class="btn-confirm">
+          Clear current cart
+        </button>
         <button @click="cancelClearCart" class="btn-cancel">Cancel</button>
       </div>
     </div>
@@ -135,10 +161,8 @@ export default {
   border-radius: 7px;
   display: flex;
   height: 125px;
-  max-height: 125px;
-  overflow: hidden;
 
-  &>* {
+  & > * {
     flex-basis: 50%;
   }
 
@@ -151,11 +175,9 @@ export default {
     flex-grow: 1;
     cursor: pointer;
 
-    &>* {
+    & > * {
       flex-basis: 50%;
     }
-
-
   }
 
   .info-plate-card {
@@ -179,17 +201,15 @@ export default {
   }
 
   .box-img {
-    // flex-basis: 30%;
-    width: 70px;
-
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 1px 1px 5px gray;
     img {
-      display: block;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-position: center;
     }
   }
-
 
   .box-img,
   .btn-add-item {
@@ -203,7 +223,7 @@ export default {
     margin: 0px 0px 0px 10px;
 
     span {
-      color: #70C8BF;
+      color: #70c8bf;
       font-size: 20px;
     }
 
@@ -214,16 +234,6 @@ export default {
         color: #68a19c;
         font-size: 25px;
       }
-    }
-  }
-}
-
-@media screen and (max-width: 512px) {
-  #plate-card {
-
-    .box-img,
-    img {
-      display: none;
     }
   }
 }
@@ -289,7 +299,7 @@ export default {
       }
 
       .btn-cancel {
-        background: #45CCBC;
+        background: #45ccbc;
 
         &:hover {
           background: #39a89d;

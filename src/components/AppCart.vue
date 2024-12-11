@@ -97,7 +97,7 @@ export default {
       <div v-if="hasOrders" class="order-total">
         <p>Total of the order</p>
         <div class="order-total-price">
-          {{ totalPrice.toFixed(2) }}
+          {{ store.totalPrice.toFixed(2) }}
           <span>&euro;</span>
         </div>
       </div>

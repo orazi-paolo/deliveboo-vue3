@@ -57,6 +57,7 @@ export const store = reactive({
                 quantity,
                 ingredients: selectedIngredients,
                 totalPrice: plate.price * quantity,
+                restaurant_id: plate.restaurant_id
             });
         }
     }

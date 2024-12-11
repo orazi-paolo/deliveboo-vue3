@@ -41,7 +41,6 @@ export default {
           return;
         }
       }
-
       // check if plateObj is already contained in store.platesInCart
       const plateInArray = store.platesInCart.find(
         (item) => item.id === plateObj.id
@@ -71,6 +70,12 @@ export default {
           newPlateObjToPush
         );
       }
+      // Update the total price in the store without reduce
+      let total = 0;
+      for (let i = 0; i < store.platesInCart.length; i++) {
+        total += store.platesInCart[i].totalPrice;
+      }
+      store.totalPrice = total;
       // console.log("updated store.platesInCart", store.platesInCart)
     },
     controlRestaurantId(plateObj) {
@@ -117,26 +122,14 @@ export default {
           <div class="price">{{ plateObj.price }}<span>&euro;</span></div>
         </div>
         <div class="box-img">
-          <img
-            v-if="plateObj.image"
-            :src="plateObj.image"
-            :alt="`Image of ${plateObj.name}`"
-          />
-          <img
-            v-else
-            :src="plateObj.image_placeholder"
-            :alt="`Image of ${plateObj.name}`"
-          />
+          <img v-if="plateObj.image" :src="plateObj.image" :alt="`Image of ${plateObj.name}`" />
+          <img v-else :src="plateObj.image_placeholder" :alt="`Image of ${plateObj.name}`" />
         </div>
       </div>
       <button class="btn-add-item" @click="addToCart(plateObj)">
         <span>+</span>
       </button>
-      <PlateShow
-        v-if="showModal"
-        :plate="plateObj"
-        @closeModal="toggleModal()"
-      />
+      <PlateShow v-if="showModal" :plate="plateObj" @closeModal="toggleModal()" />
     </div>
   </li>
 
@@ -162,7 +155,7 @@ export default {
   display: flex;
   height: 125px;
 
-  & > * {
+  &>* {
     flex-basis: 50%;
   }
 
@@ -175,7 +168,7 @@ export default {
     flex-grow: 1;
     cursor: pointer;
 
-    & > * {
+    &>* {
       flex-basis: 50%;
     }
   }
@@ -204,6 +197,7 @@ export default {
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 1px 1px 5px gray;
+
     img {
       width: 100%;
       height: 100%;

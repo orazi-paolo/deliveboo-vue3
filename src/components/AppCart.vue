@@ -38,6 +38,12 @@ export default {
             console.log(JSON.parse(localStoredPlates));
             return JSON.parse(localStoredPlates);
         },
+        totalPrice() {
+            return store.totalPrice;
+        },
+    },
+    created() {
+        this.store.getOrderTotalPrice(); // Chiama il metodo del tuo store per il totale
     },
 };
 </script>
@@ -71,13 +77,15 @@ export default {
             <div v-if="hasOrders" class="order-total">
                 <p>Total of the order</p>
                 <div class="order-total-price">
-                    {{ getOrderTotalPrice() }}
+                    {{ totalPrice.toFixed(2) }}
                     <span>&euro;</span>
                 </div>
             </div>
-            <RouterLink :to="{ 'name': 'checkout' }" :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'">Go
-                to
-                payment</routerLink>
+            <router-link :to="{ name: 'checkout' }">
+                <button :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'">
+                    Go to payment
+                </button>
+            </router-link>
         </div>
     </div>
 </template>

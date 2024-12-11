@@ -21,8 +21,15 @@ export default {
 <template>
     <section id="AppCheckout">
         <div class="container-custom my-4"> <!-- to costumize container-custom go to style/general.scss -->
-            <OrderReview />
-            <AppPayment />
+            <h1 class="text-center">Checkout</h1>
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <OrderReview />
+                </div>
+                <div class="col-12 col-lg-6">
+                    <AppPayment />
+                </div>
+            </div>
         </div>
     </section>
 </template>

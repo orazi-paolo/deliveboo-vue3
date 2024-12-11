@@ -26,7 +26,6 @@ export default {
     },
     addToCart(plateObj) {
       console.log("item to push in store.platesInCart", plateObj.id, plateObj.name)
-
       if (store.platesInCart.length > 0) {
         const isDifferentRestaurant = this.controlRestaurantId(plateObj);
         // if guest adds a plate of a different restaurant
@@ -37,7 +36,6 @@ export default {
           return;
         }
       }
-
       // check if plateObj is already contained in store.platesInCart
       const plateInArray = store.platesInCart.find(
         (item) => item.id === plateObj.id
@@ -55,14 +53,15 @@ export default {
           quantity: 1,
           totalPrice: parseFloat(plateObj.price),
         }
-        store.platesInCart.push(
-          // newPlateObjToPush =
-          // spred oprator of plateObj(parameter)
-          // with quantity and totalPrice
-          newPlateObjToPush,
-        );
+        store.platesInCart.push(newPlateObjToPush);
         console.log("==========newPlateObjToPush to push in cart", newPlateObjToPush)
       }
+      // Update the total price in the store without reduce
+      let total = 0;
+      for (let i = 0; i < store.platesInCart.length; i++) {
+        total += store.platesInCart[i].totalPrice;
+      }
+      store.totalPrice = total;
       // console.log("updated store.platesInCart", store.platesInCart)
     },
     controlRestaurantId(plateObj) {

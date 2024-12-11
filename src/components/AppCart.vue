@@ -45,6 +45,8 @@ export default {
       });
       if (store.platesInCart.length === 0)
         localStorage.removeItem("platesInCart");
+
+      store.getOrderTotalPrice();
     },
   },
   computed: {

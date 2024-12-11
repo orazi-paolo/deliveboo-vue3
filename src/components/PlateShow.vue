@@ -1,21 +1,19 @@
 <script>
-import { store } from '../js/store';
+import { store } from "../js/store";
 
 export default {
   props: {
     plate: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
-
-      isModalVisible: true, 
+      isModalVisible: true,
       quantity: 1,
       selectedIngredients: [],
-      notification:null,
-
+      notification: null,
     };
   },
 
@@ -27,7 +25,7 @@ export default {
 
   methods: {
     close() {
-      this.$router.push('/');
+      this.$router.push("/");
     },
     increaseQuantity() {
       this.quantity++;
@@ -38,12 +36,12 @@ export default {
       }
     },
     emitCloseModal() {
-      this.$emit('closeModal')
+      this.$emit("closeModal");
     },
     addToCart() {
-      
       store.addPlateToCart(this.plate, this.quantity, this.selectedIngredients);
       this.notification = "Piatto aggiunto al carrello!";
+      store.getOrderTotalPrice();
 
       // Hides the notification after 3 sec
       setTimeout(() => {
@@ -52,65 +50,112 @@ export default {
 
       this.emitCloseModal();
     },
-
   },
 };
 </script>
 
 <template>
-
-  <div class="modal d-block" :id="`#exampeModal-${plate.id}`" tabindex="-1" aria-labelledby="exampleModalLabel" :aria-hidden="!isModalVisible">
+  <div
+    class="modal d-block"
+    :id="`#exampeModal-${plate.id}`"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    :aria-hidden="!isModalVisible"
+  >
     <div class="modal-dialog">
-
       <!-- Modal close button -->
       <div class="modal-content p-4">
         <div v-if="notification" class="notification">{{ notification }}</div>
         <div class="scrollable-content">
           <div class="modal-header">
-            <button type="button" class="btn-close-custom" aria-label="Close" @click="emitCloseModal()">x</button>
+            <button
+              type="button"
+              class="btn-close-custom"
+              aria-label="Close"
+              @click="emitCloseModal()"
+            >
+              x
+            </button>
           </div>
           <div class="modal-body p-0">
             <div class="modal-image-wrapper">
-              <img :src="plate.image || plate.image_placeholder" alt="Plate Image" class="modal-image" />
+              <img
+                :src="plate.image || plate.image_placeholder"
+                alt="Plate Image"
+                class="modal-image"
+              />
             </div>
             <div class="modal-content-wrapper p-4">
-            <h2 class="h4 fw-bold mb-3">{{ plate.name }}</h2>
-            <p class="text-muted mb-4">{{ plate.description }}</p>
-            <hr>
-            <div class="ingredient-section">
-              <h5 class="h6 fw-bold mb-3">Ingredients</h5>
-              <hr>
-              <div class="ingredient-option" v-for="ingrediente in plate.ingredients" :key="ingrediente" :class="{ 'selected': selectedIngredients.includes(ingrediente) }">
-                <input type="checkbox" :id="ingrediente" class="form-check-input" v-model="selectedIngredients" :value="ingrediente" />
-                <label class="form-check-label" :for="ingrediente"> {{ ingrediente }} </label>
+              <h2 class="h4 fw-bold mb-3">{{ plate.name }}</h2>
+              <p class="text-muted mb-4">{{ plate.description }}</p>
+              <hr />
+              <div class="ingredient-section">
+                <h5 class="h6 fw-bold mb-3">Ingredients</h5>
+                <hr />
+                <div
+                  class="ingredient-option"
+                  v-for="ingrediente in plate.ingredients"
+                  :key="ingrediente"
+                  :class="{
+                    selected: selectedIngredients.includes(ingrediente),
+                  }"
+                >
+                  <input
+                    type="checkbox"
+                    :id="ingrediente"
+                    class="form-check-input"
+                    v-model="selectedIngredients"
+                    :value="ingrediente"
+                  />
+                  <label class="form-check-label" :for="ingrediente">
+                    {{ ingrediente }}
+                  </label>
+                </div>
               </div>
             </div>
-          </div>
           </div>
         </div>
-            <!-- Quantity control -->
-            <div class="quantity-payment-container">
-              <div class="quantity-control">
-                <button class="btn-quantity" :class="{ active: quantity >1, disabled: quantity === 1  } "@click="decreaseQuantity" :disabled="quantity === 1" > - </button>
-                <span class="quantity-value">{{ quantity }}</span>
-                <button class="btn-quantity" :class="{ active: true }" @click="increaseQuantity"> + </button>
-              </div>
-              <button type="button" class="btn btn-primary w-100" @click="addToCart"> Add for {{ totalPrice }} € </button>
-            </div>
+        <!-- Quantity control -->
+        <div class="quantity-payment-container">
+          <div class="quantity-control">
+            <button
+              class="btn-quantity"
+              :class="{ active: quantity > 1, disabled: quantity === 1 }"
+              @click="decreaseQuantity"
+              :disabled="quantity === 1"
+            >
+              -
+            </button>
+            <span class="quantity-value">{{ quantity }}</span>
+            <button
+              class="btn-quantity"
+              :class="{ active: true }"
+              @click="increaseQuantity"
+            >
+              +
+            </button>
           </div>
+          <button
+            type="button"
+            class="btn btn-primary w-100"
+            @click="addToCart"
+          >
+            Add for {{ totalPrice }} €
+          </button>
         </div>
       </div>
+    </div>
+  </div>
 </template>
 
 <style lang="scss">
-
 h2,
 p {
   text-align: left;
   font-size: 20px;
 }
 
-.btn-primary {
+.btn.btn-primary {
   background-color: #00c7b6;
   color: white;
   font-size: 16px;
@@ -183,7 +228,6 @@ p {
   padding: 30px;
 }
 
-
 .scrollable-content {
   flex-grow: 1;
   overflow-y: auto;
@@ -232,7 +276,7 @@ p {
   .ingredient-option {
     display: flex;
     align-items: center;
-    padding:10px;
+    padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -265,10 +309,10 @@ p {
 
 .quantity-payment-container {
   position: sticky;
-  bottom: 0; 
-  background-color: white; 
-  padding: 15px; 
-  border-top: 1px solid #ddd; 
+  bottom: 0;
+  background-color: white;
+  padding: 15px;
+  border-top: 1px solid #ddd;
   z-index: 10;
 }
 
@@ -282,25 +326,24 @@ p {
 }
 
 .modal-body {
-  padding: 0; 
-  margin:0;
+  padding: 0;
+  margin: 0;
 }
 
 .modal-image-wrapper {
-  width: 100%; 
+  width: 100%;
   height: 50vh;
   overflow: hidden;
 }
 
 .modal-image {
-  width: 100%; 
-  height: 100%; 
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  display: block; 
+  display: block;
 }
 
 .modal-content-wrapper {
-  padding: 20px; 
-
+  padding: 20px;
 }
 </style>

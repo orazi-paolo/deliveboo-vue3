@@ -12,7 +12,9 @@ export default {
 
     },
     methods: {
-
+        goBackPage() {
+          this.$router.back();
+        },
     },
     computed: {
         totalPrice() {
@@ -27,18 +29,22 @@ export default {
 
 <template>
     <section id="OrderReview" class="container">
-        <div class="back-button">
-            <!-- <router-link :to="{ name: 'restaurant-show', params: { slug: restaurant.slug } }">
-                <font-awesome-icon :icon="['fas', 'arrow-left']" />
-                <span class="back-button-text">Back to the restaurant</span>
-            </router-link> -->
-        </div>
-        <div class="restaurant-info">
-            <div class="img-box">
-                <img src="" alt="">
+        <!-- back button -->
+        <button class="back-button" @click="goBackPage">
+            <font-awesome-icon :icon="['fas', 'arrow-left']" />
+            <span class="back-button-text">Back to the restaurant</span>   
+        </button>
+        <!-- restaurant infos -->
+        <div class="restaurant-info d-flex align-items-center mb-2 mt-3">
+            <img v-if="store.platesInCart[0].restaurant.image" class="img-fluid rounded-2 w-25 me-3" :src="store.platesInCart[0].restaurant.image"
+            alt="Image of {{ singleRestaurant.name }}">
+            <img v-else class="img-fluid rounded-2 w-25 me-3" :src="store.platesInCart[0].restaurant.image_placeholder"
+            alt="Image of {{ singleRestaurant.name }}">
+            <div>
+            <h4 class="fw-semibold">{{ store.platesInCart[0].restaurant.name }}</h4>
             </div>
-            <h6>{{ store.platesInCart[0].restaurant.name }}</h6>
         </div>
+        <!-- orders-list -->
         <h4>Order summary:</h4>
         <div class="review-card">
             <ul class="orders-list" v-for="singlePlate in store.platesInCart" :key="singlePlate.id">
@@ -67,7 +73,8 @@ export default {
 
 <style lang="scss">
 .back-button {
-    margin-bottom: 20px;
+    background-color: transparent;
+    border-color: transparent;
 
     * {
         color: #00CBBD;

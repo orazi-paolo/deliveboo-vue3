@@ -147,6 +147,7 @@ export default {
 
       .fas-trash {
         color: #45ccbc;
+        cursor: pointer;
       }
 
       h4 {

@@ -28,7 +28,6 @@ export default {
         <AppCart />
       </div>
 
-      <!-- Modal -->
       <!-- Button trigger modal -->
       <button
         v-if="store.platesInCart.length > 0"
@@ -60,7 +59,7 @@ export default {
               data-bs-dismiss="modal"
               aria-label="Close"
             ></button>
-            <div class="mt-5">
+            <div class="mt-5 overflow-scroll">
               <AppCart />
             </div>
           </div>

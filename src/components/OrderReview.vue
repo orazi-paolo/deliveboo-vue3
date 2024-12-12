@@ -33,6 +33,12 @@ export default {
                 <span class="back-button-text">Back to the restaurant</span>
             </router-link> -->
         </div>
+        <div class="restaurant-info">
+            <div class="img-box">
+                <img src="" alt="">
+            </div>
+            <h6>{{ store.platesInCart[0].restaurant.name }}</h6>
+        </div>
         <h4>Order summary:</h4>
         <div class="review-card">
             <ul class="orders-list" v-for="singlePlate in store.platesInCart" :key="singlePlate.id">

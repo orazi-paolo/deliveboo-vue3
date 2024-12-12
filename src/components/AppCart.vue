@@ -114,22 +114,6 @@ export default {
     <div v-else class="no-plates-in-cart">
       <font-awesome-icon :icon="['fas', 'cart-shopping']" class="fas-cart" />
       <span>Your cart is empty</span>
-      <div class="cart-footer">
-        <div v-if="hasOrders" class="order-total">
-          <p>Total of the order</p>
-          <div class="order-total-price">
-            {{ store.totalPrice.toFixed(2) }}
-            <span>&euro;</span>
-          </div>
-        </div>
-        <router-link :to="{ name: 'checkout' }">
-          <button
-            :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'"
-          >
-            Go to payment
-          </button>
-        </router-link>
-      </div>
     </div>
   </div>
 </template>

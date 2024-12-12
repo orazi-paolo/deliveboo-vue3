@@ -212,6 +212,13 @@ export default {
     border-top: 1px solid rgb(230, 217, 217);
     padding: 10px 0;
 
+    @media (orientation: landscape) {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
     .order-total {
       display: flex;
       justify-content: space-between;

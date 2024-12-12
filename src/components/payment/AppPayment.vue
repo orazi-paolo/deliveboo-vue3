@@ -118,7 +118,7 @@ export default {
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
         <div class="toast-body text-white">
-            {{ (errorMessage ? "La transazione è fallita" : "") || successMessage }}
+            {{ (errorMessage ? "Transaction Failed or generated Token is invalid" : "") || successMessage }}
         </div>
     </div>
     <div class="checkout-page container mt-3 mb-3" id="AppPayment">

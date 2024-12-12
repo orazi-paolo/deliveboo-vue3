@@ -1,6 +1,5 @@
 import { reactive } from "vue";
 import axios from "axios";
-
 export const store = reactive({
     // Variables
     platesInCart: JSON.parse(localStorage.getItem('platesInCart')) || [],
@@ -71,4 +70,8 @@ export const store = reactive({
         }
         this.totalPrice = finalPrice;
     },
+    clearCart() {
+        this.platesInCart = [];
+        localStorage.removeItem('platesInCart');
+    }
 })

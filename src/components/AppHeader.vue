@@ -36,11 +36,13 @@ export default {
                     <ul class="auth flex-column flex-sm-row">
                         <li class="register-button">
                             <font-awesome-icon :icon="['fas', 'house-chimney']" class="icon-auth" />
-                            <a href="http://127.0.0.1:8000/login" class="menu-item fw-bold turquoise">Login</a>
+                            <a href="http://127.0.0.1:8000/login"
+                                class="menu-item fw-bold turquoise text-decoration-none">Login</a>
                         </li>
                         <li class="sign-in-button">
                             <font-awesome-icon :icon="['fas', 'user']" class="icon-auth" />
-                            <a href="http://127.0.0.1:8000/register" class="menu-item fw-bold turquoise">Register</a>
+                            <a href="http://127.0.0.1:8000/register"
+                                class="menu-item fw-bold turquoise text-decoration-none">Register</a>
                         </li>
                     </ul>
                 </div>

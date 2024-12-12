@@ -16,6 +16,10 @@ export default {
       type: Object,
       required: true,
     },
+    singleRestaurant: {
+      type: Object,
+      required: true,
+    }
   },
   components: {
     PlateShow,
@@ -51,13 +55,14 @@ export default {
         // icrease price plate in totalPrice with the value of quantity
         plateInArray.totalPrice =
           parseFloat(plateInArray.price) * plateInArray.quantity;
-        console.log("==========plateInArray to push in cart", plateInArray);
+        console.log(plateInArray);
       } else {
         // if the plate is not cpntained in store.platesInCart push the plate as a new plate
         const newPlateObjToPush = {
           ...plateObj,
           quantity: 1,
           totalPrice: parseFloat(plateObj.price),
+          restaurant: this.singleRestaurant
         };
         store.platesInCart.push(
           // newPlateObjToPush =

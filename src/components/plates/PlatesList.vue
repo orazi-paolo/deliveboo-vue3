@@ -59,10 +59,13 @@ export default {
         </router-link>
       </div>
     </section>
+
     <section v-if="isLoading">
       <AppLoader />
     </section>
+
     <section v-else>
+      <!-- restaurant info top card -->
       <div class="restaurant-info d-flex align-items-center my-3">
         <img v-if="singleRestaurant.image" class="img-fluid rounded-2 w-25 me-3" :src="singleRestaurant.image"
           alt="Image of {{ singleRestaurant.name }}">
@@ -75,8 +78,10 @@ export default {
           <h3 class="fw-semibold">{{ singleRestaurant.name }}</h3>
         </div>
       </div>
+      <!-- ul cards props -->
       <ul class="row" id="plates-list">
-        <PlatesListCard v-for="plate in singleRestaurant.plates" :key="plate.id" :plateObj="plate" />
+        <PlatesListCard v-for="plate in singleRestaurant.plates" :key="plate.id" :plateObj="plate"
+          :singleRestaurant="singleRestaurant" />
       </ul>
     </section>
   </section>

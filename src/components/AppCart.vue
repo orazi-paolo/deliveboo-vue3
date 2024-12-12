@@ -77,7 +77,7 @@ export default {
         </div>
         <h4>Cart</h4>
       </div>
-      <ul class="orders-list">
+      <ul class="orders-list d-flex flex-column-reverse justify-content-end">
         <li
           class="single-order"
           v-for="order in localStoredPlates"

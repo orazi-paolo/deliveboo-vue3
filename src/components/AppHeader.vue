@@ -46,10 +46,7 @@ export default {
           <!-- <router-link :to="{ name: 'resolveTransitionHooks.show' }">
             </router-link> -->
           <ul class="auth flex-column flex-sm-row">
-            <li
-              class="position-relative"
-              v-if="store.platesInCart.length > 0 && $route.path === '/'"
-            >
+            <li v-if="store.platesInCart.length > 0 && $route.path === '/'">
               <font-awesome-icon icon="cart-shopping" />
               <small class="text-black">{{ store.platesInCart.length }}</small>
             </li>

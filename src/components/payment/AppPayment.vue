@@ -2,8 +2,7 @@
 import dropin from "braintree-web-drop-in";
 import axios from "axios";
 import { store } from '../../js/store';
-import { faComputer } from "@fortawesome/free-solid-svg-icons";
-import { computed } from "vue";
+import { Toast } from "bootstrap";
 
 export default {
     data() {
@@ -26,10 +25,13 @@ export default {
             // id del ristorante
             allPlates: store.platesInCart,
             restaurantId: store.platesInCart[0].restaurant_id,
+            errorMessage: "",
+            successMessage: "",
         };
     },
     methods: {
         async processPayment() {
+            this.errorMessage = "";
             // metodo del widget per ottenere il nonce
             this.instance.requestPaymentMethod((err, payload) => {
                 if (err) {
@@ -50,11 +52,19 @@ export default {
                     plates: this.allPlates, // Piatti ordinati
                 })
                     .then((response) => {
-                        alert(response.data.message); // Mostro messaggio di successo
+                        /* alert(response.data.message);  */// Mostro messaggio di successo
+                        this.successMessage = response.data.message;
+                        this.$nextTick(() => {
+                            const toastElement = document.querySelector('.toast');
+                            const toastInstance = new Toast(toastElement);
+                            toastInstance.show();
+                        });
                     })
                     .catch((error) => {
                         console.log(this.email)
                         console.error("Errore durante il pagamento:", error.response.data.message);
+                        this.errorMessage = error.response?.data?.message || "An error occurred during payment.";
+                        console.error(error);
                     });
             });
         },
@@ -83,6 +93,17 @@ export default {
 </script>
 
 <template>
+    <div v-if="successMessage" class="toast text-bg-success fixed top-25 end-0 z-2" role="alert" aria-live="assertive"
+        aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto"> Transaction Completed </strong>
+            <small>{{ new Date().toLocaleString() }}</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            {{ successMessage }}
+        </div>
+    </div>
     <div class="checkout-page container mt-3 mb-3" id="AppPayment">
         <h4>Proceed to Payment</h4>
         <form @submit.prevent="processPayment" method="POST" class="form-payment">

@@ -4,11 +4,13 @@ import AppSingleRestaurant from '../pages/AppSingleRestaurant.vue'
 import AppCheckout from '../pages/AppCheckout.vue'
 import PlatesList from '../components/plates/PlatesList.vue'
 import PlatesListCard from '../components/plates/PlatesListCard.vue'
+import PaymentConfirmation from '../components/payment/PaymentConfirmation.vue';
 
 const routes = [
   { path: "/", component: AppHome, name: "home" },
   { path: "/restaurants/:slug", component: AppSingleRestaurant, name: "restaurants.show" },
-  { path: "/checkout", component: AppCheckout, name: "checkout" }
+  { path: "/checkout", component: AppCheckout, name: "checkout" },
+  { path: "/payment-confirmation", component: PaymentConfirmation, name: "payment-confirmation" },
 ]
 
 const router = createRouter({

@@ -16,20 +16,6 @@ export default {
       localStorage.removeItem("platesInCart");
     },
 
-    getOrderTotalPrice() {
-      // calculate the amount of the total order inside of the client's cart
-      let finalPrice = 0;
-      for (let i = 0; i < store.platesInCart.length; i++) {
-        const plate = store.platesInCart[i];
-        finalPrice += plate.totalPrice;
-      }
-      return finalPrice.toFixed(2);
-    },
-
-    putPlatesInLocalStorage() {
-      localStorage.setItem("platesInCart", JSON.stringify(store.platesInCart));
-    },
-
     decrementPlates(clickedPlateId) {
       store.platesInCart.forEach((order) => {
         if (order.id === clickedPlateId && order.quantity >= 1) {
@@ -54,7 +40,8 @@ export default {
       return store.platesInCart.length > 0;
     },
     localStoredPlates() {
-      this.putPlatesInLocalStorage();
+      localStorage.setItem("platesInCart", JSON.stringify(store.platesInCart));
+      localStorage.setItem("totalPrice", JSON.stringify(store.totalPrice));
       const localStoredPlates = localStorage.getItem("platesInCart");
       console.log(JSON.parse(localStoredPlates));
       return JSON.parse(localStoredPlates);

@@ -1,18 +1,16 @@
 <script>
-import { RouterView } from 'vue-router';
-import AppHeader from './components/AppHeader.vue';
-import AppFooter from './components/AppFooter.vue';
+import { RouterView } from "vue-router";
+import AppHeader from "./components/AppHeader.vue";
+import AppFooter from "./components/AppFooter.vue";
 export default {
   data() {
-    return {
-
-    }
+    return {};
   },
   components: {
     AppHeader,
-    AppFooter
-  }
-}
+    AppFooter,
+  },
+};
 </script>
 
 <template>
@@ -25,6 +23,6 @@ export default {
 </template>
 
 <style lang="scss">
-@use 'bootstrap/scss/bootstrap.scss' as *;
-@use './style/general.scss' as *;
+@use "bootstrap/scss/bootstrap.scss" as *;
+@use "./style/general.scss" as *;
 </style>

@@ -6,7 +6,9 @@ export default {
         };
     },
     methods: {
-    
+        goToHome() {
+        this.$router.push("/");
+    },
     },
     mounted() {
     // retrieves the details in localStorage

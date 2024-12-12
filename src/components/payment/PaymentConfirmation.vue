@@ -39,7 +39,7 @@ export default {
 
         <div v-if="order" class="order-summary">
             <h2 class="fs-4 mb-3 text-center">Riepilogo Ordine</h2>
-            <table class="table table-striped">
+            <table class="table table-striped text-center">
                 <thead>
                     <tr>
                         <th>Piatti</th>
@@ -63,15 +63,25 @@ export default {
             </table>
         </div>
 
-        <div v-else class="text-center mt-5">
+        <div class="text-center mt-4">
+            <button @click="goToHome" class="btn btn-success btn-lg">Torna alla Home</button>
+        </div>
+
+        <!-- <div v-else class="text-center mt-5">
             <p class="text-danger">Nessun ordine trovato. Torna alla home per continuare.</p>
             <button @click="goToHome" class="btn btn-primary mt-3">Torna alla Home</button>
-        </div>
+        </div> -->
     </div>
 </template>
 
 
 
-<script scoped>
-
-</script>
+<style scoped>
+.order-summary {
+  margin-top: 20px;
+}
+.table {
+  margin: 0 auto;
+  max-width: 600px;
+}
+</style>

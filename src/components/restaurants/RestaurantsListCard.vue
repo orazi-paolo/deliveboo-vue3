@@ -25,7 +25,7 @@ export default {
   <!-- card of single restaurant -->
   <li class="col-12 col-sm-6 col-md-4 col-lg-3 p-1 p-lg-2">
     <div id="restaurant-card">
-      <router-link :to="{ name: 'restaurants.show', params: { 'slug': restaurant.slug } }">
+      <router-link class="text-decoration-none" :to="{ name: 'restaurants.show', params: { 'slug': restaurant.slug } }">
         <div class=" box-img">
           <img v-if="restaurant.image" :src="restaurant.image" :alt="`Image of ${restaurant.name}`">
           <img v-else :src="restaurant.image_placeholder" :alt="`Image of ${restaurant.name}`">
@@ -34,7 +34,7 @@ export default {
           <span class="badge me-2 my-1" :style="{ backgroundColor: tipology.color }"
             v-for="tipology in restaurant.tipologies" :key="tipology.id">{{
               tipology.name }}</span>
-          <h4>{{ restaurant.name }}</h4>
+          <h4 class="text-black">{{ restaurant.name }}</h4>
           <p class="text-muted">{{ restaurant.address }}, {{ restaurant.city }}</p>
         </div>
       </router-link>

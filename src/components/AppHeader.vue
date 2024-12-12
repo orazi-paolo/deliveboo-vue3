@@ -46,10 +46,20 @@ export default {
           <!-- <router-link :to="{ name: 'resolveTransitionHooks.show' }">
             </router-link> -->
           <ul class="auth flex-column flex-sm-row">
-            <li v-if="store.platesInCart.length > 0 && $route.path === '/'">
-              <font-awesome-icon icon="cart-shopping" />
-              <small class="text-black">{{ store.platesInCart.length }}</small>
-            </li>
+            <router-link
+              :to="{
+                name: 'restaurants.show',
+                params: { slug: store.platesInCart[0].restaurant.slug },
+              }"
+              v-if="store.platesInCart.length > 0 && $route.path === '/'"
+            >
+              <li>
+                <font-awesome-icon icon="cart-shopping" />
+                <small class="text-black">{{
+                  store.platesInCart.length
+                }}</small>
+              </li>
+            </router-link>
             <li class="register-button">
               <font-awesome-icon
                 :icon="['fas', 'house-chimney']"

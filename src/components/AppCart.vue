@@ -66,15 +66,17 @@ export default {
 <template>
   <div id="cart">
     <div v-if="hasOrders" class="plates-in-cart">
-      <div class="cart-top-card">
-        <h4>Your Order</h4>
-        <font-awesome-icon
-          :icon="['fas', 'trash-can']"
-          class="fas-trash"
-          @click="deleteCart"
-        />
+      <div>
+        <div class="cart-top-card">
+          <h4>Your Order</h4>
+          <font-awesome-icon
+            :icon="['fas', 'trash-can']"
+            class="fas-trash"
+            @click="deleteCart"
+          />
+        </div>
+        <h4>Cart</h4>
       </div>
-      <h4>Cart</h4>
       <ul class="orders-list">
         <li
           class="single-order"
@@ -91,25 +93,43 @@ export default {
           </div>
         </li>
       </ul>
+      <div class="cart-footer">
+        <div v-if="hasOrders" class="order-total">
+          <p>Total of the order</p>
+          <div class="order-total-price">
+            {{ store.totalPrice.toFixed(2) }}
+            <span>&euro;</span>
+          </div>
+        </div>
+        <router-link :to="{ name: 'checkout' }">
+          <button
+            :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'"
+          >
+            Go to payment
+          </button>
+        </router-link>
+      </div>
     </div>
 
     <div v-else class="no-plates-in-cart">
       <font-awesome-icon :icon="['fas', 'cart-shopping']" class="fas-cart" />
       <span>Your cart is empty</span>
-    </div>
-    <div class="cart-footer">
-      <div v-if="hasOrders" class="order-total">
-        <p>Total of the order</p>
-        <div class="order-total-price">
-          {{ store.totalPrice.toFixed(2) }}
-          <span>&euro;</span>
+      <div class="cart-footer">
+        <div v-if="hasOrders" class="order-total">
+          <p>Total of the order</p>
+          <div class="order-total-price">
+            {{ store.totalPrice.toFixed(2) }}
+            <span>&euro;</span>
+          </div>
         </div>
+        <router-link :to="{ name: 'checkout' }">
+          <button
+            :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'"
+          >
+            Go to payment
+          </button>
+        </router-link>
       </div>
-      <router-link :to="{ name: 'checkout' }">
-        <button :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'">
-          Go to payment
-        </button>
-      </router-link>
     </div>
   </div>
 </template>
@@ -128,11 +148,14 @@ export default {
   .no-plates-in-cart,
   .plates-in-cart {
     flex-grow: 1;
-    overflow-y: auto;
+    overflow-y: scroll;
   }
 
   .plates-in-cart {
+    display: flex;
+    flex-direction: column;
     .cart-top-card {
+      flex-grow: 1;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -150,6 +173,7 @@ export default {
     }
 
     .orders-list {
+      flex-grow: 2;
       padding: 0;
       margin: 0;
       max-height: 300px;
@@ -199,8 +223,6 @@ export default {
   }
 
   .cart-footer {
-    position: sticky;
-    bottom: 0;
     background-color: white;
     border-top: 1px solid rgb(230, 217, 217);
     padding: 10px 0;

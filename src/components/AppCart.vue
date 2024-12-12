@@ -56,21 +56,12 @@ export default {
       <div>
         <div class="cart-top-card">
           <h4>Your Order</h4>
-          <font-awesome-icon
-            :icon="['fas', 'trash-can']"
-            class="fas-trash"
-            @click="deleteCart"
-          />
+          <font-awesome-icon :icon="['fas', 'trash-can']" class="fas-trash" @click="deleteCart" />
         </div>
         <h4>Cart</h4>
       </div>
       <ul class="orders-list d-flex flex-column-reverse justify-content-end">
-        <li
-          class="single-order"
-          v-for="order in localStoredPlates"
-          :key="order.id"
-          @click="decrementPlates(order.id)"
-        >
+        <li class="single-order" v-for="order in localStoredPlates" :key="order.id" @click="decrementPlates(order.id)">
           <div class="quantities">x {{ order.quantity }}</div>
           <div class="order-info">
             <h6 class="text-center m-0">{{ order.name }}</h6>
@@ -78,6 +69,54 @@ export default {
           <div class="order-price text-end">
             {{ order.totalPrice.toFixed(2) }} <span>&euro;</span>
           </div>
+        </li>
+        <li class="single-order">
+          ciao
+        </li>
+        <li class="single-order">
+          ciao
+        </li>
+        <li class="single-order">
+          ciao
+        </li>
+        <li class="single-order">
+          ciao
+        </li>
+        <li class="single-order">
+          ciao
+        </li>
+        <li class="single-order">
+          ciao
+        </li>
+        <li class="single-order">
+          ciao
+        </li>
+        <li class="single-order">
+          ciao
+        </li>
+        <li class="single-order">
+          ciao
+        </li>
+        <li class="single-order">
+          ciao
+        </li>
+        <li class="single-order">
+          ciao
+        </li>
+        <li class="single-order">
+          ciao
+        </li>
+        <li class="single-order">
+          ciao
+        </li>
+        <li class="single-order">
+          ciao
+        </li>
+        <li class="single-order">
+          ciao
+        </li>
+        <li class="single-order">
+          ciao
         </li>
       </ul>
       <div class="cart-footer">
@@ -89,9 +128,7 @@ export default {
           </div>
         </div>
         <router-link :to="{ name: 'checkout' }">
-          <button
-            :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'"
-          >
+          <button :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'">
             Go to payment
           </button>
         </router-link>
@@ -108,7 +145,7 @@ export default {
 <style lang="scss" scoped>
 #cart {
   width: 100%;
-  height: 500px;
+  /* height: 500px; */
   padding: 10px;
   border: 1px solid rgb(230, 217, 217);
   position: relative;
@@ -125,6 +162,7 @@ export default {
   .plates-in-cart {
     display: flex;
     flex-direction: column;
+
     .cart-top-card {
       flex-grow: 1;
       display: flex;

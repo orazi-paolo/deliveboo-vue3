@@ -82,6 +82,14 @@ export default {
       <ul class="row" id="plates-list">
         <PlatesListCard v-for="plate in singleRestaurant.plates" :key="plate.id" :plateObj="plate"
           :singleRestaurant="singleRestaurant" />
+        <PlatesListCard v-for="plate in singleRestaurant.plates" :key="plate.id" :plateObj="plate"
+          :singleRestaurant="singleRestaurant" />
+        <PlatesListCard v-for="plate in singleRestaurant.plates" :key="plate.id" :plateObj="plate"
+          :singleRestaurant="singleRestaurant" />
+        <PlatesListCard v-for="plate in singleRestaurant.plates" :key="plate.id" :plateObj="plate"
+          :singleRestaurant="singleRestaurant" />
+        <PlatesListCard v-for="plate in singleRestaurant.plates" :key="plate.id" :plateObj="plate"
+          :singleRestaurant="singleRestaurant" />
       </ul>
     </section>
   </section>

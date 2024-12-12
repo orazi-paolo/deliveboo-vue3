@@ -2,18 +2,38 @@
 import PlatesList from "../components/plates/PlatesList.vue";
 import AppCart from "../components/AppCart.vue";
 import { store } from "../js/store";
+import { storecart } from "../js/storeCart";
 export default {
   name: "AppSingleRestaurant",
   data() {
     return {
       store,
+      storecart,
+      /* isScrolled: false, */
+      totalHeight: document.documentElement.scrollHeight,
+      /* isFooterVisible: false, */
+      footerOffset: 0
     };
   },
   components: {
     PlatesList,
     AppCart,
   },
-  methods: {},
+  computed: {
+    // Osserva direttamente lo stato della visibilità del footer
+    isFooterVisible() {
+      return this.storecart.state.isFooterVisible;
+    },
+  },
+  /* mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  unmounted() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
+  }, */
 };
 </script>
 
@@ -24,7 +44,8 @@ export default {
       <div class="col">
         <PlatesList />
       </div>
-      <div id="cart" class="col d-none d-md-block">
+      <div id="cart" class="col d-none d-md-block"
+        :style="{ position: isFooterVisible ? 'absolute' : 'fixed', bottom: isFooterVisible ? `${footerOffset}px` : '0px' }">
         <AppCart />
       </div>
 
@@ -58,11 +79,15 @@ export default {
 @use "bootstrap/scss/bootstrap.scss" as *;
 @use "../style/general.scss" as *;
 
-@media (min-width: 768px) {
+#cart {
+  position: fixed;
+  top: 10%;
+  right: 0;
+}
+
+@media (max-width: 767px) {
   #cart {
-    position: fixed;
-    top: 20%;
-    right: 0;
+    position: static;
   }
 }
 </style>

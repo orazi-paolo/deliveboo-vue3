@@ -1,15 +1,32 @@
 <script>
+import { storecart } from "../js/storeCart";
 export default {
   data() {
     return {
+      storecart
     }
-  }
+  },
+  mounted() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          storecart.setFooterVisibility(entry.isIntersecting);
+        });
+      },
+      { root: null, threshold: 0.1 }
+    );
+
+    const footerElement = this.$refs.footer;
+    if (footerElement) {
+      observer.observe(footerElement);
+    }
+  },
 }
 </script>
 
 <template>
 
-  <footer class="bg-dark text-light py-5">
+  <footer class="bg-dark text-light py-5" ref="footer">
     <div class="container-custom">
 
       <!-- Main columns with information -->
@@ -88,7 +105,6 @@ export default {
 
 
 <style lang="scss">
-
 footer {
   background-color: linear-gradient(135deg, #2c2c2c, #1e1e1e);
   color: #f1f1f1;
@@ -134,9 +150,9 @@ footer {
 
   .take-deliveboo {
     text-align: center;
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
 
     h5 {
@@ -147,24 +163,24 @@ footer {
     }
 
     p {
-    margin: 0 auto; 
-    max-width: 500px;
+      margin: 0 auto;
+      max-width: 500px;
     }
 
     .store-logo {
       display: inline-block;
-      margin: 0 10px; 
-      border-radius: 10px; 
-      border: 2px solid #ddd; 
-      padding: 5px; 
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+      margin: 0 10px;
+      border-radius: 10px;
+      border: 2px solid #ddd;
+      padding: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
 
-        &:hover {
-        transform: scale(1.05); 
-        border-color: #00c7b6; 
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
-        }
+      &:hover {
+        transform: scale(1.05);
+        border-color: #00c7b6;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
     }
   }
 
@@ -176,12 +192,12 @@ footer {
       background-color: #333333;
       padding: 1.5rem;
       border-radius: 0.5rem;
-      text-align: left; 
+      text-align: left;
 
       &:hover {
-      background-color: #3a3a3a; // Cambia il colore al passaggio del mouse
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Aggiungi un'ombra per l'effetto hover
-  }
+        background-color: #3a3a3a; // Cambia il colore al passaggio del mouse
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Aggiungi un'ombra per l'effetto hover
+      }
 
       h5 {
         font-size: 1.4rem;
@@ -231,5 +247,4 @@ footer {
     margin: 0;
   }
 }
-
 </style>

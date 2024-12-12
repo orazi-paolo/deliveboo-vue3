@@ -27,11 +27,14 @@ export default {
             restaurantId: store.platesInCart[0].restaurant_id,
             errorMessage: "",
             successMessage: "",
+            isPaid: false,
         };
     },
     methods: {
         async processPayment() {
-            this.errorMessage = "";
+            store.errorMessage = "";
+            store.successMessage = "";
+            this.isPaid = true;
             // metodo del widget per ottenere il nonce
             this.instance.requestPaymentMethod((err, payload) => {
                 if (err) {
@@ -58,13 +61,16 @@ export default {
                             const toastElement = document.querySelector('.toast');
                             const toastInstance = new Toast(toastElement);
                             toastInstance.show();
+                            store.clearCart();
+                            setTimeout(() => {
+                                this.$router.push('/');
+                            }, 2000);
                         });
                     })
                     .catch((error) => {
                         console.log(this.email)
                         console.error("Errore durante il pagamento:", error.response.data.message);
                         this.errorMessage = error.response?.data?.message || "An error occurred during payment.";
-                        console.error(error);
                     });
             });
         },
@@ -93,14 +99,13 @@ export default {
 </script>
 
 <template>
-    <div v-if="successMessage" class="toast text-bg-success fixed top-25 end-0 z-2" role="alert" aria-live="assertive"
-        aria-atomic="true">
+    <div v-if="successMessage" class="toast text-bg-success" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
             <strong class="me-auto"> Transaction Completed </strong>
             <small>{{ new Date().toLocaleString() }}</small>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
-        <div class="toast-body">
+        <div class="toast-body text-white">
             {{ successMessage }}
         </div>
     </div>
@@ -129,12 +134,22 @@ export default {
                 <input id="city" name="city" type="text" v-model="city" placeholder="e.g. Milano" required />
             </div>
             <div id="dropin-container"></div>
-            <button class="button-cart-order" type="submit">Pay {{ total }} &euro;</button>
+            <button class="button-cart-order" :class="{ 'disabled': isPaid }" type="submit">Pay
+                {{ total }} &euro;</button>
         </form>
     </div>
 </template>
 
 <style lang="scss">
+div.toast {
+    background-color: #45ccbc;
+    position: fixed;
+    top: 10%;
+    right: 0;
+    z-index: 2;
+}
+
+
 #AppPayment {
     .form-payment {
         .form-payment-content {
@@ -155,6 +170,11 @@ export default {
 
         .button-cart-order,
         .button-cart-empty {
+            &.disabled {
+                background-color: #ccc;
+                cursor: not-allowed;
+            }
+
             width: 100%;
             font-weight: 700;
             border-color: transparent;

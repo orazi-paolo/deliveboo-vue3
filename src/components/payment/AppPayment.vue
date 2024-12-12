@@ -57,6 +57,7 @@ export default {
                     .then((response) => {
                         /* alert(response.data.message);  */// Mostro messaggio di successo
                         this.successMessage = response.data.message;
+                        // console.log("Order salvato:", response.data.order);
                         localStorage.setItem("orderDetails", JSON.stringify(response.data.order));
                         this.$nextTick(() => {
                             const toastElement = document.querySelector('.toast');

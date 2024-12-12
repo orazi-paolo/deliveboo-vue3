@@ -93,20 +93,32 @@ export default {
             })
             .catch((error) => {
                 console.error("Errore nel recupero del token:", error);
+                this.errorMessage = error.response?.data?.message || "An error occurred during payment.";
+                this.$nextTick(() => {
+                    const toastElement = document.querySelector('.toast');
+                    const toastInstance = new Toast(toastElement);
+                    toastInstance.show();
+                    store.clearCart();
+                    setTimeout(() => {
+                        this.$router.back();
+                    }, 2000);
+                });
             });
     },
 };
 </script>
 
 <template>
-    <div v-if="successMessage" class="toast text-bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+    <div v-if="errorMessage || successMessage" class="toast"
+        :class="errorMessage ? 'text-bg-danger' : 'text-bg-success'" role="alert" aria-live="assertive"
+        aria-atomic="true">
         <div class="toast-header">
-            <strong class="me-auto"> Transaction Completed </strong>
+            <strong class="me-auto"> Transaction {{ errorMessage ? 'Failed' : 'Completed' }} </strong>
             <small>{{ new Date().toLocaleString() }}</small>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
         <div class="toast-body text-white">
-            {{ successMessage }}
+            {{ (errorMessage ? "La transazione è fallita" : "") || successMessage }}
         </div>
     </div>
     <div class="checkout-page container mt-3 mb-3" id="AppPayment">

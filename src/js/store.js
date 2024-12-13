@@ -10,7 +10,9 @@ export const store = reactive({
   // loader
   isLoadingRestaurants: true,
   isLoadingTipologies: true,
+
   totalPrice: JSON.parse(localStorage.getItem("totalPrice")) || 0,
+  totalQuantities: JSON.parse(localStorage.getItem("totalQuantities")) || 0,
 
   // Methods
   joinTipologiesIds() {
@@ -75,6 +77,17 @@ export const store = reactive({
     }
     this.totalPrice = finalPrice;
   },
+  getOrderTotalQuantities() {
+    // in totalquantities calculate the amount of the quantities of the plates in the order inside of the client's cart
+    let finalQuantities = 0;
+    for (let i = 0; i < this.platesInCart.length; i++) {
+      const plate = this.platesInCart[i];
+      finalQuantities += plate.quantity;
+    }
+    this.totalQuantities = finalQuantities;
+    localStorage.setItem("totalQuantities", JSON.stringify(this.totalQuantities));
+  },
+
   clearCart() {
     this.platesInCart = [];
     localStorage.removeItem("platesInCart");
@@ -97,6 +110,8 @@ export const store = reactive({
       localStorage.removeItem("platesInCart");
 
     this.getOrderTotalPrice();
+    this.getOrderTotalQuantities();
+    console.log(this.totalQuantities)
   },
 
   incrementPlates(plateId) {
@@ -108,7 +123,9 @@ export const store = reactive({
     });
 
     this.getOrderTotalPrice();
+    this.getOrderTotalQuantities();
+
     localStorage.setItem("platesInCart", JSON.stringify(this.platesInCart));
-    localStorage.setItem("totalPrice", JSON.stringify(this.totalPrice));
+    console.log(this.totalQuantities)
   }
 });

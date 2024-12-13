@@ -5,6 +5,7 @@ import { store } from '../../js/store';
 import { Toast } from "bootstrap";
 
 export default {
+    emits: ["setLoader"],
     data() {
         return {
             store,
@@ -32,12 +33,14 @@ export default {
     },
     methods: {
         async processPayment() {
+            this.$emit("setLoader", true);
             store.errorMessage = "";
             store.successMessage = "";
             this.isPaid = true;
             // metodo del widget per ottenere il nonce
             this.instance.requestPaymentMethod((err, payload) => {
                 if (err) {
+                    this.$emit("setLoader", false);
                     console.error("Errore nel recupero del nonce:", err);
                     return;
                 };
@@ -55,6 +58,7 @@ export default {
                     plates: this.allPlates, // Piatti ordinati
                 })
                     .then((response) => {
+                        this.$emit("setLoader", false);
                         /* alert(response.data.message);  */// Mostro messaggio di successo
                         this.successMessage = response.data.message;
                         this.$nextTick(() => {
@@ -68,6 +72,7 @@ export default {
                         });
                     })
                     .catch((error) => {
+                        this.$emit("setLoader", false);
                         console.log(this.email)
                         console.error("Errore durante il pagamento:", error.response.data.message);
                         this.errorMessage = error.response?.data?.message || "An error occurred during payment.";

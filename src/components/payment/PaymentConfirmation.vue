@@ -32,11 +32,17 @@ export default {
 <template>
     <div class="container py-5 text-center">
         <div class="title-section">
-            <h1 class="text-center mb-3">
-                <i class="fa-solid fa-circle-check me-2"></i>Complimenti!
-            </h1>
-                <p class="fs-5">Il pagamento è stato completato con successo.</p>
-                <p class="fs-6">Abbiamo inviato una email di conferma al tuo indirizzo.</p>
+            <div class="congrats-container">
+                <i class="fas fa-award icon"></i>
+                <span class="congrats-text"> Il tuo ordine è stato confermato! </span>
+                <i class="fas fa-award icon"></i>
+            </div>
+            <div class="message-box">
+                <p class="main-message"><strong>Grazie per aver scelto Deliveboo!</strong></p>
+                <hr>
+                <p class="secondary-message">Ti abbiamo inviato un'email con i dettagli.</p>
+                <p class="secondary-message">Stiamo preparando il tuo ordine con cura!</p>
+            </div>
         </div>
 
         <div v-if="order" class="order-summary">
@@ -80,25 +86,82 @@ export default {
 
 <style scoped>
 
-.title-section h1 {
-  font-family: 'Raleway', sans-serif; 
-  font-size: 3rem; 
-  color: #00c7b6; 
-  font-weight: 700; 
-  text-align: center;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+.congrats-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; 
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    margin: 20px 0;
 }
 
-.title-section i {
-  color: #00c7b6;
-  font-size: 1.5rem;
+.icon {
+    font-size: 48px;
+    color: #00CBBD; 
 }
 
-.order-summary {
-  margin-top: 20px;
+.congrats-text {
+    font-size: 48px; 
+    color: #00CBBD; 
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); 
+    position: relative;
 }
-.table {
-  margin: 0 auto;
-  max-width: 600px;
+
+.congrats-text::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #00CBBD, #00CBBD);
+    border-radius: 2px;
+    animation: slideIn 1.8s ease-in-out infinite;
 }
+
+
+
+.message-box {
+    background: rgba(32, 201, 151, 0.1); 
+    border: 1px solid #00CBBD;
+    border-radius: 12px;
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 600px; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+    text-align: center; 
+}
+
+.message-box:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.main-message {
+    font-size: 30px; 
+    font-weight: 700; 
+    color: #00CBBD; 
+    margin-bottom: 10px; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); 
+    position: relative;
+    text-align: center;
+}
+.secondary-message {
+    font-size: 20px; 
+    color: #333; 
+    margin-top: 5px; 
+    line-height: 1.6; 
+    text-align: center;
+}
+@keyframes slideIn {
+    0% { transform: translateX(-100%); }
+    50% { transform: translateX(0); }
+    100% { transform: translateX(100%); }
+}
+
+
 </style>

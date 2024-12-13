@@ -61,20 +61,20 @@ export default {
             </div>
           </li>
         </ul>
-        <div class="cart-footer">
-          <div v-if="hasOrders" class="order-total">
-            <p>Total of the order</p>
-            <div class="order-total-price">
-              {{ store.totalPrice.toFixed(2) }}
-              <span>&euro;</span>
-            </div>
+      </div>
+      <div class="cart-footer">
+        <div v-if="hasOrders" class="order-total">
+          <p>Total of the order</p>
+          <div class="order-total-price">
+            {{ store.totalPrice.toFixed(2) }}
+            <span>&euro;</span>
           </div>
-          <router-link :to="{ name: 'checkout' }">
-            <button :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'">
-              Go to payment
-            </button>
-          </router-link>
         </div>
+        <router-link :to="{ name: 'checkout' }">
+          <button :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'">
+            Go to payment
+          </button>
+        </router-link>
       </div>
     </div>
 
@@ -136,8 +136,8 @@ export default {
       flex-grow: 2;
       padding: 0;
       margin: 0;
-      /* height: calc(100% - 200px); */
-      max-height: 300px;
+      height: 200px;
+      max-height: 200px;
 
 
       .single-order {
@@ -225,10 +225,11 @@ export default {
     border-top: 1px solid rgb(230, 217, 217);
     padding: 10px 0;
     height: 100px;
-    position: absolute;
+    position: sticky;
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 1000;
 
     @media (orientation: landscape) and (max-width: 768px) {
       position: fixed;

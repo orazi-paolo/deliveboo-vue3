@@ -69,8 +69,8 @@ export const store = reactive({
   getOrderTotalPrice() {
     // in totalPrice calculate the amount of the total order inside of the client's cart
     let finalPrice = 0;
-    for (let i = 0; i < store.platesInCart.length; i++) {
-      const plate = store.platesInCart[i];
+    for (let i = 0; i < this.platesInCart.length; i++) {
+      const plate = this.platesInCart[i];
       finalPrice += plate.totalPrice;
     }
     this.totalPrice = finalPrice;
@@ -79,4 +79,36 @@ export const store = reactive({
     this.platesInCart = [];
     localStorage.removeItem("platesInCart");
   },
+
+  decrementPlates(plateId) {
+    this.platesInCart.forEach((order) => {
+      if (order.id === plateId && order.quantity >= 1) {
+        order.quantity -= 1;
+        order.totalPrice -= order.price;
+      }
+    });
+    this.platesInCart = this.platesInCart.filter((order) => {
+      if (order.id === plateId) {
+        return order.quantity > 0;
+      }
+      return true;
+    });
+    if (this.platesInCart.length === 0)
+      localStorage.removeItem("platesInCart");
+
+    this.getOrderTotalPrice();
+  },
+
+  incrementPlates(plateId) {
+    this.platesInCart.forEach((order) => {
+      if (order.id === plateId) {
+        order.quantity += 1;
+        order.totalPrice = parseInt(order.price) * order.quantity;
+      }
+    });
+
+    this.getOrderTotalPrice();
+    localStorage.setItem("platesInCart", JSON.stringify(this.platesInCart));
+    localStorage.setItem("totalPrice", JSON.stringify(this.totalPrice));
+  }
 });

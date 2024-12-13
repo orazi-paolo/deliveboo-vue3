@@ -187,7 +187,7 @@ export default {
             justify-content: center;
             align-items: center;
             padding: 0;
-            
+
             span{
                color:#45ccbc;
                font-weight: 900;
@@ -200,7 +200,19 @@ export default {
         }
 
         .order-price {
-          flex-basis: 30%;
+          flex-basis: 45%;
+          @media (min-width: 800px) {
+                flex-basis: 40%
+            }
+          @media (min-width: 900px) {
+                flex-basis: 30%
+            }
+          @media (min-width: 1000px) {
+                flex-basis: 20%
+            }
+          @media (min-width: 1250px) {
+                flex-basis: 15%
+            }
         }
       }
     }

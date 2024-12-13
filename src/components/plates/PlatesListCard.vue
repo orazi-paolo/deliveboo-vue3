@@ -76,7 +76,9 @@ export default {
           newPlateObjToPush
         );
       }
-      // Update the total price in the store without reduce
+      // icrement of store.totalQuantities after a plate was added in cart
+      store.totalQuantities += 1; 
+
       let total = 0;
       for (let i = 0; i < store.platesInCart.length; i++) {
         total += store.platesInCart[i].totalPrice;

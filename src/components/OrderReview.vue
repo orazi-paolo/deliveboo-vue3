@@ -12,7 +12,9 @@ export default {
 
     },
     methods: {
-
+        goBackPage() {
+          this.$router.back();
+        },
     },
     computed: {
         totalPrice() {
@@ -27,23 +29,35 @@ export default {
 
 <template>
     <section id="OrderReview" class="container">
-        <div class="back-button">
-            <!-- <router-link :to="{ name: 'restaurant-show', params: { slug: restaurant.slug } }">
-                <font-awesome-icon :icon="['fas', 'arrow-left']" />
-                <span class="back-button-text">Back to the restaurant</span>
-            </router-link> -->
-        </div>
-        <div class="restaurant-info">
-            <div class="img-box">
-                <img src="" alt="">
+        <!-- back button -->
+        <button class="back-button" @click="goBackPage">
+            <font-awesome-icon :icon="['fas', 'arrow-left']" />
+            <span class="back-button-text">Back to the restaurant</span>   
+        </button>
+        <!-- restaurant infos -->
+        <div class="restaurant-info d-flex align-items-center mb-2 mt-3">
+            <img v-if="store.platesInCart[0].restaurant.image" class="img-fluid rounded-2 w-25 me-3" :src="store.platesInCart[0].restaurant.image"
+            alt="Image of {{ singleRestaurant.name }}">
+            <img v-else class="img-fluid rounded-2 w-25 me-3" :src="store.platesInCart[0].restaurant.image_placeholder"
+            alt="Image of {{ singleRestaurant.name }}">
+            <div>
+            <h4 class="fw-semibold">{{ store.platesInCart[0].restaurant.name }}</h4>
             </div>
-            <h6>{{ store.platesInCart[0].restaurant.name }}</h6>
         </div>
+        <!-- orders-list -->
         <h4>Order summary:</h4>
         <div class="review-card">
             <ul class="orders-list" v-for="singlePlate in store.platesInCart" :key="singlePlate.id">
                 <li class="single-order">
-                    <div class="quantities">x{{ singlePlate.quantity }}</div>
+                    <div class="quantities">
+                        <button class="decrement-button" @click="store.decrementPlates(singlePlate.id)">
+                            <span>-</span>
+                        </button>
+                        <span>x{{ singlePlate.quantity }}</span>
+                        <button class="increment-button" @click="store.incrementPlates(singlePlate.id)">
+                            <span>+</span>
+                        </button>
+                    </div>
                     <div class="order-info">
                         <h5>{{ singlePlate.name }}</h5>
                     </div>
@@ -67,7 +81,8 @@ export default {
 
 <style lang="scss">
 .back-button {
-    margin-bottom: 20px;
+    background-color: transparent;
+    border-color: transparent;
 
     * {
         color: #00CBBD;
@@ -97,8 +112,31 @@ export default {
 
             .quantities,
             .order-price {
-                flex-basis: 15%;
+                flex-basis: 20%;
                 text-align: center;
+            }
+
+            .quantities {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+
+                .decrement-button, .increment-button{
+                    border: 1px #45ccbc solid;
+                    background-color: transparent;
+                    border-radius: 50%;
+                    width: 25px;
+                    height: 25px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0;
+
+                    span{
+                    color:#45ccbc;
+                    font-weight: 900;
+                    }
+                }
             }
 
             .order-info {
@@ -108,6 +146,7 @@ export default {
                     font-size: 17px;
                     font-weight: 400;
                     margin: 0;
+                    padding: 0 8px;
                 }
             }
         }

@@ -15,37 +15,6 @@ export default {
       store.platesInCart.splice(0, store.platesInCart.length);
       localStorage.removeItem("platesInCart");
     },
-
-    decrementPlates(clickedPlateId) {
-      store.platesInCart.forEach((order) => {
-        if (order.id === clickedPlateId && order.quantity >= 1) {
-          order.quantity -= 1;
-          order.totalPrice -= order.price;
-        }
-      });
-      store.platesInCart = store.platesInCart.filter((order) => {
-        if (order.id === clickedPlateId) {
-          return order.quantity > 0;
-        }
-        return true;
-      });
-      if (store.platesInCart.length === 0)
-        localStorage.removeItem("platesInCart");
-
-      store.getOrderTotalPrice();
-    },
-
-    incrementPlates(clickedPlateId) {
-      store.platesInCart.forEach((order) => {
-        if (order.id === clickedPlateId) {
-          order.quantity += 1;
-          order.totalPrice = parseInt(order.price) * order.quantity;        }
-      });
-
-      store.getOrderTotalPrice();
-      localStorage.setItem("platesInCart", JSON.stringify(store.platesInCart));
-      localStorage.setItem("totalPrice", JSON.stringify(store.totalPrice));
-    }
   },
   computed: {
     hasOrders() {
@@ -83,11 +52,11 @@ export default {
           :key="order.id"
         >
           <div class="quantities">
-            <button class="decrement-button" @click="decrementPlates(order.id)">
+            <button class="decrement-button" @click="store.decrementPlates(order.id)">
                 <span>-</span>
             </button>
             <span>x{{ order.quantity }}</span>
-            <button class="increment-button" @click="incrementPlates(order.id)">
+            <button class="increment-button" @click="store.incrementPlates(order.id)">
                 <span>+</span>
             </button>
           </div>

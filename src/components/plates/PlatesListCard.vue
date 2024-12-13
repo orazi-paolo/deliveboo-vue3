@@ -10,6 +10,7 @@ export default {
       modal: false,
       store,
       showClearCartModal: false,
+      newPlateObjToPush: null, // if guest push a plate into the cart push in store.platesincart newPlateObjToPush(the spreaf of plateobj with quantities and total price)
     };
   },
   props: {
@@ -55,25 +56,25 @@ export default {
         plateInArray.quantity += 1;
         // icrease price plate in totalPrice with the value of quantity
         plateInArray.totalPrice =
-          parseFloat(plateInArray.price) * plateInArray.quantity;
+        parseFloat(plateInArray.price) * plateInArray.quantity;
         console.log(plateInArray);
       } else {
         // if the plate is not cpntained in store.platesInCart push the plate as a new plate
-        const newPlateObjToPush = {
+        this.newPlateObjToPush = {
           ...plateObj,
           quantity: 1,
           totalPrice: parseFloat(plateObj.price),
-          restaurant: this.singleRestaurant
+          restaurant: this.singleRestaurant,
         };
         store.platesInCart.push(
           // newPlateObjToPush =
           // spred oprator of plateObj(parameter)
           // with quantity and totalPrice
-          newPlateObjToPush
+          this.newPlateObjToPush
         );
         console.log(
           "==========newPlateObjToPush to push in cart",
-          newPlateObjToPush
+          this.newPlateObjToPush
         );
       }
       // icrement of store.totalQuantities after a plate was added in cart
@@ -125,6 +126,14 @@ export default {
     showModal() {
       return this.modal;
     },
+    plateObjToPushInShow() {
+      return {
+        ...this.plateObj,
+        quantity: 1,
+        totalPrice: parseFloat(this.plateObj.price),
+        restaurant: this.singleRestaurant,
+      };
+    },
   },
 };
 </script>
@@ -146,7 +155,7 @@ export default {
       <button class="btn-add-item" @click="addToCart(plateObj)">
         <span>+</span>
       </button>
-      <PlateShow v-if="showModal" :plate="plateObj" @closeModal="toggleModal()" />
+      <PlateShow v-if="showModal" :plate="newPlateObjToPush || plateObjToPushInShow" @closeModal="toggleModal()" />
     </div>
   </li>
 

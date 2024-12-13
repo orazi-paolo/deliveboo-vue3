@@ -1,24 +1,8 @@
 <script>
-import { storecart } from "../js/storeCart";
 export default {
   data() {
     return {
-      storecart
-    }
-  },
-  mounted() {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          storecart.setFooterVisibility(entry.isIntersecting);
-        });
-      },
-      { root: null, threshold: 0.1 }
-    );
 
-    const footerElement = this.$refs.footer;
-    if (footerElement) {
-      observer.observe(footerElement);
     }
   },
 }
@@ -26,7 +10,7 @@ export default {
 
 <template>
 
-  <footer class="bg-dark text-light py-5" ref="footer">
+  <footer id="app-footer" class="bg-dark text-light py-5"> <!-- ref="footer" -->
     <div class="container-custom">
 
       <!-- Main columns with information -->

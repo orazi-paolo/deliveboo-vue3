@@ -43,7 +43,7 @@ export default {
       localStorage.setItem("platesInCart", JSON.stringify(store.platesInCart));
       localStorage.setItem("totalPrice", JSON.stringify(store.totalPrice));
       const localStoredPlates = localStorage.getItem("platesInCart");
-      console.log(JSON.parse(localStoredPlates));
+      /* console.log(JSON.parse(localStoredPlates)); */
       return JSON.parse(localStoredPlates);
     },
   },
@@ -69,54 +69,6 @@ export default {
           <div class="order-price text-end">
             {{ order.totalPrice.toFixed(2) }} <span>&euro;</span>
           </div>
-        </li>
-        <li class="single-order">
-          ciao
-        </li>
-        <li class="single-order">
-          ciao
-        </li>
-        <li class="single-order">
-          ciao
-        </li>
-        <li class="single-order">
-          ciao
-        </li>
-        <li class="single-order">
-          ciao
-        </li>
-        <li class="single-order">
-          ciao
-        </li>
-        <li class="single-order">
-          ciao
-        </li>
-        <li class="single-order">
-          ciao
-        </li>
-        <li class="single-order">
-          ciao
-        </li>
-        <li class="single-order">
-          ciao
-        </li>
-        <li class="single-order">
-          ciao
-        </li>
-        <li class="single-order">
-          ciao
-        </li>
-        <li class="single-order">
-          ciao
-        </li>
-        <li class="single-order">
-          ciao
-        </li>
-        <li class="single-order">
-          ciao
-        </li>
-        <li class="single-order">
-          ciao
         </li>
       </ul>
       <div class="cart-footer">
@@ -145,7 +97,7 @@ export default {
 <style lang="scss" scoped>
 #cart {
   width: 100%;
-  /* height: 500px; */
+  height: 500px;
   padding: 10px;
   border: 1px solid rgb(230, 217, 217);
   position: relative;

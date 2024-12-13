@@ -20,9 +20,9 @@ export default {
     getRestaurant() {
       axios.get(`${this.apiUrl}/${this.$route.params.slug}`)
         .then(response => {
-          console.log(response.data.results.plates)
+          /* console.log(response.data.results.plates) */
           this.singleRestaurant = response.data.results
-          console.log(this.singleRestaurant)
+          /* console.log(this.singleRestaurant) */
           this.isLoading = false
         })
         .catch(function (error) {
@@ -80,14 +80,6 @@ export default {
       </div>
       <!-- ul cards props -->
       <ul class="row" id="plates-list">
-        <PlatesListCard v-for="plate in singleRestaurant.plates" :key="plate.id" :plateObj="plate"
-          :singleRestaurant="singleRestaurant" />
-        <PlatesListCard v-for="plate in singleRestaurant.plates" :key="plate.id" :plateObj="plate"
-          :singleRestaurant="singleRestaurant" />
-        <PlatesListCard v-for="plate in singleRestaurant.plates" :key="plate.id" :plateObj="plate"
-          :singleRestaurant="singleRestaurant" />
-        <PlatesListCard v-for="plate in singleRestaurant.plates" :key="plate.id" :plateObj="plate"
-          :singleRestaurant="singleRestaurant" />
         <PlatesListCard v-for="plate in singleRestaurant.plates" :key="plate.id" :plateObj="plate"
           :singleRestaurant="singleRestaurant" />
       </ul>

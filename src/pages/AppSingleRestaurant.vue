@@ -2,30 +2,27 @@
 import PlatesList from "../components/plates/PlatesList.vue";
 import AppCart from "../components/AppCart.vue";
 import { store } from "../js/store";
-import { storecart } from "../js/storeCart";
+
 export default {
   name: "AppSingleRestaurant",
   data() {
     return {
       store,
-      storecart,
-      /* isScrolled: false, */
-      totalHeight: document.documentElement.scrollHeight,
-      /* isFooterVisible: false, */
-      footerOffset: 0
+      isScrolled: false,
     };
   },
   components: {
     PlatesList,
     AppCart,
   },
-  computed: {
-    // Osserva direttamente lo stato della visibilità del footer
-    isFooterVisible() {
-      return this.storecart.state.isFooterVisible;
+  methods: {
+    handleScroll() {
+      const mainHeight = document.querySelector("main").scrollHeight;
+      // Controllo se la finestra scorre di 600px prima della fine del main
+      this.isScrolled = window.scrollY > mainHeight - 600;
     },
   },
-  /* mounted() {
+  mounted() {
     window.addEventListener("scroll", this.handleScroll);
   },
   unmounted() {
@@ -33,19 +30,19 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener("scroll", this.handleScroll);
-  }, */
+  },
 };
 </script>
 
 <template>
-  <div class="container-custom my-4">
+  <div id="container-footer-h" class="container-custom my-4">
     <!-- to costumize container-custom go to style/general.scss -->
     <section class="row row-cols-1 row-cols-md-2 relative" id="AppSingleRestaurant">
       <div class="col">
         <PlatesList />
       </div>
-      <div id="cart" class="col d-none d-md-block"
-        :style="{ position: isFooterVisible ? 'absolute' : 'fixed', bottom: isFooterVisible ? `${footerOffset}px` : '0px' }">
+      <!-- :style="{ position: isFooterVisible ? 'absolute' : 'fixed', bottom: isFooterVisible ? `${footerOffset}px` : '0px' }" -->
+      <div id="cart" class="col d-none d-md-block" :class="{ 'scrolled': isScrolled }">
         <AppCart />
       </div>
 
@@ -79,10 +76,18 @@ export default {
 @use "bootstrap/scss/bootstrap.scss" as *;
 @use "../style/general.scss" as *;
 
+#cart.scrolled {
+  position: static;
+  align-self: flex-end;
+  top: 20%;
+  right: 0;
+}
+
 #cart {
   position: fixed;
-  top: 10%;
+  top: 15%;
   right: 0;
+  margin-bottom: 30px;
 }
 
 @media (max-width: 767px) {

@@ -102,7 +102,12 @@ export default {
     clearCart() {
       // for modal button
       store.platesInCart = [];
+      store.totalPrice = 0;
+      store.totalQuantities = 0;
+      
       localStorage.removeItem("platesInCart");
+      localStorage.removeItem("totalPrice");
+      localStorage.removeItem("totalQuantities");
       this.showClearCartModal = false;
     },
     cancelClearCart() {

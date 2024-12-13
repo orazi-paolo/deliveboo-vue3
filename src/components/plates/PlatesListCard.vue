@@ -10,7 +10,7 @@ export default {
       modal: false,
       store,
       showClearCartModal: false,
-      newPlateObjToPush: null, // if guest push a plate into the cart push in store.platesincart newPlateObjToPush(the spreaf of plateobj with quantities and total price)
+      newPlateObjToPush: null, // if guest push a plate already into the cart push in store.platesincart newPlateObjToPush(the spreaf of plateobj with quantities and total price)
     };
   },
   props: {
@@ -127,13 +127,22 @@ export default {
       return this.modal;
     },
     plateObjToPushInShow() {
-      return {
-        ...this.plateObj,
-        quantity: 1,
-        totalPrice: parseFloat(this.plateObj.price),
-        restaurant: this.singleRestaurant,
-      };
-    },
+      const plateInArray = store.platesInCart.find(
+      (item) => item.id === this.plateObj.id
+      );
+      // if guest add to cart from first and others time from addtocart of show the datas for props refresh
+      // because the props plateObj from plateList.vue that we sent by props to ShowModal is not a reactive plate but static
+      if (plateInArray){
+        return plateInArray
+      } else {
+        return {
+          ...this.plateObj,
+          quantity: 1,
+          totalPrice: parseFloat(this.plateObj.price),
+          restaurant: this.singleRestaurant,
+        }
+      }
+    }  
   },
 };
 </script>
@@ -155,6 +164,7 @@ export default {
       <button class="btn-add-item" @click="addToCart(plateObj)">
         <span>+</span>
       </button>
+      <!-- props for PlateShow.vue if send newPlateObjToPush if is not null else send plateObjToPushInShow(computed) -->
       <PlateShow v-if="showModal" :plate="newPlateObjToPush || plateObjToPushInShow" @closeModal="toggleModal()" />
     </div>
   </li>

@@ -71,7 +71,15 @@ export default {
           :key="order.id"
           @click="decrementPlates(order.id)"
         >
-          <div class="quantities">x {{ order.quantity }}</div>
+          <div class="quantities">
+            <button class="decrement-button">
+                <span>-</span>
+            </button>
+            <span>x{{ order.quantity }}</span>
+            <button class="increment-button">
+                <span>+</span>
+            </button>
+          </div>
           <div class="order-info">
             <h6 class="text-center m-0">{{ order.name }}</h6>
           </div>
@@ -164,7 +172,27 @@ export default {
         }
 
         .quantities {
-          flex-basis: 10%;
+          flex-basis: 20%;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          .decrement-button, .increment-button{
+            border: 1px #45ccbc solid;
+            background-color: transparent;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            
+            span{
+               color:#45ccbc;
+               font-weight: 900;
+            }
+          }
         }
 
         .order-info {

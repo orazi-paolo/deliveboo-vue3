@@ -30,9 +30,11 @@ export default {
 </script>
 
 <template>
-    <div class="container py-5">
-        <div class="text-center">
-            <h1 class="text-success">Complimenti!</h1>
+    <div class="container py-5 text-center">
+        <div class="title-section">
+            <h1 class="text-center mb-3">
+                <i class="fa-solid fa-circle-check me-2"></i>Complimenti!
+            </h1>
                 <p class="fs-5">Il pagamento è stato completato con successo.</p>
                 <p class="fs-6">Abbiamo inviato una email di conferma al tuo indirizzo.</p>
         </div>
@@ -77,6 +79,21 @@ export default {
 
 
 <style scoped>
+
+.title-section h1 {
+  font-family: 'Raleway', sans-serif; 
+  font-size: 3rem; 
+  color: #00c7b6; 
+  font-weight: 700; 
+  text-align: center;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.title-section i {
+  color: #00c7b6;
+  font-size: 1.5rem;
+}
+
 .order-summary {
   margin-top: 20px;
 }

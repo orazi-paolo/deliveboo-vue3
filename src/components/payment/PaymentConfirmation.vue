@@ -30,7 +30,11 @@ export default {
 </script>
 
 <template>
-    <div class="container py-5 text-center">
+    <div class="page-wrapper">
+        <div class="banner-section">
+            <img src="/public/images/domicilio.png" alt="Deliveroo Banner" class="banner-image" />
+        </div>
+        <div class="container py-5 text-center">
         <div class="title-section">
             <div class="congrats-container">
                 <i class="fas fa-award icon"></i>
@@ -79,12 +83,50 @@ export default {
             <p class="text-danger">Nessun ordine trovato. Torna alla home per continuare.</p>
             <button @click="goToHome" class="btn btn-primary mt-3">Torna alla Home</button>
         </div> -->
+        </div>
     </div>
 </template>
 
 
 
 <style scoped>
+body {
+    background-color: #ebeced; /* Colore grigio chiaro */
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Stile per il contenitore principale */
+.container {
+    background-color: white; /* Sfondo bianco per risaltare */
+    border-radius: 12px; /* Angoli arrotondati */
+    padding: 30px;
+    max-width: 1200px;
+    margin: 20px auto; /* Centra il contenitore con margini */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombra per effetto card */
+}
+
+
+.banner-section {
+    width: 100%;
+    margin: 0; 
+    padding: 0;
+    overflow: hidden;
+}
+
+.banner-image {
+    width: 100%; /* L'immagine occupa tutta la larghezza */
+    max-height: 400px; /* Limita l'altezza massima */
+    object-fit: cover; /* Adatta l'immagine mantenendo le proporzioni */
+    display: block;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .banner-image {
+        max-height: 250px; /* Altezza ridotta per dispositivi mobili */
+    }
+}
 
 .congrats-container {
     display: flex;
@@ -109,7 +151,7 @@ export default {
     position: relative;
 }
 
-.congrats-text::after {
+/* .congrats-text::after {
     content: '';
     position: absolute;
     left: 0;
@@ -119,7 +161,7 @@ export default {
     background: linear-gradient(90deg, #00CBBD, #00CBBD);
     border-radius: 2px;
     animation: slideIn 1.8s ease-in-out infinite;
-}
+} */
 
 
 
@@ -157,11 +199,11 @@ export default {
     line-height: 1.6; 
     text-align: center;
 }
-@keyframes slideIn {
+/* @keyframes slideIn {
     0% { transform: translateX(-100%); }
     50% { transform: translateX(0); }
     100% { transform: translateX(100%); }
-}
+} */
 
 
 </style>

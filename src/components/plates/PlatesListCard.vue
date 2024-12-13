@@ -1,6 +1,7 @@
 <script>
 import PlateShow from "../PlateShow.vue";
 import { store } from "../../js/store.js";
+import { RouterLink } from "vue-router";
 
 export default {
   name: "PlatesListCard",
@@ -105,6 +106,9 @@ export default {
     cancelClearCart() {
       // for modal button
       this.showClearCartModal = false;
+      setTimeout(() => {
+        this.$router.go(0);
+      }, 0);
     },
   },
   computed: {
@@ -128,44 +132,50 @@ export default {
           <div class="price">{{ plateObj.price }}<span>&euro;</span></div>
         </div>
         <div class="box-img">
-          <img
-            v-if="plateObj.image"
-            :src="plateObj.image"
-            :alt="`Image of ${plateObj.name}`"
-          />
-          <img
-            v-else
-            :src="plateObj.image_placeholder"
-            :alt="`Image of ${plateObj.name}`"
-          />
+          <img v-if="plateObj.image" :src="plateObj.image" :alt="`Image of ${plateObj.name}`" />
+          <img v-else :src="plateObj.image_placeholder" :alt="`Image of ${plateObj.name}`" />
         </div>
       </div>
       <button class="btn-add-item" @click="addToCart(plateObj)">
         <span>+</span>
       </button>
-      <PlateShow
-        v-if="showModal"
-        :plate="plateObj"
-        @closeModal="toggleModal()"
-      />
+      <PlateShow v-if="showModal" :plate="plateObj" @closeModal="toggleModal()" />
     </div>
   </li>
 
   <!-- Modal to clear cart -->
   <div v-if="showClearCartModal" class="modal-clear-cart">
     <div class="modal-content">
-      <p>The cart contains a plate of other restaurant. You want to clear?</p>
+      <button class="btn-x" @click="cancelClearCart">
+        <i class="fas fa-times fa-3x"></i>
+      </button>
+      <p>The cart contains a plate of other restaurant. You want to clear or do you want to go back to the old
+        restaurant?</p>
       <div class="modal-buttons-row">
         <button @click="clearCart" class="btn-confirm">
           Clear current cart
         </button>
-        <button @click="cancelClearCart" class="btn-cancel">Cancel</button>
+        <RouterLink :to="{ name: 'restaurants.show', params: { slug: store.platesInCart[0].restaurant.slug } }"
+          @click="cancelClearCart" class="btn-cancel text-decoration-none">
+          Back to {{ store.platesInCart[0].restaurant.name }}
+        </RouterLink>
       </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.btn-x {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-weight: bold;
+  padding: 10px;
+  cursor: pointer;
+}
+
 #plate-card {
   border: 1px solid rgb(230, 217, 217);
   padding: 15px 12px;
@@ -173,7 +183,7 @@ export default {
   display: flex;
   height: 125px;
 
-  & > * {
+  &>* {
     flex-basis: 50%;
   }
 
@@ -186,7 +196,7 @@ export default {
     flex-grow: 1;
     cursor: pointer;
 
-    & > * {
+    &>* {
       flex-basis: 50%;
     }
   }
@@ -268,9 +278,9 @@ export default {
     border-radius: 12px;
     text-align: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    max-width: 320px;
-    width: 50%;
-    height: 30%;
+    max-width: 500px;
+    width: 70%;
+    height: 40%;
     display: flex;
     flex-direction: column;
     justify-content: center;

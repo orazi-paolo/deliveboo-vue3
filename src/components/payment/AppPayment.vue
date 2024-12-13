@@ -86,6 +86,7 @@ export default {
                 }, (err, instance) => {
                     if (err) {
                         console.error("Errore nella creazione del widget Drop-in:", err);
+                        this.errorMessage = "Errore nella creazione del widget Drop-in";
                         return;
                     }
                     this.instance = instance; // Salva l'istanza del widget
@@ -98,10 +99,10 @@ export default {
                     const toastElement = document.querySelector('.toast');
                     const toastInstance = new Toast(toastElement);
                     toastInstance.show();
-                    store.clearCart();
+                    /* store.clearCart(); */
                     setTimeout(() => {
                         this.$router.back();
-                    }, 2000);
+                    }, 2500);
                 });
             });
     },
@@ -118,7 +119,10 @@ export default {
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
         <div class="toast-body text-white">
-            {{ (errorMessage ? "Transaction Failed or generated Token is invalid" : "") || successMessage }}
+            {{ errorMessage }}
+            <p class="error-toast-message" v-if="errorMessage">
+                Generated Token is invalid or the Braintree keys are not correct.
+            </p>
         </div>
     </div>
     <div class="checkout-page container mt-3 mb-3" id="AppPayment">
@@ -159,6 +163,10 @@ div.toast {
     top: 10%;
     right: 0;
     z-index: 2;
+
+    .error-toast-message {
+        font-size: 14px;
+    }
 }
 
 

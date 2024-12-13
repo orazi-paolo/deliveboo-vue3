@@ -51,7 +51,7 @@ export default {
         class="btn btn-turquoise fw-bold d-md-none position-sticky left-0 right-0 bottom-0" data-bs-toggle="modal"
         data-bs-target="#staticBackdrop">
         <span class="me-5 border border-1 p-1 rounded-3">{{
-          store.platesInCart.length
+          store.totalQuantities
         }}</span>
         View Cart
       </button>

@@ -15,25 +15,6 @@ export default {
       store.platesInCart.splice(0, store.platesInCart.length);
       localStorage.removeItem("platesInCart");
     },
-
-    decrementPlates(clickedPlateId) {
-      store.platesInCart.forEach((order) => {
-        if (order.id === clickedPlateId && order.quantity >= 1) {
-          order.quantity -= 1;
-          order.totalPrice -= order.price;
-        }
-      });
-      store.platesInCart = store.platesInCart.filter((order) => {
-        if (order.id === clickedPlateId) {
-          return order.quantity > 0;
-        }
-        return true;
-      });
-      if (store.platesInCart.length === 0)
-        localStorage.removeItem("platesInCart");
-
-      store.getOrderTotalPrice();
-    },
   },
   computed: {
     hasOrders() {
@@ -61,8 +42,16 @@ export default {
         <h4>Cart</h4>
       </div>
       <ul class="orders-list d-flex flex-column-reverse justify-content-end">
-        <li class="single-order" v-for="order in localStoredPlates" :key="order.id" @click="decrementPlates(order.id)">
-          <div class="quantities">x {{ order.quantity }}</div>
+        <li class="single-order" v-for="order in localStoredPlates" :key="order.id">
+          <div class="quantities">
+            <button class="decrement-button" @click="store.decrementPlates(order.id)">
+              <span>-</span>
+            </button>
+            <span>x{{ order.quantity }}</span>
+            <button class="increment-button" @click="store.incrementPlates(order.id)">
+              <span>+</span>
+            </button>
+          </div>
           <div class="order-info">
             <h6 class="text-center m-0">{{ order.name }}</h6>
           </div>
@@ -154,7 +143,28 @@ export default {
         }
 
         .quantities {
-          flex-basis: 10%;
+          flex-basis: 20%;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          .decrement-button,
+          .increment-button {
+            border: 1px #45ccbc solid;
+            background-color: transparent;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+
+            span {
+              color: #45ccbc;
+              font-weight: 900;
+            }
+          }
         }
 
         .order-info {
@@ -162,7 +172,23 @@ export default {
         }
 
         .order-price {
-          flex-basis: 30%;
+          flex-basis: 45%;
+
+          @media (min-width: 800px) {
+            flex-basis: 40%
+          }
+
+          @media (min-width: 900px) {
+            flex-basis: 30%
+          }
+
+          @media (min-width: 1000px) {
+            flex-basis: 20%
+          }
+
+          @media (min-width: 1250px) {
+            flex-basis: 15%
+          }
         }
       }
     }

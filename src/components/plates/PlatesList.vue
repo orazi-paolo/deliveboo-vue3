@@ -75,7 +75,8 @@ export default {
           <span class="badge me-2 my-1" :style="{ backgroundColor: tipology.color }"
             v-for="tipology in singleRestaurant.tipologies" :key="tipology.id">{{
               tipology.name }}</span>
-          <h3 class="fw-semibold">{{ singleRestaurant.name }}</h3>
+          <h3 class="fw-semibold mb-1">{{ singleRestaurant.name }}</h3>
+          <p class="fw-light fs-6 m-0">{{ singleRestaurant.city }}, {{ singleRestaurant.address }}</p>
         </div>
       </div>
       <!-- ul cards props -->

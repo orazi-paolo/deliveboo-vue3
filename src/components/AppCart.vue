@@ -34,6 +34,18 @@ export default {
 
       store.getOrderTotalPrice();
     },
+
+    incrementPlates(clickedPlateId) {
+      store.platesInCart.forEach((order) => {
+        if (order.id === clickedPlateId) {
+          order.quantity += 1;
+          order.totalPrice = parseInt(order.price) * order.quantity;        }
+      });
+
+      store.getOrderTotalPrice();
+      localStorage.setItem("platesInCart", JSON.stringify(store.platesInCart));
+      localStorage.setItem("totalPrice", JSON.stringify(store.totalPrice));
+    }
   },
   computed: {
     hasOrders() {
@@ -69,14 +81,13 @@ export default {
           class="single-order"
           v-for="order in localStoredPlates"
           :key="order.id"
-          @click="decrementPlates(order.id)"
         >
           <div class="quantities">
-            <button class="decrement-button">
+            <button class="decrement-button" @click="decrementPlates(order.id)">
                 <span>-</span>
             </button>
             <span>x{{ order.quantity }}</span>
-            <button class="increment-button">
+            <button class="increment-button" @click="incrementPlates(order.id)">
                 <span>+</span>
             </button>
           </div>

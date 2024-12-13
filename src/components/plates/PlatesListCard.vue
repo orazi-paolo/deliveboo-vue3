@@ -77,7 +77,7 @@ export default {
         );
       }
       // icrement of store.totalQuantities after a plate was added in cart
-      store.totalQuantities += 1; 
+      store.totalQuantities += 1;
 
       let total = 0;
       for (let i = 0; i < store.platesInCart.length; i++) {
@@ -232,6 +232,7 @@ export default {
       width: 100%;
       height: 100%;
       object-position: center;
+      object-fit: cover;
     }
   }
 

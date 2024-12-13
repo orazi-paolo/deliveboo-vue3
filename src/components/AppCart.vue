@@ -34,45 +34,47 @@ export default {
 <template>
   <div id="cart">
     <div v-if="hasOrders" class="plates-in-cart">
-      <div>
+      <div class="cart-top">
         <div class="cart-top-card">
           <h4>Your Order</h4>
           <font-awesome-icon :icon="['fas', 'trash-can']" class="fas-trash" @click="deleteCart" />
         </div>
         <h4>Cart</h4>
       </div>
-      <ul class="orders-list d-flex flex-column-reverse justify-content-end">
-        <li class="single-order" v-for="order in localStoredPlates" :key="order.id">
-          <div class="quantities">
-            <button class="decrement-button" @click="store.decrementPlates(order.id)">
-              <span>-</span>
+      <div class="cart-bottom relative overflow-y-scroll">
+        <ul class="orders-list d-flex flex-column-reverse justify-content-end">
+          <li class="single-order" v-for="order in localStoredPlates" :key="order.id">
+            <div class="quantities">
+              <button class="decrement-button" @click="store.decrementPlates(order.id)">
+                <span>-</span>
+              </button>
+              <span>x{{ order.quantity }}</span>
+              <button class="increment-button" @click="store.incrementPlates(order.id)">
+                <span>+</span>
+              </button>
+            </div>
+            <div class="order-info">
+              <h6 class="text-center m-0">{{ order.name }}</h6>
+            </div>
+            <div class="order-price text-end">
+              {{ order.totalPrice.toFixed(2) }} <span>&euro;</span>
+            </div>
+          </li>
+        </ul>
+        <div class="cart-footer">
+          <div v-if="hasOrders" class="order-total">
+            <p>Total of the order</p>
+            <div class="order-total-price">
+              {{ store.totalPrice.toFixed(2) }}
+              <span>&euro;</span>
+            </div>
+          </div>
+          <router-link :to="{ name: 'checkout' }">
+            <button :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'">
+              Go to payment
             </button>
-            <span>x{{ order.quantity }}</span>
-            <button class="increment-button" @click="store.incrementPlates(order.id)">
-              <span>+</span>
-            </button>
-          </div>
-          <div class="order-info">
-            <h6 class="text-center m-0">{{ order.name }}</h6>
-          </div>
-          <div class="order-price text-end">
-            {{ order.totalPrice.toFixed(2) }} <span>&euro;</span>
-          </div>
-        </li>
-      </ul>
-      <div class="cart-footer">
-        <div v-if="hasOrders" class="order-total">
-          <p>Total of the order</p>
-          <div class="order-total-price">
-            {{ store.totalPrice.toFixed(2) }}
-            <span>&euro;</span>
-          </div>
+          </router-link>
         </div>
-        <router-link :to="{ name: 'checkout' }">
-          <button :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'">
-            Go to payment
-          </button>
-        </router-link>
       </div>
     </div>
 
@@ -87,6 +89,7 @@ export default {
 #cart {
   width: 100%;
   /* height: 500px; */
+  min-height: 200px;
   padding: 20px;
   border: 1px solid rgb(230, 217, 217);
   position: relative;
@@ -96,12 +99,19 @@ export default {
   .no-plates-in-cart,
   .plates-in-cart {
     flex-grow: 1;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
   }
 
   .plates-in-cart {
     display: flex;
     flex-direction: column;
+    position: sticky;
+    top: 0;
+    right: 0;
+
+    .cart-top {
+      height: 100px;
+    }
 
     .cart-top-card {
       flex-grow: 1;
@@ -126,8 +136,9 @@ export default {
       flex-grow: 2;
       padding: 0;
       margin: 0;
+      /* height: calc(100% - 200px); */
       max-height: 300px;
-      overflow-y: auto;
+
 
       .single-order {
         padding: 5px 10px;
@@ -213,6 +224,11 @@ export default {
     background-color: white;
     border-top: 1px solid rgb(230, 217, 217);
     padding: 10px 0;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 
     @media (orientation: landscape) and (max-width: 768px) {
       position: fixed;

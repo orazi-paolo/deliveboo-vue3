@@ -9,7 +9,6 @@ export default {
     return {
       store,
       isScrolled: false,
-      isFixed: false,
     };
   },
   components: {
@@ -19,9 +18,9 @@ export default {
   methods: {
     handleScroll() {
       const mainHeight = document.querySelector("main").scrollHeight;
+      const cartHeight = document.querySelector("#cart").scrollHeight;
       // Controllo se la finestra scorre di 600px prima della fine del main
-      this.isScrolled = window.scrollY > mainHeight - 600;
-      this.isFixed = window.scrollY > 1;
+      this.isScrolled = window.scrollY > mainHeight - cartHeight - 100;
     },
   },
   mounted() {
@@ -40,11 +39,11 @@ export default {
   <div id="container-footer-h" class="container-custom my-4">
     <!-- to costumize container-custom go to style/general.scss -->
     <section class="row row-cols-1 row-cols-md-2 relative" id="AppSingleRestaurant">
-      <div class="col">
+      <div class="col mb-5">
         <PlatesList />
       </div>
       <!-- :style="{ position: isFooterVisible ? 'absolute' : 'fixed', bottom: isFooterVisible ? `${footerOffset}px` : '0px' }" -->
-      <div id="cart" class="col d-none d-md-block" :class="{ 'scrolled': isScrolled, 'fixed': isFixed }">
+      <div id="cart" class="col d-none d-md-block" :class="{ 'scrolled': isScrolled }">
         <AppCart />
       </div>
 
@@ -63,7 +62,7 @@ export default {
         <div class="modal-dialog">
           <div class="modal-content">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            <div class="mt-5 overflow-scroll">
+            <div class="mt-5">
               <AppCart />
             </div>
           </div>
@@ -81,11 +80,9 @@ export default {
 #cart.scrolled {
   position: relative;
   align-self: flex-end;
-  top: 20%;
-  right: 0;
 }
 
-#cart.fixed {
+#cart {
   position: fixed;
   top: 15%;
   right: 0;

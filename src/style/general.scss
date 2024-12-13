@@ -17,7 +17,7 @@ a {
     display: block;
 }
 
-img{
+img {
     max-width: 100%;
 }
 
@@ -26,10 +26,11 @@ img{
     color: $color-primary;
 }
 
-.btn.btn-turquoise{
+.btn.btn-turquoise {
     background-color: $color-primary;
     color: white;
-    &:hover{
+
+    &:hover {
         background-color: $color-primary;
         color: white;
         filter: brightness(90%);

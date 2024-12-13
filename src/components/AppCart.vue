@@ -13,7 +13,12 @@ export default {
   methods: {
     deleteCart() {
       store.platesInCart.splice(0, store.platesInCart.length);
+      store.totalPrice = 0;
+      store.totalQuantities = 0;
+      
       localStorage.removeItem("platesInCart");
+      localStorage.removeItem("totalPrice");
+      localStorage.removeItem("totalQuantities");
     },
   },
   computed: {

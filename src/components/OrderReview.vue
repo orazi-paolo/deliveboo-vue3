@@ -49,7 +49,15 @@ export default {
         <div class="review-card">
             <ul class="orders-list" v-for="singlePlate in store.platesInCart" :key="singlePlate.id">
                 <li class="single-order">
-                    <div class="quantities">x{{ singlePlate.quantity }}</div>
+                    <div class="quantities">
+                        <button class="decrement-button" @click="store.decrementPlates(singlePlate.id)">
+                            <span>-</span>
+                        </button>
+                        <span>x{{ singlePlate.quantity }}</span>
+                        <button class="increment-button" @click="store.incrementPlates(singlePlate.id)">
+                            <span>+</span>
+                        </button>
+                    </div>
                     <div class="order-info">
                         <h5>{{ singlePlate.name }}</h5>
                     </div>
@@ -104,8 +112,31 @@ export default {
 
             .quantities,
             .order-price {
-                flex-basis: 15%;
+                flex-basis: 20%;
                 text-align: center;
+            }
+
+            .quantities {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+
+                .decrement-button, .increment-button{
+                    border: 1px #45ccbc solid;
+                    background-color: transparent;
+                    border-radius: 50%;
+                    width: 25px;
+                    height: 25px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0;
+
+                    span{
+                    color:#45ccbc;
+                    font-weight: 900;
+                    }
+                }
             }
 
             .order-info {
@@ -115,6 +146,7 @@ export default {
                     font-size: 17px;
                     font-weight: 400;
                     margin: 0;
+                    padding: 0 8px;
                 }
             }
         }

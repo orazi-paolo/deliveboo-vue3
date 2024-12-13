@@ -13,7 +13,6 @@ export default {
     mounted() {
     // retrieves the details in localStorage
     const orderDetails = localStorage.getItem("orderDetails");
-
     if (orderDetails && orderDetails !== "undefined") {
         try {
             this.order = JSON.parse(orderDetails);
@@ -24,7 +23,6 @@ export default {
     }
     } else {
     // if the value is null/undefined set the order to null
-    console.error("Nessun ordine trovato nel localStorage!");
     this.order = null;
     }
     },

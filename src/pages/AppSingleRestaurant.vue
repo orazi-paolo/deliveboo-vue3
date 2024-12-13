@@ -37,7 +37,7 @@ export default {
         data-bs-target="#staticBackdrop"
       >
         <span class="me-5 border border-1 p-1 rounded-3">{{
-          store.platesInCart.length
+          store.totalQuantities
         }}</span>
         View Cart
       </button>

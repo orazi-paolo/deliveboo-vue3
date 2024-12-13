@@ -53,10 +53,10 @@ export default {
               }"
               v-if="store.platesInCart.length > 0 && $route.path === '/'"
             >
-              <li>
+              <li class="cart-button">
                 <font-awesome-icon icon="cart-shopping" />
-                <small class="text-black">{{
-                  store.platesInCart.length
+                <small class="cart-quantities">{{
+                  store.totalQuantities
                 }}</small>
               </li>
             </router-link>
@@ -128,6 +128,10 @@ nav {
       border: 1px solid rgb(230, 217, 217);
       border-radius: 5px;
       padding: 5px 25px;
+
+      .cart-quantities{
+        color:#00cbbd;
+      }
 
       .icon-auth {
         font-size: 12px;

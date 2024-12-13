@@ -75,7 +75,6 @@ export default {
           newPlateObjToPush
         );
       }
-      // Update the total price in the store without reduce
       let total = 0;
       for (let i = 0; i < store.platesInCart.length; i++) {
         total += store.platesInCart[i].totalPrice;

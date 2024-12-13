@@ -32,7 +32,7 @@ export default {
 <template>
     <div class="page-wrapper">
         <div class="banner-section">
-            <img src="/public/images/domicilio.png" alt="Deliveroo Banner" class="banner-image" />
+                <img src="/public/images/staff.jpg" alt="Deliveroo Banner" class="banner-image" />
         </div>
         <div class="container py-5 text-center">
         <div class="title-section">
@@ -91,42 +91,49 @@ export default {
 
 <style scoped>
 body {
-    background-color: #ebeced; /* Colore grigio chiaro */
+    background-color: #ebeced;
     margin: 0;
     font-family: 'Poppins', sans-serif;
 }
 
-/* Stile per il contenitore principale */
+
 .container {
-    background-color: white; /* Sfondo bianco per risaltare */
-    border-radius: 12px; /* Angoli arrotondati */
+    background-color: white;
+    border-radius: 12px; 
     padding: 30px;
     max-width: 1200px;
-    margin: 20px auto; /* Centra il contenitore con margini */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombra per effetto card */
+    margin: 20px auto; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
 }
 
 
 .banner-section {
     width: 100%;
-    margin: 0; 
+    height: 50vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
     padding: 0;
     overflow: hidden;
 }
 
 .banner-image {
-    width: 100%; /* L'immagine occupa tutta la larghezza */
-    max-height: 400px; /* Limita l'altezza massima */
-    object-fit: cover; /* Adatta l'immagine mantenendo le proporzioni */
+    width: 100%;
+    height: 100%; 
+    object-fit: cover;
     display: block;
-    margin: 0 auto;
 }
 
 @media (max-width: 768px) {
+    .banner-section {
+        height: 200px; 
+    }
     .banner-image {
-        max-height: 250px; /* Altezza ridotta per dispositivi mobili */
+        object-fit: cover; 
     }
 }
+
 
 .congrats-container {
     display: flex;

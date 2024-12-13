@@ -86,13 +86,12 @@ export default {
 <style lang="scss" scoped>
 #cart {
   width: 100%;
-  height: 500px;
-  padding: 10px;
+  /* height: 500px; */
+  padding: 20px;
   border: 1px solid rgb(230, 217, 217);
   position: relative;
   display: flex;
   flex-direction: column;
-  position: relative;
 
   .no-plates-in-cart,
   .plates-in-cart {

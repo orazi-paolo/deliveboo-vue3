@@ -9,6 +9,7 @@ export default {
     return {
       store,
       isScrolled: false,
+      isFixed: false,
     };
   },
   components: {
@@ -20,6 +21,7 @@ export default {
       const mainHeight = document.querySelector("main").scrollHeight;
       // Controllo se la finestra scorre di 600px prima della fine del main
       this.isScrolled = window.scrollY > mainHeight - 600;
+      this.isFixed = window.scrollY > 1;
     },
   },
   mounted() {
@@ -42,7 +44,7 @@ export default {
         <PlatesList />
       </div>
       <!-- :style="{ position: isFooterVisible ? 'absolute' : 'fixed', bottom: isFooterVisible ? `${footerOffset}px` : '0px' }" -->
-      <div id="cart" class="col d-none d-md-block" :class="{ 'scrolled': isScrolled }">
+      <div id="cart" class="col d-none d-md-block" :class="{ 'scrolled': isScrolled, 'fixed': isFixed }">
         <AppCart />
       </div>
 
@@ -77,13 +79,13 @@ export default {
 @use "../style/general.scss" as *;
 
 #cart.scrolled {
-  position: static;
+  position: relative;
   align-self: flex-end;
   top: 20%;
   right: 0;
 }
 
-#cart {
+#cart.fixed {
   position: fixed;
   top: 15%;
   right: 0;
@@ -92,7 +94,7 @@ export default {
 
 @media (max-width: 767px) {
   #cart {
-    position: static;
+    position: relative;
   }
 }
 </style>

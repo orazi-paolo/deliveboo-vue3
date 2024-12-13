@@ -157,9 +157,10 @@ export default {
         }
 
         .quantities {
-          flex-basis: 20%;
+          flex-basis: 22%;
           display: flex;
           align-items: center;
+          justify-content: space-between;
           gap: 8px;
 
           .decrement-button, .increment-button{

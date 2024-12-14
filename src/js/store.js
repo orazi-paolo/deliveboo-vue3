@@ -93,6 +93,8 @@ export const store = reactive({
     localStorage.removeItem("platesInCart");
     this.totalPrice = 0;
     localStorage.removeItem("totalPrice");
+    this.totalQuantities = 0;
+    localStorage.removeItem("totalQuantities");
   },
 
   decrementPlates(plateId) {

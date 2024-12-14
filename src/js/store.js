@@ -91,6 +91,8 @@ export const store = reactive({
   clearCart() {
     this.platesInCart = [];
     localStorage.removeItem("platesInCart");
+    this.totalPrice = 0;
+    localStorage.removeItem("totalPrice");
   },
 
   decrementPlates(plateId) {
@@ -129,3 +131,5 @@ export const store = reactive({
     console.log(this.totalQuantities)
   }
 });
+
+export default store;

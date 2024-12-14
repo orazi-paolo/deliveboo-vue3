@@ -3,6 +3,7 @@ import dropin from "braintree-web-drop-in";
 import axios from "axios";
 import { store } from '../../js/store';
 import { Toast } from "bootstrap";
+import AppLoader from "../AppLoader.vue";
 
 export default {
     data() {
@@ -30,10 +31,12 @@ export default {
             isPaid: false,
         };
     },
+    components: {
+        AppLoader
+    },
     methods: {
         async processPayment() {
             store.errorMessage = "";
-            store.successMessage = "";
             this.isPaid = true;
             // metodo del widget per ottenere il nonce
             this.instance.requestPaymentMethod((err, payload) => {
@@ -121,7 +124,7 @@ export default {
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
         <div class="toast-body text-white">
-            {{ errorMessage }}
+            {{ errorMessage || successMessage }}
             <p class="error-toast-message" v-if="errorMessage">
                 Generated Token is invalid or the Braintree keys are not correct.
             </p>
@@ -152,8 +155,10 @@ export default {
                 <input id="city" name="city" type="text" v-model="city" placeholder="e.g. Milano" required />
             </div>
             <div id="dropin-container"></div>
-            <button class="button-cart-order" :class="{ 'disabled': isPaid }" type="submit">Pay
-                {{ total }} &euro;</button>
+            <button class="button-cart-order" type="submit" :class="{ 'disabled': isPaid }">
+                <AppLoader id="loader-payment" v-if="isPaid" />
+                <span v-else>Pay {{ total.toFixed(2) }} &euro;</span>
+            </button>
         </form>
     </div>
 </template>
@@ -169,6 +174,10 @@ div.toast {
     .error-toast-message {
         font-size: 14px;
     }
+}
+
+section#loader-payment {
+    height: 50px;
 }
 
 
@@ -195,8 +204,11 @@ div.toast {
             &.disabled {
                 background-color: #ccc;
                 cursor: not-allowed;
+
+
             }
 
+            min-height: 60px;
             width: 100%;
             font-weight: 700;
             border-color: transparent;

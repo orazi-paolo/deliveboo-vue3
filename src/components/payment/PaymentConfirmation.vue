@@ -42,41 +42,47 @@ export default {
             <div class="title-section">
 
 
-                <span class="congrats-text"> Il tuo ordine è stato confermato! </span>
+                <span class="congrats-text"> Your order is confirmed! </span>
             </div>
 
+            <div v-if="store.platesInCart" class="order-summary">
+                <h2 class="fs-4 mb-3 text-center">Order Summary {{ store.platesInCart[0].restaurant.name }} </h2>
+                <p class="text-muted text-center"> {{ store.platesInCart[0].restaurant.address }} </p>
+                <div class="card border-2 rounded-4 border-turquoise py-3">
+                    <table class="table table-hover table-border text-center">
+                        <thead>
+                            <tr>
+                                <th>Plates</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="plate in store.platesInCart" :key="plate.id">
+                                <td>{{ plate.name }}</td>
+                                <td>x{{ plate.quantity }}</td>
+                                <td>€{{ (Number(plate.price) * Number(plate.quantity) || 0).toFixed(2) }}</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2" class="text-center">Total</td>
+                                <!-- <th>€{{ order.total.toFixed(2) }}</th> -->
+                                <td class="table-success">€{{ store.totalPrice.toFixed(2) }}</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
 
         </div>
 
-        <div v-if="store.platesInCart" class="order-summary">
-            <h2 class="fs-4 mb-3 text-center">Riepilogo Ordine</h2>
-            <table class="table table-striped table-hover text-center">
-                <thead>
-                    <tr>
-                        <th>Piatti</th>
-                        <th>Quantità</th>
-                        <th>Prezzo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="plate in store.platesInCart" :key="plate.id">
-                        <td>{{ plate.name }}</td>
-                        <td>{{ plate.quantity }}</td>
-                        <td>€{{ (Number(plate.price) * Number(plate.quantity) || 0).toFixed(2) }}</td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th colspan="2" class="text-end">Totale</th>
-                        <!-- <th>€{{ order.total.toFixed(2) }}</th> -->
-                        <th>€{{ store.totalPrice.toFixed(2) }}</th>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
 
         <div class="text-center my-4">
-            <button @click="goToHome" class="btn btn-success btn-lg">Torna alla Home</button>
+            <button @click="goToHome" class="btn btn-success btn-lg">
+                <i class="fa-solid fa-house fa-xs"></i>
+                Back to Home
+            </button>
         </div>
 
         <!-- <div v-else class="text-center mt-5">
@@ -207,6 +213,10 @@ body {
     margin-top: 5px;
     line-height: 1.6;
     text-align: center;
+}
+
+.card.border-turquoise {
+    border-color: #00CBBD;
 }
 
 /* @keyframes slideIn {

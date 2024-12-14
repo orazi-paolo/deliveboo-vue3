@@ -103,7 +103,12 @@ export default {
       // for modal button
       store.platesInCart = [];
       localStorage.removeItem("platesInCart");
+      store.totalQuantities = 0;
+      localStorage.removeItem("totalQuantities");
+      store.totalPrice = 0;
+      localStorage.removeItem("totalPrice");
       this.showClearCartModal = false;
+      this.addToCart(this.plateObj);
     },
     cancelClearCart() {
       // for modal button

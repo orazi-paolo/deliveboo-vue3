@@ -5,8 +5,10 @@ export const store = reactive({
   platesInCart: JSON.parse(localStorage.getItem("platesInCart")) || [],
   tipologiesIds: [],
   restaurantsFiltered: [],
+  page: 1,
   // apiUrlRestaurants: "http://127.0.0.1:8000/api/restaurants",
   apiUrlRestaurantsFilter: "http://127.0.0.1:8000/api/restaurant/filter",
+  apiUrlRestaurantsFilterWithPage: "http://127.0.0.1:8000/api/restaurant/filter/pagination",
   // loader
   isLoadingRestaurants: true,
   isLoadingTipologies: true,
@@ -23,6 +25,32 @@ export const store = reactive({
   },
   getRestaurantsFiltered() {
     axios
+      .get(this.apiUrlRestaurantsFilterWithPage, {
+        params: {
+          tipologies: this.joinTipologiesIds(),
+          page: store.page,
+        },
+      })
+      .then((response) => {
+        console.log("Dati ricevuti:", response.data.results);
+        console.log("======= Inizio chiamata API Restaurants Filtered======= ");
+        console.log(response.data.results);
+        this.restaurantsFiltered = response.data.results.data;
+        console.log(this.restaurantsFiltered);
+        this.isLoadingRestaurants = false;
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
+        console.log(
+          "======= Chiamata API Restaurants Completata Filtered======= "
+        );
+      });
+  },
+
+  getRestaurants() {
+    axios
       .get(this.apiUrlRestaurantsFilter, {
         params: {
           tipologies: this.joinTipologiesIds(),
@@ -32,6 +60,7 @@ export const store = reactive({
         console.log("Dati ricevuti:", response.data.results);
         console.log("======= Inizio chiamata API Restaurants Filtered======= ");
         console.log(response.data.results);
+
         this.restaurantsFiltered = response.data.results;
         console.log(this.restaurantsFiltered);
         this.isLoadingRestaurants = false;

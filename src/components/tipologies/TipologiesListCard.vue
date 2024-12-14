@@ -19,6 +19,7 @@ export default {
     },
     methods: {
         toggleTipology() {
+            console.log([...store.tipologiesIds]);
             this.active = !this.active;
             // Controllo se il tipologyObj.id è già presente in store.tipologiesIds
             // Controllando se il tipologyObj.id è presente in store.tipologiesIds            
@@ -30,7 +31,12 @@ export default {
             } else {
                 store.tipologiesIds.push(this.tipologyObj.id);
             }
-            console.log([...store.tipologiesIds]);
+
+            if (store.tipologiesIds.length == 0) {
+                store.getRestaurantsFiltered()
+            } else {
+                store.getRestaurants()
+            }
         }
     },
     computed: {
@@ -45,8 +51,7 @@ export default {
 <template>
     <!-- card of single tipology -->
     <li class="col-4 col-sm-3 col-lg-2 py-2 px-md-3 p-lg-3">
-        <div class="tipology-card" :class="{ active: isActive }"
-            @click="toggleTipology(), store.getRestaurantsFiltered()">
+        <div class="tipology-card" :class="{ active: isActive }" @click="toggleTipology()">
             <div class="box-img">
                 <img v-if="tipologyObj.image" class="rounded-2" :src="tipologyObj.image"
                     :alt="`Image of ${tipologyObj.name}`">

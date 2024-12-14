@@ -27,6 +27,18 @@ export default {
                 .finally(function () {
                 })
         },
+        prevPage() {
+            if (store.page > 1) {
+                store.page--
+                store.getRestaurantsFiltered()
+            }
+        },
+        nextPage() {
+            if (store.page < store.restaurantsFiltered.length) {
+                store.page++
+                store.getRestaurantsFiltered()
+            }
+        }
     },
     computed: {
         restaurantsFiltered() {
@@ -64,18 +76,46 @@ export default {
                 </span>
             </h5>
         </div>
+        <i v-if="store.tipologiesIds.length == 0" class="fa-solid fa-circle-chevron-left fa-3x" @click="prevPage"></i>
         <ul class="row" id="restaurants-list">
             <RestaurantsListCard v-for="restaurant in restaurantsFiltered" :key="restaurant.id"
                 :restaurant="restaurant" />
         </ul>
+        <i v-if="store.tipologiesIds.length == 0" class="fa-solid fa-circle-chevron-right fa-3x" @click="nextPage"></i>
     </section>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #restaurants-list {
     flex-wrap: wrap;
     padding: 0;
     list-style-type: none;
     display: flex;
+}
+
+section {
+    position: relative;
+}
+
+i {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    color: #8b8b8b;
+
+    &.fa-circle-chevron-left {
+        left: 0;
+    }
+
+    &.fa-circle-chevron-right {
+        right: 0;
+    }
+
+    &:hover {
+        color: #00CBBD;
+        scale: 1.1;
+    }
 }
 </style>

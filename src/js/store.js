@@ -78,5 +78,9 @@ export const store = reactive({
   clearCart() {
     this.platesInCart = [];
     localStorage.removeItem("platesInCart");
+    this.totalPrice = 0;
+    localStorage.removeItem("totalPrice");
   },
 });
+
+export default store;

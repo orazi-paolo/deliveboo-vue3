@@ -1,5 +1,6 @@
 <script>
-import { store } from "../js/store";
+import { reactive } from "vue";
+import { store } from "../js/store.js";
 
 export default {
   props: {
@@ -11,15 +12,16 @@ export default {
   data() {
     return {
       isModalVisible: true,
-      quantity: 1,
+      // quantity: 1,
       selectedIngredients: [],
       notification: null,
+      store,
     };
   },
 
   computed: {
     totalPrice() {
-      return (this.quantity * this.plate.price).toFixed(2);
+      return (this.plate.quantity * this.plate.price).toFixed(2);
     },
   },
 
@@ -123,9 +125,9 @@ export default {
           <div class="quantity-control">
             <button
               class="btn-quantity"
-              :class="{ active: quantity > 1, disabled: quantity === 1 }"
-              @click="store.decrementPlates(plate.Id)"
-              :disabled="quantity === 1"
+              :class="{ active: plate.quantity > 1, disabled: plate.quantity === 1 }"
+              @click="store.decrementPlates(plate.id)"
+              :disabled="plate.quantity === 1"
             >
               -
             </button>
@@ -133,7 +135,7 @@ export default {
             <button
               class="btn-quantity"
               :class="{ active: true }"
-              @click="store.incrementPlates(plate.Id)"
+              @click="store.incrementPlates(plate.id, plate)"
             >
               +
             </button>

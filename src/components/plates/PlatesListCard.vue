@@ -10,6 +10,7 @@ export default {
       modal: false,
       store,
       showClearCartModal: false,
+      newPlateObjToPush: null, // if guest push a plate already into the cart push in store.platesincart newPlateObjToPush(the spreaf of plateobj with quantities and total price)
     };
   },
   props: {
@@ -55,25 +56,25 @@ export default {
         plateInArray.quantity += 1;
         // icrease price plate in totalPrice with the value of quantity
         plateInArray.totalPrice =
-          parseFloat(plateInArray.price) * plateInArray.quantity;
+        parseFloat(plateInArray.price) * plateInArray.quantity;
         console.log(plateInArray);
       } else {
         // if the plate is not cpntained in store.platesInCart push the plate as a new plate
-        const newPlateObjToPush = {
+        this.newPlateObjToPush = {
           ...plateObj,
           quantity: 1,
           totalPrice: parseFloat(plateObj.price),
-          restaurant: this.singleRestaurant
+          restaurant: this.singleRestaurant,
         };
         store.platesInCart.push(
           // newPlateObjToPush =
           // spred oprator of plateObj(parameter)
           // with quantity and totalPrice
-          newPlateObjToPush
+          this.newPlateObjToPush
         );
         console.log(
           "==========newPlateObjToPush to push in cart",
-          newPlateObjToPush
+          this.newPlateObjToPush
         );
       }
       // icrement of store.totalQuantities after a plate was added in cart
@@ -102,7 +103,12 @@ export default {
     clearCart() {
       // for modal button
       store.platesInCart = [];
+      store.totalPrice = 0;
+      store.totalQuantities = 0;
+      
       localStorage.removeItem("platesInCart");
+      localStorage.removeItem("totalPrice");
+      localStorage.removeItem("totalQuantities");
       this.showClearCartModal = false;
     },
     cancelClearCart() {
@@ -120,6 +126,23 @@ export default {
     showModal() {
       return this.modal;
     },
+    plateObjToPushInShow() {
+      const plateInArray = store.platesInCart.find(
+      (item) => item.id === this.plateObj.id
+      );
+      // if guest add to cart from first and others time from addtocart of show the datas for props refresh
+      // because the props plateObj from plateList.vue that we sent by props to ShowModal is not a reactive plate but static
+      if (plateInArray){
+        return plateInArray
+      } else {
+        return {
+          ...this.plateObj,
+          quantity: 1,
+          totalPrice: parseFloat(this.plateObj.price),
+          restaurant: this.singleRestaurant,
+        }
+      }
+    }  
   },
 };
 </script>
@@ -141,7 +164,8 @@ export default {
       <button class="btn-add-item" @click="addToCart(plateObj)">
         <span>+</span>
       </button>
-      <PlateShow v-if="showModal" :plate="plateObj" @closeModal="toggleModal()" />
+      <!-- props for PlateShow.vue if send newPlateObjToPush if is not null else send plateObjToPushInShow(computed) -->
+      <PlateShow v-if="showModal" :plate="newPlateObjToPush || plateObjToPushInShow" @closeModal="toggleModal()" />
     </div>
   </li>
 

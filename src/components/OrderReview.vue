@@ -119,6 +119,7 @@ export default {
             .quantities {
                 display: flex;
                 align-items: center;
+                justify-content: space-between;
                 gap: 8px;
 
                 .decrement-button, .increment-button{

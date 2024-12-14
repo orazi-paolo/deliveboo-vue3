@@ -111,6 +111,12 @@ export default {
                 });
             });
     },
+    computed: {
+        totalPrice() {
+            return store.totalPrice;
+        }
+    },
+    
 };
 </script>
 
@@ -155,8 +161,9 @@ export default {
                 <input id="city" name="city" type="text" v-model="city" placeholder="e.g. Milano" required />
             </div>
             <div id="dropin-container"></div>
-            <button class="button-cart-order" :class="{ 'disabled': isPaid }" type="submit">Pay
-                {{ total }} &euro;</button>
+            <button class="button-pay-order" :class="{ 'disabled': isPaid }" type="submit">Pay
+                {{ totalPrice.toFixed(2) }} &euro;
+            </button>
         </form>
     </div>
 </template>
@@ -193,8 +200,7 @@ div.toast {
             }
         }
 
-        .button-cart-order,
-        .button-cart-empty {
+        .button-pay-order {
             &.disabled {
                 background-color: #ccc;
                 cursor: not-allowed;

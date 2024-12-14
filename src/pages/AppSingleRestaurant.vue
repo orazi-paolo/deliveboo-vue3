@@ -43,7 +43,7 @@ export default {
         <PlatesList />
       </div>
       <!-- :style="{ position: isFooterVisible ? 'absolute' : 'fixed', bottom: isFooterVisible ? `${footerOffset}px` : '0px' }" -->
-      <div id="cart" class="col d-none d-md-block" :class="{ 'scrolled': isScrolled }">
+      <div id="cart-scroll" class="col d-none d-md-block" :class="{ 'scrolled': isScrolled }">
         <AppCart />
       </div>
 
@@ -77,12 +77,12 @@ export default {
 @use "bootstrap/scss/bootstrap.scss" as *;
 @use "../style/general.scss" as *;
 
-#cart.scrolled {
+#cart-scroll.scrolled {
   position: relative;
   align-self: flex-end;
 }
 
-#cart {
+#cart-scroll {
   position: fixed;
   top: 15%;
   right: 0;

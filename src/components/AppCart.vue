@@ -13,7 +13,12 @@ export default {
   methods: {
     deleteCart() {
       store.platesInCart.splice(0, store.platesInCart.length);
+      store.totalPrice = 0;
+      store.totalQuantities = 0;
+      
       localStorage.removeItem("platesInCart");
+      localStorage.removeItem("totalPrice");
+      localStorage.removeItem("totalQuantities");
     },
   },
   computed: {
@@ -28,6 +33,9 @@ export default {
       /* console.log(JSON.parse(localStoredPlates)); */
       return JSON.parse(localStoredPlates);
     },
+    totalPrice() {
+        return store.totalPrice;
+    }
   },
 };
 </script>
@@ -67,7 +75,7 @@ export default {
         <div v-if="hasOrders" class="order-total">
           <p>Total of the order</p>
           <div class="order-total-price">
-            {{ store.totalPrice.toFixed(2) }}
+            {{ totalPrice.toFixed(2) }}
             <span>&euro;</span>
           </div>
         </div>
@@ -155,9 +163,10 @@ export default {
         }
 
         .quantities {
-          flex-basis: 20%;
+          flex-basis: 22%;
           display: flex;
           align-items: center;
+          justify-content: space-between;
           gap: 8px;
 
           .decrement-button,

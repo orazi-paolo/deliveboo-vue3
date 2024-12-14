@@ -6,6 +6,7 @@ import { Toast } from "bootstrap";
 import AppLoader from "../AppLoader.vue";
 
 export default {
+    emits: ["setLoader"],
     data() {
         return {
             store,
@@ -36,11 +37,13 @@ export default {
     },
     methods: {
         async processPayment() {
+            this.$emit("setLoader", true);
             store.errorMessage = "";
             this.isPaid = true;
             // metodo del widget per ottenere il nonce
             this.instance.requestPaymentMethod((err, payload) => {
                 if (err) {
+                    this.$emit("setLoader", false);
                     console.error("Errore nel recupero del nonce:", err);
                     return;
                 };
@@ -58,6 +61,7 @@ export default {
                     plates: this.allPlates, // Piatti ordinati
                 })
                     .then((response) => {
+                        this.$emit("setLoader", false);
                         /* alert(response.data.message);  */// Mostro messaggio di successo
                         this.successMessage = response.data.message;
                         /* console.log("Order salvato:", response.data.order);
@@ -73,6 +77,7 @@ export default {
                         });
                     })
                     .catch((error) => {
+                        this.$emit("setLoader", false);
                         console.log(this.email)
                         console.error("Errore durante il pagamento:", error.response.data.message);
                         this.errorMessage = error.response?.data?.message || "An error occurred during payment.";
@@ -111,6 +116,12 @@ export default {
                 });
             });
     },
+    computed: {
+        totalPrice() {
+            return store.totalPrice;
+        }
+    },
+
 };
 </script>
 
@@ -155,9 +166,9 @@ export default {
                 <input id="city" name="city" type="text" v-model="city" placeholder="e.g. Milano" required />
             </div>
             <div id="dropin-container"></div>
-            <button class="button-cart-order" type="submit" :class="{ 'disabled': isPaid }">
+            <button class="button-pay-order" type="submit" :class="{ 'disabled': isPaid }">
                 <AppLoader id="loader-payment" v-if="isPaid" />
-                <span v-else>Pay {{ total.toFixed(2) }} &euro;</span>
+                <span v-else>Pay {{ totalPrice.toFixed(2) }} &euro;</span>
             </button>
         </form>
     </div>
@@ -199,8 +210,7 @@ section#loader-payment {
             }
         }
 
-        .button-cart-order,
-        .button-cart-empty {
+        .button-pay-order {
             &.disabled {
                 background-color: #ccc;
                 cursor: not-allowed;

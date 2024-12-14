@@ -34,20 +34,16 @@ export default {
         <div class="banner-section">
                 <img src="/public/images/staff.jpg" alt="Deliveroo Banner" class="banner-image" />
         </div>
+
         <div class="container py-5 text-center">
         <div class="title-section">
-            <div class="congrats-container">
-                <i class="fas fa-award icon"></i>
+            
+                
                 <span class="congrats-text"> Il tuo ordine è stato confermato! </span>
-                <i class="fas fa-award icon"></i>
-            </div>
-            <div class="message-box">
-                <p class="main-message"><strong>Grazie per aver scelto Deliveboo!</strong></p>
-                <hr>
-                <p class="secondary-message">Ti abbiamo inviato un'email con i dettagli.</p>
-                <p class="secondary-message">Stiamo preparando il tuo ordine con cura!</p>
-            </div>
         </div>
+            
+        
+    </div>
 
         <div v-if="order" class="order-summary">
             <h2 class="fs-4 mb-3 text-center">Riepilogo Ordine</h2>
@@ -74,7 +70,7 @@ export default {
                 </tfoot>
             </table>
         </div>
-
+ 
         <div class="text-center mt-4">
             <button @click="goToHome" class="btn btn-success btn-lg">Torna alla Home</button>
         </div>
@@ -84,7 +80,7 @@ export default {
             <button @click="goToHome" class="btn btn-primary mt-3">Torna alla Home</button>
         </div> -->
         </div>
-    </div>
+    
 </template>
 
 

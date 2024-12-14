@@ -100,7 +100,7 @@ export default {
       }
       return false;
     },
-    clearCart() {
+    clearCart(plate) {
       // for modal button
       store.platesInCart = [];
       store.totalPrice = 0;
@@ -110,6 +110,24 @@ export default {
       localStorage.removeItem("totalPrice");
       localStorage.removeItem("totalQuantities");
       this.showClearCartModal = false;
+
+      const newPlateToPush = {
+        ...plate,
+        quantity: 1,
+        totalPrice: parseFloat(plate.price),
+        restaurant: this.singleRestaurant,
+      }
+      // add in the cart the new plate
+      store.platesInCart.push(newPlateToPush);
+
+      console.log("!!!!!!!!!!!!!!!!",newPlateToPush)
+
+      // update the datas in local stoprage
+      store.totalPrice = newPlateToPush.totalPrice;
+      store.totalQuantities = 1;
+      localStorage.setItem("platesInCart", JSON.stringify(store.platesInCart));
+      localStorage.setItem("totalPrice", store.totalPrice.toString());
+      localStorage.setItem("totalQuantities", store.totalQuantities.toString());
     },
     cancelClearCart() {
       // for modal button
@@ -178,7 +196,7 @@ export default {
       <p>The cart contains a plate of other restaurant. You want to clear or do you want to go back to the old
         restaurant?</p>
       <div class="modal-buttons-row">
-        <button @click="clearCart" class="btn-confirm">
+        <button @click="clearCart(plateObj)" class="btn-confirm">
           Clear current cart
         </button>
         <RouterLink :to="{ name: 'restaurants.show', params: { slug: store.platesInCart[0].restaurant.slug } }"

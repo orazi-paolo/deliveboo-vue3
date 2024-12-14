@@ -32,6 +32,9 @@ export default {
       console.log(JSON.parse(localStoredPlates));
       return JSON.parse(localStoredPlates);
     },
+    totalPrice() {
+        return store.totalPrice;
+    }
   },
 };
 </script>
@@ -77,7 +80,7 @@ export default {
         <div v-if="hasOrders" class="order-total">
           <p>Total of the order</p>
           <div class="order-total-price">
-            {{ store.totalPrice.toFixed(2) }}
+            {{ totalPrice.toFixed(2) }}
             <span>&euro;</span>
           </div>
         </div>

@@ -106,6 +106,12 @@ export default {
                 });
             });
     },
+    computed: {
+        totalPrice() {
+            return store.totalPrice;
+        }
+    },
+    
 };
 </script>
 
@@ -151,7 +157,8 @@ export default {
             </div>
             <div id="dropin-container"></div>
             <button class="button-pay-order" :class="{ 'disabled': isPaid }" type="submit">Pay
-                {{ store.totalPrice }} &euro;</button>
+                {{ totalPrice.toFixed(2) }} &euro;
+            </button>
         </form>
     </div>
 </template>

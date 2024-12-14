@@ -47,26 +47,26 @@ export const store = reactive({
   },
 
   // Method for adding dishes to the cart
-  addPlateToCart(plate, quantity, selectedIngredients) {
+  addPlateToCart(plate, selectedIngredients) {
     // Check if the dish is already in your cart
     const existingPlate = this.platesInCart.find(
       (item) => item.id === plate.id
     );
 
     if (existingPlate) {
-      existingPlate.quantity += quantity;
-      existingPlate.totalPrice += plate.price * quantity;
+      existingPlate.quantity += 1;
+      existingPlate.totalPrice += plate.price * plate.quantity;
     } else {
       this.platesInCart.push({
-        id: plate.id,
-        name: plate.name,
-        price: plate.price,
-        quantity,
+        ...plate,
         ingredients: selectedIngredients,
-        totalPrice: plate.price * quantity,
-        restaurant_id: plate.restaurant_id,
       });
     }
+    // update storage this.totalQuantities
+    this.totalQuantities += 1;
+    localStorage.setItem("totalQuantities", JSON.stringify(this.totalQuantities));
+
+    localStorage.setItem("platesInCart", JSON.stringify(this.platesInCart));
   },
   getOrderTotalPrice() {
     // in totalPrice calculate the amount of the total order inside of the client's cart
@@ -111,21 +111,27 @@ export const store = reactive({
 
     this.getOrderTotalPrice();
     this.getOrderTotalQuantities();
-    console.log(this.totalQuantities)
+    // console.log(this.totalQuantities)
   },
 
-  incrementPlates(plateId) {
+  incrementPlates(plateId, plateObj) {
+    let isInCart = false;
     this.platesInCart.forEach((order) => {
       if (order.id === plateId) {
         order.quantity += 1;
-        order.totalPrice = parseInt(order.price) * order.quantity;
+        order.totalPrice = order.price * order.quantity;
+        isInCart = true;
       }
     });
+    // if guest want to add a new plate in cart in ShowPlate modal with button(+) incrementPlates
+    if (!isInCart) {
+      this.platesInCart.push(plateObj);
+    }
 
     this.getOrderTotalPrice();
     this.getOrderTotalQuantities();
 
     localStorage.setItem("platesInCart", JSON.stringify(this.platesInCart));
-    console.log(this.totalQuantities)
+    // console.log(this.totalQuantities)
   }
 });

@@ -1,5 +1,6 @@
 <script>
-import { store } from "../js/store";
+import { reactive } from "vue";
+import { store } from "../js/store.js";
 
 export default {
   props: {
@@ -11,15 +12,16 @@ export default {
   data() {
     return {
       isModalVisible: true,
-      quantity: 1,
+      // quantity: 1,
       selectedIngredients: [],
       notification: null,
+      store,
     };
   },
 
   computed: {
     totalPrice() {
-      return (this.quantity * this.plate.price).toFixed(2);
+      return (this.plate.quantity * this.plate.price).toFixed(2);
     },
   },
 
@@ -27,19 +29,19 @@ export default {
     close() {
       this.$router.push("/");
     },
-    increaseQuantity() {
-      this.quantity++;
-    },
-    decreaseQuantity() {
-      if (this.quantity > 1) {
-        this.quantity--;
-      }
-    },
+    // increaseQuantity() {
+    //   this.quantity++;
+    // },
+    // decreaseQuantity() {
+    //   if (this.quantity > 1) {
+    //     this.quantity--;
+    //   }
+    // },
     emitCloseModal() {
       this.$emit("closeModal");
     },
     addToCart() {
-      store.addPlateToCart(this.plate, this.quantity, this.selectedIngredients);
+      store.addPlateToCart(this.plate, this.selectedIngredients);
       this.notification = "Piatto aggiunto al carrello!";
       store.getOrderTotalPrice();
 
@@ -51,6 +53,9 @@ export default {
       this.emitCloseModal();
     },
   },
+  created(){
+    console.log("currentplateshow",this.plate);
+  }
 };
 </script>
 
@@ -120,17 +125,17 @@ export default {
           <div class="quantity-control">
             <button
               class="btn-quantity"
-              :class="{ active: quantity > 1, disabled: quantity === 1 }"
-              @click="decreaseQuantity"
-              :disabled="quantity === 1"
+              :class="{ active: plate.quantity > 1, disabled: plate.quantity === 1 }"
+              @click="store.decrementPlates(plate.id)"
+              :disabled="plate.quantity === 1"
             >
               -
             </button>
-            <span class="quantity-value">{{ quantity }}</span>
+            <span class="quantity-value">{{ plate.quantity }}</span>
             <button
               class="btn-quantity"
               :class="{ active: true }"
-              @click="increaseQuantity"
+              @click="store.incrementPlates(plate.id, plate)"
             >
               +
             </button>
@@ -210,6 +215,10 @@ p {
   font-weight: bold;
   text-align: center;
   color: #000;
+}
+
+.modal.d-block{
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .modal-dialog {

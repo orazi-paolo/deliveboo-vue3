@@ -23,6 +23,7 @@ export default {
     localStoredPlates() {
       localStorage.setItem("platesInCart", JSON.stringify(store.platesInCart));
       localStorage.setItem("totalPrice", JSON.stringify(store.totalPrice));
+      localStorage.setItem("totalQuantities", JSON.stringify(store.totalQuantities));
       const localStoredPlates = localStorage.getItem("platesInCart");
       /* console.log(JSON.parse(localStoredPlates)); */
       return JSON.parse(localStoredPlates);
@@ -71,7 +72,8 @@ export default {
           </div>
         </div>
         <router-link :to="{ name: 'checkout' }">
-          <button :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'">
+          <button type="button" data-bs-dismiss="modal" aria-label="Close"
+            :class="hasOrders ? 'button-cart-order' : 'button-cart-empty'">
             Go to payment
           </button>
         </router-link>

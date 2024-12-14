@@ -62,8 +62,8 @@ export default {
         <div class="modal-dialog">
           <div class="modal-content">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            <div class="mt-5">
-              <AppCart />
+            <div>
+              <AppCart class="modal-cart" />
             </div>
           </div>
         </div>

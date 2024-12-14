@@ -114,13 +114,19 @@ export const store = reactive({
     // console.log(this.totalQuantities)
   },
 
-  incrementPlates(plateId) {
+  incrementPlates(plateId, plateObj) {
+    let isInCart = false;
     this.platesInCart.forEach((order) => {
       if (order.id === plateId) {
         order.quantity += 1;
-        order.totalPrice = parseInt(order.price) * order.quantity;
+        order.totalPrice = order.price * order.quantity;
+        isInCart = true;
       }
     });
+    // if guest want to add a new plate in cart in ShowPlate modal with button(+) incrementPlates
+    if (!isInCart) {
+      this.platesInCart.push(plateObj);
+    }
 
     this.getOrderTotalPrice();
     this.getOrderTotalQuantities();

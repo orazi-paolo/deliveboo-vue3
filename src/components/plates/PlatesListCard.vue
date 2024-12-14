@@ -100,7 +100,7 @@ export default {
       }
       return false;
     },
-    clearCart(plate) {
+    clearCart() {
       // for modal button
       store.platesInCart = [];
       localStorage.removeItem("platesInCart");
@@ -178,7 +178,7 @@ export default {
       <p>The cart contains a plate of other restaurant. You want to clear or do you want to go back to the old
         restaurant?</p>
       <div class="modal-buttons-row">
-        <button @click="clearCart(plateObj)" class="btn-confirm">
+        <button @click="clearCart()" class="btn-confirm">
           Clear current cart
         </button>
         <RouterLink :to="{ name: 'restaurants.show', params: { slug: store.platesInCart[0].restaurant.slug } }"

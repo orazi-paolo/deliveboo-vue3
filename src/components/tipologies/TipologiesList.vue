@@ -72,7 +72,7 @@ export default {
                 this.activeIndex++;
                 this.restartCicle;
                 console.log(this.activeIndex)
-            }, 3000);
+            }, 5000);
         },
         getImagePath(imagePath) {
             return new URL(`../../assets/${imagePath}`, import.meta.url).href;

@@ -6,7 +6,8 @@
 </div>
 
 
-DeliveBoo è una piattaforma di food delivery ispirata dalle piattaforme moderne più famose e celebri del Web, sviluppata con Vue 3, integrata con un backend Laravel 10 e MySQL.
+DeliveBoo è una piattaforma di food delivery ispirata dalle applicazioni moderne più famose e celebri del Web, sviluppata con Vue 3, integrata con un backend Laravel 10 e MySQL.
+Permette ai ristoratori di registrare la propria attività e gestire il proprio menù, mentre i clienti possono ordinare i loro piatti preferiti.
 
 Vai alla repository backend [DeliveBoo-BE](https://github.com/orazi-paolo/deliveboo-laravel10).
 

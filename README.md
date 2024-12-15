@@ -1,12 +1,12 @@
 
-# DeliveBoo - Food Delivery Platform
+# DeliveBoo - Food Delivery Platform 🍕
 <div align="center">
     <img src="./src/assets/deliveroo-logo.webp" alt="Deliveroo Logo" height="100px">
     <img src="./src/assets/logo-deliveboo.png" alt="DeliveBoo Logo" height="40px">
 </div>
 
 
-DeliveBoo è una piattaforma di food delivery ispirata dalle piattaforme mderne più famose e celebri del Web, sviluppata con Vue 3, integrata con un backend Laravel 10 e MySQL.
+DeliveBoo è una piattaforma di food delivery ispirata dalle piattaforme moderne più famose e celebri del Web, sviluppata con Vue 3, integrata con un backend Laravel 10 e MySQL.
 
 Vai alla repository backend [DeliveBoo-BE](https://github.com/orazi-paolo/deliveboo-laravel10).
 

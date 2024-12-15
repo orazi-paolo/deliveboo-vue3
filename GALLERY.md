@@ -1,3 +1,9 @@
+<div style="text-align: center;">
+
+![Logo](./src/assets/logo-deliveboo.png){ height="40px" }
+
+</div>
+
 # Galleria immagini
 
 - ### 💻 Home (Laptop view) 

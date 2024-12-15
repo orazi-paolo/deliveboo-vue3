@@ -1,3 +1,9 @@
+<div style="text-align: center;">
+
+![Logo](./src/assets/logo-deliveboo.png){ height="40px" }
+
+</div>
+
 # 👥 Contributing
 
 Grazie per voler contribuire a questo progetto! Le tue idee e il tuo supporto sono essenziali per il suo sviluppo continuo.

@@ -71,7 +71,7 @@ export default {
             setInterval(() => {
                 this.activeIndex++;
                 this.restartCicle;
-                console.log(this.activeIndex)
+                /* console.log(this.activeIndex) */
             }, 5000);
         },
         getImagePath(imagePath) {
@@ -95,7 +95,7 @@ export default {
 
     },
     created() {
-        console.log(this.activeIndex)
+        /* console.log(this.activeIndex) */
         this.getTipologies();
         this.autoPlay();
     }

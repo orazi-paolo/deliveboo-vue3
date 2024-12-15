@@ -5,7 +5,7 @@
 
 <div style="text-align: center;">
 
-![Home](./src/assets/images-readme/screencapture-1.png){ width="45%" margin="0 auto"} ![Home](./src/assets/images-readme/carousel.png){ width="45%" margin="0 auto"}
+![Home](./src/assets/images-readme/screencapture-1.png){ width="45%" height="500px" margin="0 auto"} ![Home](./src/assets/images-readme/carousel.png){ width="45%" height="500px" margin="0 auto"}
 
 </div>
 
@@ -40,6 +40,14 @@
 <div style="text-align: center;">
 
 ![Single Restaurant](./src/assets/images-readme/single-rest.png){ width="50%" }
+
+</div>
+
+- ### 💻 Single Restaurant (Mobile view)
+
+<div style="text-align: center;">
+
+![Single Restaurant Mobile](./src/assets/images-readme/mobilesingle-res.png){ height="500px" }
 
 </div>
 

@@ -1,6 +1,6 @@
 <div style="text-align: center;">
 
-![Logo](./src/assets/logo-deliveboo.png)
+<img src="./src/assets/logo-deliveboo.png" alt="DeliveBoo Logo" height="40px">
 
 </div>
 
@@ -11,8 +11,8 @@
 
 <div style="text-align: center;">
 
-![Home](./src/assets/images-readme/screencapture-1.png) 
-![Home](./src/assets/images-readme/carousel.png)
+<img src="./src/assets/images-readme/screencapture-1.png" alt="Home" height="400px">
+<img src="./src/assets/images-readme/carousel.png" alt="Home" height="400px">
 
 </div>
 
@@ -20,7 +20,7 @@
 
 <div style="text-align: center;">
 
-![Hover](./src/assets/images-readme/screencapture-hover.png)
+<img src="./src/assets/images-readme/screencapture-hover.png" alt="Hover" width="60%">
 
 </div>
 
@@ -30,7 +30,7 @@
   - ### 📱 iPhone 14 Pro
 <div style="text-align: center;">
 
-![Mobile](./src/assets/images-readme/iPhone-14-Pro-438x891.png)
+<img src="./src/assets/images-readme/iPhone-14-Pro-438x891.png" alt="Mobile" height="400px">
 
 </div>
 
@@ -38,7 +38,7 @@
 
 <div style="text-align: center;">
 
-![Mobile](./src/assets/images-readme/iPhone-14-Pro-Max-473x968.png)
+<img src="./src/assets/images-readme/iPhone-14-Pro-Max-473x968.png" alt="Mobile" height="400px">
 
 </div>
 
@@ -46,7 +46,7 @@
 
 <div style="text-align: center;">
 
-![Single Restaurant](./src/assets/images-readme/single-rest.png)
+<img src="./src/assets/images-readme/single-rest.png" alt="Single Restaurant" width="60%">
 
 </div>
 
@@ -54,7 +54,7 @@
 
 <div style="text-align: center;">
 
-![Single Restaurant Mobile](./src/assets/images-readme/mobilesingle-res.png)
+<img src="./src/assets/images-readme/mobilesingle-res.png" alt="Single Restaurant Mobile" width="60%">
 
 </div>
 
@@ -62,7 +62,7 @@
 
 <div style="text-align: center;">
 
-![Checkout](./src/assets/images-readme/checkout-payment.png)
+<img src="./src/assets/images-readme/checkout-payment.png" alt="Checkout" width="60%">
 
 </div>
 
@@ -70,6 +70,6 @@
 
 <div style="text-align: center;">
 
-![Order Review](./src/assets/images-readme/order-review.png)
+<img src="./src/assets/images-readme/order-review.png" alt="Order Review" width="60%">
 
 </div>

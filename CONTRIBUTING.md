@@ -1,6 +1,6 @@
 <div style="text-align: center;">
 
-![Logo](./src/assets/logo-deliveboo.png){ height="40px" }
+![Logo](./src/assets/logo-deliveboo.png)
 
 </div>
 

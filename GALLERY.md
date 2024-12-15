@@ -1,6 +1,6 @@
 <div style="text-align: center;">
 
-![Logo](./src/assets/logo-deliveboo.png){ height="40px" }
+![Logo](./src/assets/logo-deliveboo.png)
 
 </div>
 
@@ -11,7 +11,7 @@
 
 <div style="text-align: center;">
 
-![Home](./src/assets/images-readme/screencapture-1.png){ width="45%" height="500px" margin="0 auto"} ![Home](./src/assets/images-readme/carousel.png){ width="45%" height="500px" margin="0 auto"}
+![Home](./src/assets/images-readme/screencapture-1.png){ width="45%" height="500px" margin="0 auto"} ![Home](./src/assets/images-readme/carousel.png)
 
 </div>
 
@@ -19,7 +19,7 @@
 
 <div style="text-align: center;">
 
-![Hover](./src/assets/images-readme/screencapture-hover.png){ width="50%" }
+![Hover](./src/assets/images-readme/screencapture-hover.png)
 
 </div>
 
@@ -29,7 +29,7 @@
   - ### 📱 iPhone 14 Pro
 <div style="text-align: center;">
 
-![Mobile](./src/assets/images-readme/iPhone-14-Pro-438x891.png){ height="500px" }
+![Mobile](./src/assets/images-readme/iPhone-14-Pro-438x891.png)
 
 </div>
 
@@ -37,7 +37,7 @@
 
 <div style="text-align: center;">
 
-![Mobile](./src/assets/images-readme/iPhone-14-Pro-Max-473x968.png){ height="500px" }
+![Mobile](./src/assets/images-readme/iPhone-14-Pro-Max-473x968.png)
 
 </div>
 
@@ -45,7 +45,7 @@
 
 <div style="text-align: center;">
 
-![Single Restaurant](./src/assets/images-readme/single-rest.png){ width="50%" }
+![Single Restaurant](./src/assets/images-readme/single-rest.png)
 
 </div>
 
@@ -53,7 +53,7 @@
 
 <div style="text-align: center;">
 
-![Single Restaurant Mobile](./src/assets/images-readme/mobilesingle-res.png){ height="500px" }
+![Single Restaurant Mobile](./src/assets/images-readme/mobilesingle-res.png)
 
 </div>
 
@@ -61,7 +61,7 @@
 
 <div style="text-align: center;">
 
-![Checkout](./src/assets/images-readme/checkout-payment.png){ width="50%" }
+![Checkout](./src/assets/images-readme/checkout-payment.png)
 
 </div>
 
@@ -69,14 +69,6 @@
 
 <div style="text-align: center;">
 
-![Order Review](./src/assets/images-readme/order-review.png){ width="50%" }
+![Order Review](./src/assets/images-readme/order-review.png)
 
 </div>
-
-
-
-
-
-
-
-

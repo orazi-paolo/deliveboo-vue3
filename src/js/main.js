@@ -12,6 +12,12 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 
+// Importazione della libreria di animazioni AOS
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+AOS.init();
+
 // Aggiungi tutte le icone "solid" alla libreria
 library.add(fas);
 

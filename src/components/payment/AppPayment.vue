@@ -78,7 +78,7 @@ export default {
                     })
                     .catch((error) => {
                         this.$emit("setLoader", false);
-                        console.log(this.email)
+                        /* console.log(this.email) */
                         console.error("Errore durante il pagamento:", error.response.data.message);
                         this.errorMessage = error.response?.data?.message || "An error occurred during payment.";
                     });

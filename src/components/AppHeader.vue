@@ -65,7 +65,7 @@ nav {
   background-color: #fff;
   padding: 15px 25px;
   border-bottom: 1px solid rgb(230, 217, 217);
-  height: 70px;
+  min-height: 70px;
 
   * {
     color: #00cbbd;

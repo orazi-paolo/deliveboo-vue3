@@ -31,17 +31,17 @@ export default {
       return (this.modal = !this.modal);
     },
     addToCart(plateObj) {
-      console.log(
+      /* console.log(
         "item to push in store.platesInCart",
         plateObj.id,
         plateObj.name
-      );
+      ); */
 
       if (store.platesInCart.length > 0) {
         const isDifferentRestaurant = this.controlRestaurantId(plateObj);
         // if guest adds a plate of a different restaurant
         if (isDifferentRestaurant) {
-          console.log("show modal");
+          /* console.log("show modal"); */
           // open the modal
           this.showClearCartModal = true;
           return;
@@ -57,7 +57,7 @@ export default {
         // icrease price plate in totalPrice with the value of quantity
         plateInArray.totalPrice =
           parseFloat(plateInArray.price) * plateInArray.quantity;
-        console.log(plateInArray);
+        /* console.log(plateInArray); */
       } else {
         // if the plate is not cpntained in store.platesInCart push the plate as a new plate
         this.newPlateObjToPush = {
@@ -72,10 +72,10 @@ export default {
           // with quantity and totalPrice
           this.newPlateObjToPush
         );
-        console.log(
+        /* console.log(
           "==========newPlateObjToPush to push in cart",
           this.newPlateObjToPush
-        );
+        ); */
       }
       // icrement of store.totalQuantities after a plate was added in cart
       store.totalQuantities += 1;
@@ -228,6 +228,7 @@ export default {
 
   &:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease;
   }
 
   .wrapper {

@@ -54,7 +54,7 @@ export default {
     },
   },
   created() {
-    console.log("currentplateshow", this.plate);
+    /* console.log("currentplateshow", this.plate); */
   }
 };
 </script>

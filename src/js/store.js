@@ -33,21 +33,21 @@ export const store = reactive({
         },
       })
       .then((response) => {
-        console.log("Dati ricevuti:", response.data.results);
+        /* console.log("Dati ricevuti:", response.data.results);
         console.log("======= Inizio chiamata API Restaurants Filtered======= ");
-        console.log(response.data.results);
+        console.log(response.data.results); */
         this.restaurantsFiltered = response.data.results.data;
         this.totalRestaurants = response.data.results.total;
-        console.log(this.restaurantsFiltered);
+        // console.log(this.restaurantsFiltered);
         this.isLoadingRestaurants = false;
       })
       .catch(function (error) {
         console.log(error);
       })
       .finally(function () {
-        console.log(
+        /* console.log(
           "======= Chiamata API Restaurants Completata Filtered======= "
-        );
+        ); */
       });
   },
 
@@ -59,21 +59,21 @@ export const store = reactive({
         },
       })
       .then((response) => {
-        console.log("Dati ricevuti:", response.data.results);
-        console.log("======= Inizio chiamata API Restaurants Filtered======= ");
-        console.log(response.data.results);
+        // console.log("Dati ricevuti:", response.data.results);
+        // console.log("======= Inizio chiamata API Restaurants Filtered======= ");
+        // console.log(response.data.results);
 
         this.restaurantsFiltered = response.data.results;
-        console.log(this.restaurantsFiltered);
+        // console.log(this.restaurantsFiltered);
         this.isLoadingRestaurants = false;
       })
       .catch(function (error) {
         console.log(error);
       })
       .finally(function () {
-        console.log(
+        /* console.log(
           "======= Chiamata API Restaurants Completata Filtered======= "
-        );
+        ); */
       });
   },
 

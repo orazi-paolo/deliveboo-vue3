@@ -123,6 +123,7 @@ i {
     &:hover {
         color: #00CBBD;
         scale: 1.1;
+        transition: all 0.3s ease;
     }
 }
 </style>

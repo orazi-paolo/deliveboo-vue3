@@ -13,32 +13,31 @@ export default {
             images: [
                 {
                     name: "bg-1.jpg",
-                    active: true,
                     id: 1
                 },
                 {
                     name: "bg-2.jpeg",
-                    active: false,
+
                     id: 2
                 },
                 {
                     name: "bg-3.jpeg",
-                    active: false,
+
                     id: 3
                 },
                 {
                     name: "bg-4.webp",
-                    active: false,
+
                     id: 4
                 },
                 {
                     name: "bg-5.webp",
-                    active: false,
+
                     id: 5
                 },
                 {
                     name: "bg-6.jpeg",
-                    active: false,
+
                     id: 6
                 },
             ],
@@ -55,29 +54,25 @@ export default {
         getTipologies() {
             axios.get(this.apiUrl)
                 .then(response => {
-                    console.log("======= Inizio chiamata API Tipologie ======= ")
-                    console.log(response.data.results)
+                    /* console.log("======= Inizio chiamata API Tipologie ======= ")
+                    console.log(response.data.results) */
                     this.listTipologies = response.data.results
-                    console.log(this.listTipologies)
+                    /* console.log(this.listTipologies) */
                     store.isLoadingTipologies = false;
                 })
                 .catch(function (error) {
                     console.log(error);
                 })
                 .finally(function () {
-                    console.log("======= Chiamata API Tipologie Completata ======= ")
+                    /* console.log("======= Chiamata API Tipologie Completata ======= ") */
                 })
         },
         autoPlay() {
             setInterval(() => {
-                const image = document.querySelector('.tipologies-bg');
-
-                image.classList.add('d-none');
-                image.classList.remove('d-none');
-                image.classList.add('active');
                 this.activeIndex++;
                 this.restartCicle;
-            }, 5000);
+                console.log(this.activeIndex)
+            }, 3000);
         },
         getImagePath(imagePath) {
             return new URL(`../../assets/${imagePath}`, import.meta.url).href;
@@ -100,6 +95,7 @@ export default {
 
     },
     created() {
+        console.log(this.activeIndex)
         this.getTipologies();
         this.autoPlay();
     }
@@ -108,7 +104,8 @@ export default {
 
 <template>
     <section class="py-2">
-        <img class="tipologies-bg" :src="getImagePath(images[activeIndex].name)" alt="Hamburgers">
+        <img v-for="(image, index) in images" class="tipologies-bg" :key="image.id" :src="getImagePath(image.name)"
+            alt="Background" :class="{ 'active': index === activeIndex }">
         <div class="container-custom my-4">
             <div class="title-section p-2 pb-0">
                 <h5 class="text-white">Restaurants</h5>
@@ -149,16 +146,42 @@ section {
     object-position: bottom right;
     /* height: 100%; */
     z-index: -1;
-    transition: all 0.3s ease-out;
+    display: none;
+    animation: slideIn 1s ease-in;
+    /* animation: fadeOut 1s ease-out; */
 
     &.active {
         display: block;
-        transition: all 0.3s ease-out;
     }
 
     &img {
         display: none;
-        transition: all 0.3s ease-out;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0.5;
+        transform: translateX(30%);
+        transition: opacity 0.1s ease;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        transition: opacity 0.1s ease;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(100%);
     }
 }
 </style>

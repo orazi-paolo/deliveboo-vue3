@@ -19,7 +19,7 @@ export default {
     },
     methods: {
         toggleTipology() {
-            console.log([...store.tipologiesIds]);
+            /* console.log([...store.tipologiesIds]); */
             this.active = !this.active;
             // Controllo se il tipologyObj.id è già presente in store.tipologiesIds
             // Controllando se il tipologyObj.id è presente in store.tipologiesIds            
@@ -101,10 +101,12 @@ export default {
     &:hover {
         box-shadow: 0 0 10px 0 rgb(0, 234, 255);
         scale: 1.1;
+        transition: all 0.3s ease;
     }
 
     &:active {
         scale: 1;
+        transition: all 0.3s ease;
     }
 
 }

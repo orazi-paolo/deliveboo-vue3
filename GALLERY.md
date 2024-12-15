@@ -4,7 +4,7 @@
 
 </div>
 
-# Galleria immagini
+# 📸 Galleria immagini
 
 - ### 💻 Home (Laptop view) 
 

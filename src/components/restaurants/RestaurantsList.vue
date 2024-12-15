@@ -77,7 +77,7 @@ export default {
             </h5>
         </div>
         <div v-if="store.tipologiesIds.length == 0" class="d-flex justify-content-center">
-            <span class="badge text-bg-success m-2 my-1 p-2 fs-5">
+            <span class="badge text-bg-success m-2 my-1 p-2 fs-6">
                 Page {{ store.page }} of {{ Math.ceil(store.totalRestaurants / 12) }}
             </span>
         </div>

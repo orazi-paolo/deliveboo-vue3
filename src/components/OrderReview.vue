@@ -13,7 +13,7 @@ export default {
     },
     methods: {
         goBackPage() {
-          this.$router.back();
+            this.$router.back();
         },
     },
     computed: {
@@ -32,16 +32,21 @@ export default {
         <!-- back button -->
         <button class="back-button" @click="goBackPage">
             <font-awesome-icon :icon="['fas', 'arrow-left']" />
-            <span class="back-button-text">Back to the restaurant</span>   
+            <span class="back-button-text">Back to the restaurant</span>
         </button>
         <!-- restaurant infos -->
         <div class="restaurant-info d-flex align-items-center mb-2 mt-3">
-            <img v-if="store.platesInCart[0].restaurant.image" class="img-fluid rounded-2 w-25 me-3" :src="store.platesInCart[0].restaurant.image"
-            alt="Image of {{ singleRestaurant.name }}">
+            <img v-if="store.platesInCart[0].restaurant.image" class="img-fluid rounded-2 w-25 me-3"
+                :src="store.platesInCart[0].restaurant.image" alt="Image of {{ singleRestaurant.name }}">
             <img v-else class="img-fluid rounded-2 w-25 me-3" :src="store.platesInCart[0].restaurant.image_placeholder"
-            alt="Image of {{ singleRestaurant.name }}">
+                alt="Image of {{ singleRestaurant.name }}">
             <div>
-            <h4 class="fw-semibold">{{ store.platesInCart[0].restaurant.name }}</h4>
+                <span v-for="tipology in store.platesInCart[0].restaurant.tipologies" class="badge me-2 my-1 p-2"
+                    :style="{ backgroundColor: tipology.color }">
+                    {{ tipology.name }}
+                </span>
+                <h4 class="fw-semibold">{{ store.platesInCart[0].restaurant.name }}</h4>
+                <p class="text-muted">{{ store.platesInCart[0].restaurant.address }}</p>
             </div>
         </div>
         <!-- orders-list -->
@@ -122,7 +127,8 @@ export default {
                 justify-content: space-between;
                 gap: 8px;
 
-                .decrement-button, .increment-button{
+                .decrement-button,
+                .increment-button {
                     border: 1px #45ccbc solid;
                     background-color: transparent;
                     border-radius: 50%;
@@ -133,9 +139,9 @@ export default {
                     align-items: center;
                     padding: 0;
 
-                    span{
-                    color:#45ccbc;
-                    font-weight: 900;
+                    span {
+                        color: #45ccbc;
+                        font-weight: 900;
                     }
                 }
             }

@@ -1,5 +1,5 @@
 <div style="text-align: center;">
-<img src="./src/assets/deliveroo-logo.webp" alt="Deliveroo Logo" height="100px">
+    <img src="./src/assets/deliveroo-logo.webp" alt="Deliveroo Logo" height="100px">
 </div>
 
 # DeliveBoo - Food Delivery Platform

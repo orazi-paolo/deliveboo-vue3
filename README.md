@@ -1,6 +1,6 @@
 
 # DeliveBoo - Food Delivery Platform
-<div style="text-align: center;">
+<div align="center">
     <img src="./src/assets/deliveroo-logo.webp" alt="Deliveroo Logo" height="100px">
     <img src="./src/assets/logo-deliveboo.png" alt="DeliveBoo Logo" height="40px">
 </div>

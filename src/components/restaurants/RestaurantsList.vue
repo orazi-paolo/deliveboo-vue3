@@ -76,18 +76,18 @@ export default {
                 </span>
             </h5>
         </div>
-        <div v-if="store.tipologiesIds.length == 0" class="d-flex justify-content-center">
-            <span class="badge text-bg-success m-2 my-1 p-2 fs-6">
+        <div v-if="store.tipologiesIds.length == 0" class="d-flex justify-content-center align-items-center gap-3">
+            <i v-if="store.tipologiesIds.length == 0" class="fa-solid fa-circle-chevron-left" @click="prevPage"></i>
+            <!-- Number of pages -->
+            <span class="badge badge-turquoise my-3  rounded-pill">
                 Page {{ store.page }} of {{ Math.ceil(store.totalRestaurants / 12) }}
             </span>
+            <i v-if="store.tipologiesIds.length == 0" class="fa-solid fa-circle-chevron-right" @click="nextPage"></i>
         </div>
-        <i v-if="store.tipologiesIds.length == 0" class="fa-solid fa-circle-chevron-left fa-3x" @click="prevPage"></i>
         <ul class="row" id="restaurants-list">
             <RestaurantsListCard v-for="restaurant in restaurantsFiltered" :key="restaurant.id"
                 :restaurant="restaurant" />
         </ul>
-        <i v-if="store.tipologiesIds.length == 0" class="fa-solid fa-circle-chevron-right fa-3x" @click="nextPage"></i>
-        <!-- Number of pages -->
 
     </section>
 </template>
@@ -100,30 +100,32 @@ export default {
     display: flex;
 }
 
-section {
-    position: relative;
+.badge.badge-turquoise {
+    background-color: #00CBBD;
+    font-size: 18px;
+    padding: 10px 20px;
 }
 
 i {
     cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1000;
     color: #8b8b8b;
-
-    &.fa-circle-chevron-left {
-        left: 0;
-    }
-
-    &.fa-circle-chevron-right {
-        right: 0;
-    }
+    font-size: 2.5rem;
 
     &:hover {
         color: #00CBBD;
         scale: 1.1;
         transition: all 0.3s ease;
+    }
+}
+
+@media (max-width: 576px) {
+    .badge.badge-turquoise {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+
+    i {
+        font-size: 2rem;
     }
 }
 </style>

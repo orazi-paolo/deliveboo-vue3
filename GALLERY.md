@@ -11,7 +11,8 @@
 
 <div style="text-align: center;">
 
-![Home](./src/assets/images-readme/screencapture-1.png) ![Home](./src/assets/images-readme/carousel.png)
+![Home](./src/assets/images-readme/screencapture-1.png) 
+![Home](./src/assets/images-readme/carousel.png)
 
 </div>
 

@@ -1,10 +1,11 @@
+
+# 👥 Contributing
+
 <div align="center">
 
 ![Logo](./src/assets/logo-deliveboo.png)
 
 </div>
-
-# 👥 Contributing
 
 Grazie per voler contribuire a questo progetto! Le tue idee e il tuo supporto sono essenziali per il suo sviluppo continuo.
 

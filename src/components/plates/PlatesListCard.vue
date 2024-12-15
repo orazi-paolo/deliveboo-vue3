@@ -170,21 +170,34 @@ export default {
   </li>
 
   <!-- Modal to clear cart -->
-  <div v-if="showClearCartModal" class="modal-clear-cart">
-    <div class="modal-content">
-      <button class="btn-x" @click="cancelClearCart">
-        <i class="fas fa-times fa-3x"></i>
-      </button>
-      <p>The cart contains a plate of other restaurant. You want to clear or do you want to go back to the old
-        restaurant?</p>
-      <div class="modal-buttons-row">
-        <button @click="clearCart()" class="btn-confirm">
-          Clear current cart
-        </button>
-        <RouterLink :to="{ name: 'restaurants.show', params: { slug: store.platesInCart[0].restaurant.slug } }"
-          @click="cancelClearCart" class="btn-cancel text-decoration-none">
-          Back to {{ store.platesInCart[0].restaurant.name }}
-        </RouterLink>
+  <div v-if="showClearCartModal" class="modal modal-clear-cart">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header w-100 border-bottom-0">
+          <button class="btn-x" @click="cancelClearCart">
+            <i class="fas fa-times fa-3x"></i>
+          </button>
+        </div>
+        <h3 class="fs-4">Clear {{ store.platesInCart[0].restaurant.name }} items</h3>
+        <div class="modal-body">
+          <p>The cart contains a plate of other restaurant. You want to <span class="text-danger">clear</span> or do you
+            want to <span class="turquoise">go back</span> to the old
+            restaurant?</p>
+        </div>
+        <div class="modal-foote border-top-0">
+          <div class="modal-buttons-row">
+            <button @click="clearCart()" class="btn-confirm">
+              Clear {{ store.totalQuantities }} items in cart
+            </button>
+            <RouterLink :to="{ name: 'restaurants.show', params: { slug: store.platesInCart[0].restaurant.slug } }"
+              @click="cancelClearCart" class="btn-cancel text-decoration-none">
+              Back to
+              <span class="fw-bold">
+                {{ store.platesInCart[0].restaurant.name }}
+              </span>
+            </RouterLink>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -306,7 +319,7 @@ export default {
     text-align: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     max-width: 500px;
-    width: 70%;
+    width: 100%;
     height: 40%;
     display: flex;
     flex-direction: column;
@@ -321,6 +334,7 @@ export default {
       color: #555555;
       margin-bottom: 20px;
       padding: 0 25px;
+      font-size: 16px;
     }
 
     .modal-buttons-row {
@@ -333,7 +347,7 @@ export default {
         flex: 1;
         color: #ffffff;
         border: none;
-        padding: 10px 15px;
+        padding: 7px 15px;
         border-radius: 8px;
         cursor: pointer;
         transition: background 0.3s;

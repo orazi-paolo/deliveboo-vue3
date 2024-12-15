@@ -53,42 +53,28 @@ export default {
       this.emitCloseModal();
     },
   },
-  created(){
-    console.log("currentplateshow",this.plate);
+  created() {
+    console.log("currentplateshow", this.plate);
   }
 };
 </script>
 
 <template>
-  <div
-    class="modal d-block"
-    :id="`#exampeModal-${plate.id}`"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    :aria-hidden="!isModalVisible"
-  >
+  <div class="modal d-block" :id="`#exampeModal-${plate.id}`" tabindex="-1" aria-labelledby="exampleModalLabel"
+    :aria-hidden="!isModalVisible">
     <div class="modal-dialog">
       <!-- Modal close button -->
       <div class="modal-content p-4">
         <div v-if="notification" class="notification">{{ notification }}</div>
         <div class="scrollable-content">
           <div class="modal-header">
-            <button
-              type="button"
-              class="btn-close-custom"
-              aria-label="Close"
-              @click="emitCloseModal()"
-            >
+            <button type="button" class="btn-close-custom" aria-label="Close" @click="emitCloseModal()">
               x
             </button>
           </div>
           <div class="modal-body p-0">
-            <div class="modal-image-wrapper">
-              <img
-                :src="plate.image || plate.image_placeholder"
-                alt="Plate Image"
-                class="modal-image"
-              />
+            <div class="modal-image-wrapper mt-3">
+              <img :src="plate.image || plate.image_placeholder" alt="Plate Image" class="modal-image rounded-5" />
             </div>
             <div class="modal-content-wrapper p-4">
               <h2 class="h4 fw-bold mb-3">{{ plate.name }}</h2>
@@ -97,25 +83,7 @@ export default {
               <div class="ingredient-section">
                 <h5 class="h6 fw-bold mb-3">Ingredients</h5>
                 <hr />
-                <div
-                  class="ingredient-option"
-                  v-for="ingrediente in plate.ingredients"
-                  :key="ingrediente"
-                  :class="{
-                    selected: selectedIngredients.includes(ingrediente),
-                  }"
-                >
-                  <input
-                    type="checkbox"
-                    :id="ingrediente"
-                    class="form-check-input"
-                    v-model="selectedIngredients"
-                    :value="ingrediente"
-                  />
-                  <label class="form-check-label" :for="ingrediente">
-                    {{ ingrediente }}
-                  </label>
-                </div>
+                <p class="fs-6 text-muted">{{ plate.ingredient_description }}</p>
               </div>
             </div>
           </div>
@@ -123,28 +91,16 @@ export default {
         <!-- Quantity control -->
         <div class="quantity-payment-container">
           <div class="quantity-control">
-            <button
-              class="btn-quantity"
-              :class="{ active: plate.quantity > 1, disabled: plate.quantity === 1 }"
-              @click="store.decrementPlates(plate.id)"
-              :disabled="plate.quantity === 1"
-            >
+            <button class="btn-quantity" :class="{ active: plate.quantity > 1, disabled: plate.quantity === 1 }"
+              @click="store.decrementPlates(plate.id)" :disabled="plate.quantity === 1">
               -
             </button>
             <span class="quantity-value">{{ plate.quantity }}</span>
-            <button
-              class="btn-quantity"
-              :class="{ active: true }"
-              @click="store.incrementPlates(plate.id, plate)"
-            >
+            <button class="btn-quantity" :class="{ active: true }" @click="store.incrementPlates(plate.id, plate)">
               +
             </button>
           </div>
-          <button
-            type="button"
-            class="btn btn-primary w-100"
-            @click="addToCart"
-          >
+          <button type="button" class="btn btn-primary w-100" @click="addToCart">
             Add for {{ totalPrice }} €
           </button>
         </div>
@@ -161,8 +117,8 @@ p {
 }
 
 .btn.btn-primary {
-  background-color: #00c7b6!important;
-  color: white!important;
+  background-color: #00c7b6 !important;
+  color: white !important;
   font-size: 16px;
   font-weight: bold;
   border-radius: 8px;
@@ -217,7 +173,7 @@ p {
   color: #000;
 }
 
-.modal.d-block{
+.modal.d-block {
   background: rgba(0, 0, 0, 0.7);
 }
 

@@ -68,7 +68,7 @@ export default {
             <h5>
                 Search Results:
                 <span class="turquoise">
-                    "{{ restaurantsFiltered.length }}"
+                    "{{ store.tipologiesIds.length > 0 ? restaurantsFiltered.length : store.totalRestaurants }}"
                 </span>
                 <span class="badge m-2 my-1" v-for="tipology in activeTipologies" :key="tipology.id"
                     :style="{ backgroundColor: tipology.color }">
@@ -76,12 +76,19 @@ export default {
                 </span>
             </h5>
         </div>
+        <div v-if="store.tipologiesIds.length == 0" class="d-flex justify-content-center">
+            <span class="badge text-bg-success m-2 my-1 p-2 fs-5">
+                Page {{ store.page }} of {{ Math.ceil(store.totalRestaurants / 12) }}
+            </span>
+        </div>
         <i v-if="store.tipologiesIds.length == 0" class="fa-solid fa-circle-chevron-left fa-3x" @click="prevPage"></i>
         <ul class="row" id="restaurants-list">
             <RestaurantsListCard v-for="restaurant in restaurantsFiltered" :key="restaurant.id"
                 :restaurant="restaurant" />
         </ul>
         <i v-if="store.tipologiesIds.length == 0" class="fa-solid fa-circle-chevron-right fa-3x" @click="nextPage"></i>
+        <!-- Number of pages -->
+
     </section>
 </template>
 

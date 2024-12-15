@@ -21,7 +21,7 @@ export default {
           <ul class="pages-links">
             <li class="li-logo">
               <img class="img-logo" src="./../assets/deliveroo-logo.webp" alt="deliveroo-logo.web" />
-              <router-link class="nav-link active fw-bold" aria-current="page"
+              <router-link class="title-logo nav-link active fw-bold" aria-current="page"
                 :to="{ name: 'home' }">deliveboo</router-link>
             </li>
             <li class="nav-item">
@@ -65,6 +65,7 @@ nav {
   background-color: #fff;
   padding: 15px 25px;
   border-bottom: 1px solid rgb(230, 217, 217);
+  height: 70px;
 
   * {
     color: #00cbbd;
@@ -73,16 +74,31 @@ nav {
 
   .nav-left {
     display: flex;
+    align-items: center;
 
     .li-logo {
       display: flex;
       align-items: center;
       gap: 5px;
 
+      .title-logo {
+        font-size: 18px;
+        font-weight: 700;
+      }
+
       .img-logo {
         width: 25px;
       }
     }
+
+    .nav-item {
+      height: 23px;
+    }
+  }
+
+  .pages-links {
+    display: flex;
+    align-items: center;
   }
 
   .pages-links,

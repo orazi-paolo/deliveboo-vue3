@@ -6,6 +6,7 @@ export const store = reactive({
   tipologiesIds: [],
   restaurantsFiltered: [],
   page: 1,
+  totalRestaurants: 0,
   // apiUrlRestaurants: "http://127.0.0.1:8000/api/restaurants",
   apiUrlRestaurantsFilter: "http://127.0.0.1:8000/api/restaurant/filter",
   apiUrlRestaurantsFilterWithPage: "http://127.0.0.1:8000/api/restaurant/filter/pagination",
@@ -36,6 +37,7 @@ export const store = reactive({
         console.log("======= Inizio chiamata API Restaurants Filtered======= ");
         console.log(response.data.results);
         this.restaurantsFiltered = response.data.results.data;
+        this.totalRestaurants = response.data.results.total;
         console.log(this.restaurantsFiltered);
         this.isLoadingRestaurants = false;
       })

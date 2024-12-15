@@ -77,7 +77,7 @@ export default {
     padding: 4px 15px;
 
     h4 {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 700;
     }
 

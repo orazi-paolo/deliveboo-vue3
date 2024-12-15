@@ -20,7 +20,7 @@ export default {
       const mainHeight = document.querySelector("main").scrollHeight;
       const cartHeight = document.querySelector("#cart").scrollHeight;
       // Controllo se la finestra scorre di 600px prima della fine del main
-      this.isScrolled = window.scrollY > mainHeight - cartHeight - 100;
+      this.isScrolled = window.scrollY > mainHeight - cartHeight - 80;
     },
   },
   mounted() {

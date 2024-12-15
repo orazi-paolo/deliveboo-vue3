@@ -11,7 +11,7 @@
 
 <div style="text-align: center;">
 
-![Home](./src/assets/images-readme/screencapture-1.png){ width="45%" height="500px" margin="0 auto"} ![Home](./src/assets/images-readme/carousel.png)
+![Home](./src/assets/images-readme/screencapture-1.png) ![Home](./src/assets/images-readme/carousel.png)
 
 </div>
 

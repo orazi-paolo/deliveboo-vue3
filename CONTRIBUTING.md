@@ -24,7 +24,8 @@ Ci sono diversi modi in cui puoi contribuire:
 2. **Clonare il repository**: Clona il tuo fork localmente sul tuo computer:
 
     ```bash
-    git clone https://github.com/tuo-utente/nome-progetto.git
+    git clone https://github.com/orazi-paolo/deliveboo-vue3.git
+
     cd nome-progetto
     ```
 

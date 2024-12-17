@@ -24,14 +24,17 @@ export default {
         <ul class="pages-links d-flex align-items-center">
           <li class="li-logo">
             <img class="img-logo" src="./../assets/deliveroo-logo.webp" alt="deliveroo-logo.webp" />
-            <router-link class="nav-link active fw-bold" aria-current="page" :to="{ name: 'home' }">deliveboo</router-link>
+            <router-link class="nav-link active fw-bold" aria-current="page"
+              :to="{ name: 'home' }">deliveboo</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link active" aria-current="page" :to="{ name: 'home' }">Home</router-link>
+            <router-link v-if="!($route.path === '/payment-confirmation')" class="nav-link active" aria-current="page"
+              :to="{ name: 'home' }">Home</router-link>
           </li>
         </ul>
 
-        <button class="navbar-toggler" type="button" @click="toggleNavbar" :aria-expanded="isNavbarOpen" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" @click="toggleNavbar" :aria-expanded="isNavbarOpen"
+          aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -50,7 +53,8 @@ export default {
             </li>
             <li class="sign-in-button">
               <font-awesome-icon :icon="['fas', 'user']" class="icon-auth" />
-              <a href="http://127.0.0.1:8000/register" class="menu-item fw-bold turquoise text-decoration-none">Register</a>
+              <a href="http://127.0.0.1:8000/register"
+                class="menu-item fw-bold turquoise text-decoration-none">Register</a>
             </li>
           </ul>
         </div>
@@ -115,23 +119,23 @@ nav {
   }
 
   .navbar-toggler {
-  display: none;
+    display: none;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
 
   @media (max-width: 768px) {
-    display: block;
-  }
-}
-
-@media (max-width: 768px) {
     .collapse {
       display: none;
     }
 
     .collapse.show {
       display: flex;
-      flex-direction: column; 
-      position: fixed; 
-      top: 47px; 
+      flex-direction: column;
+      position: fixed;
+      top: 47px;
       right: 10px;
       background-color: #ddd;
       border: 1px solid #aaa;
@@ -140,7 +144,4 @@ nav {
     }
   }
 }
-
-
-
 </style>

@@ -9,7 +9,8 @@ export const store = reactive({
   totalRestaurants: 0,
   // apiUrlRestaurants: "http://127.0.0.1:8000/api/restaurants",
   apiUrlRestaurantsFilter: "http://127.0.0.1:8000/api/restaurant/filter",
-  apiUrlRestaurantsFilterWithPage: "http://127.0.0.1:8000/api/restaurant/filter/pagination",
+  apiUrlRestaurantsFilterWithPage:
+    "http://127.0.0.1:8000/api/restaurant/filter/pagination",
   // loader
   isLoadingRestaurants: true,
   isLoadingTipologies: true,
@@ -95,7 +96,10 @@ export const store = reactive({
     }
     // update storage this.totalQuantities
     this.totalQuantities += 1;
-    localStorage.setItem("totalQuantities", JSON.stringify(this.totalQuantities));
+    localStorage.setItem(
+      "totalQuantities",
+      JSON.stringify(this.totalQuantities)
+    );
 
     localStorage.setItem("platesInCart", JSON.stringify(this.platesInCart));
   },
@@ -116,7 +120,10 @@ export const store = reactive({
       finalQuantities += plate.quantity;
     }
     this.totalQuantities = finalQuantities;
-    localStorage.setItem("totalQuantities", JSON.stringify(this.totalQuantities));
+    localStorage.setItem(
+      "totalQuantities",
+      JSON.stringify(this.totalQuantities)
+    );
   },
 
   clearCart() {
@@ -141,8 +148,7 @@ export const store = reactive({
       }
       return true;
     });
-    if (this.platesInCart.length === 0)
-      localStorage.removeItem("platesInCart");
+    if (this.platesInCart.length === 0) localStorage.removeItem("platesInCart");
 
     this.getOrderTotalPrice();
     this.getOrderTotalQuantities();
@@ -168,7 +174,7 @@ export const store = reactive({
 
     localStorage.setItem("platesInCart", JSON.stringify(this.platesInCart));
     // console.log(this.totalQuantities)
-  }
+  },
 });
 
 export default store;
